@@ -159,7 +159,7 @@ body {
 			max-width: 100%;
 			height: auto;
 
-			margin-bottom: 3vh;
+			margin-bottom: $vh-space;
 		}
 
 		/* 이미지가 화면을 꽉 채우게 하기 위한 스타일 */
@@ -178,7 +178,7 @@ body {
 			justify-content: center;
 			align-items: center;
 
-			margin-bottom: 3vh;
+			margin-bottom: $vh-space;
 		}
 
 		.img-vertical > img {
@@ -193,7 +193,7 @@ body {
 			height: 0;
 			overflow-y: hidden;
 
-			margin-bottom: 3vh;
+			margin-bottom: $vh-space;
 
 			iframe,
 			object,
@@ -246,7 +246,6 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.container {
-			margin-top: 5.5rem;
 			font-size: 0.9rem;
 
 			/* 프로젝트 설명 모바일사이즈 */
@@ -257,20 +256,23 @@ body {
 				flex-direction: column;
 
 				.info_left {
-					width: 90vw;
+					width: 100%;
 
 					.title {
-						font-size: 1.75rem;
-						margin-bottom: calc($vh-space * 0.75);
+						font-size: 1.6rem;
+						margin-bottom: 0.5em;
+						width: 90%;
 					}
 				}
 
 				.info_right {
 					padding-right: 0vw;
+					width: 100%;
 
 					.caption {
 						margin-bottom: calc($vh-space * 1);
 						padding-right: 0;
+						width: 92%;
 					}
 
 					#awardPage {
@@ -283,14 +285,15 @@ body {
 						font-size: 0.94rem;
 					}
 
-					/* 프로젝트 크레딧 모바일*/
-					.credit_box {
-						width: 98%;
-						font-size: 0.94rem;
-					}
+					.info-credit {
+						/* 프로젝트 크레딧 모바일*/
+						.credit_box {
+							font-size: 0.95rem;
+						}
 
-					.credit_1 {
-						width: 23%;
+						.credit_1 {
+							width: 22%;
+						}
 					}
 				}
 			}

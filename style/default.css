@@ -45,6 +45,7 @@
   font-family: "Barlow", "gothica1", sans-serif;
   font-weight: 500;
   word-break: keep-all;
+  touch-action: pan-y; /* 세로만 스와이프 */
 }
 
 a,
@@ -87,7 +88,7 @@ body header {
   z-index: 100;
 }
 body header .header_name {
-  font-size: 2.2rem;
+  font-size: 2rem;
   letter-spacing: -0.03em;
   position: fixed;
   z-index: 1000;
@@ -98,7 +99,7 @@ body header .header_name:hover {
   color: var(--blue);
 }
 body header .header_menu {
-  font-size: 2.2rem;
+  font-size: 2rem;
   letter-spacing: -0.03em;
   position: absolute;
   right: 0.25rem;

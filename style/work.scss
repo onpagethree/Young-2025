@@ -132,9 +132,11 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.category {
+			margin-left: 0.05em;
 			font-size: 1.3rem;
-			letter-spacing: -0.03em;
+			letter-spacing: -0.02em;
 			color: var(--gray);
+			line-height: 1.4em;
 		}
 		.container {
 			gap: $vh-space; // 박스 간격 넉넉하게
@@ -151,13 +153,14 @@ body {
 
 				.text-container {
 					.text-container-title {
+						font-size: 1.6rem;
 						width: 80%;
 						margin-bottom: 0.15em;
 					}
 
 					.text-container-sub {
 						color: var(--gray);
-						font-size: 1.3rem;
+						font-size: 1.15rem;
 						line-height: 1.4em;
 					}
 

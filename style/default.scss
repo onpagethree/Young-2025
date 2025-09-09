@@ -46,17 +46,8 @@ $vh-space: 3vh;
 	size-adjust: 94%;
 }
 
-// 영문폰트
-// @import url("https://use.typekit.net/iqk7gyb.css");
-
 /* 영문 폰트 "barlow" */
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap");
-
-// .barlow-regular {
-// 	font-family: "Barlow", sans-serif;
-// 	font-weight: 100-900;
-// 	font-style: normal, italic;
-// }
 
 // 기본 설정
 
@@ -73,6 +64,9 @@ $vh-space: 3vh;
 	font-family: "Barlow", "gothica1", sans-serif;
 	font-weight: 500;
 	word-break: keep-all;
+
+	// 가로 scroll 금지
+	touch-action: pan-y; /* 세로만 스와이프 */
 }
 
 a,
@@ -118,7 +112,7 @@ body {
 
 		//  HEADER 헤더 제목
 		.header_name {
-			font-size: 2.2rem;
+			font-size: 2rem;
 			letter-spacing: -0.03em;
 
 			position: fixed;
@@ -132,7 +126,7 @@ body {
 		}
 
 		.header_menu {
-			font-size: 2.2rem;
+			font-size: 2rem;
 			letter-spacing: -0.03em;
 
 			position: absolute;

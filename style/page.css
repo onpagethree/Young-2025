@@ -194,7 +194,6 @@ body .container .lightbox .lightbox-center .lightbox-content {
 
 @media only screen and (max-width: 700px) {
   body .container {
-    margin-top: 5.5rem;
     font-size: 0.9rem;
     /* 프로젝트 설명 모바일사이즈 */
     /*IMG IMG 중간 글 모바일*/
@@ -208,19 +207,21 @@ body .container .lightbox .lightbox-center .lightbox-content {
     flex-direction: column;
   }
   body .container .project-info .info_left {
-    width: 90vw;
+    width: 100%;
   }
   body .container .project-info .info_left .title {
-    font-size: 1.75rem;
-    margin-bottom: 2.25vh;
+    font-size: 1.6rem;
+    margin-bottom: 0.5em;
+    width: 90%;
   }
   body .container .project-info .info_right {
     padding-right: 0vw;
-    /* 프로젝트 크레딧 모바일*/
+    width: 100%;
   }
   body .container .project-info .info_right .caption {
     margin-bottom: 3vh;
     padding-right: 0;
+    width: 92%;
   }
   body .container .project-info .info_right #awardPage {
     width: 12em;
@@ -230,12 +231,14 @@ body .container .lightbox .lightbox-center .lightbox-content {
     margin-bottom: 2.25vh;
     font-size: 0.94rem;
   }
-  body .container .project-info .info_right .credit_box {
-    width: 98%;
-    font-size: 0.94rem;
+  body .container .project-info .info_right .info-credit {
+    /* 프로젝트 크레딧 모바일*/
   }
-  body .container .project-info .info_right .credit_1 {
-    width: 23%;
+  body .container .project-info .info_right .info-credit .credit_box {
+    font-size: 0.95rem;
+  }
+  body .container .project-info .info_right .info-credit .credit_1 {
+    width: 22%;
   }
   body .container .mid_text {
     font-size: 0.9rem;

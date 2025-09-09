@@ -103,9 +103,11 @@ body .container .box .thumbnail-box:hover .text-container {
 }
 @media only screen and (max-width: 700px) {
   body .category {
+    margin-left: 0.05em;
     font-size: 1.3rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     color: var(--gray);
+    line-height: 1.4em;
   }
   body .container {
     gap: 3vh;
@@ -135,12 +137,13 @@ body .container .box .thumbnail-box:hover .text-container {
     /* 데스크톱용 award 규칙은 모바일에서 무시되도록 여기서는 제거 */
   }
   body .container .box .thumbnail-box .text-container .text-container-title {
+    font-size: 1.6rem;
     width: 80%;
     margin-bottom: 0.15em;
   }
   body .container .box .thumbnail-box .text-container .text-container-sub {
     color: var(--gray);
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     line-height: 1.4em;
   }
   body .container .box .thumbnail-box .text-container #award {
