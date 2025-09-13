@@ -4,7 +4,6 @@ $mobile-f: 3.9vw;
 $lh: 1.45em;
 $titlelh: 1.2em;
 $padding: 0 1.2vw 0 1.2vw;
-$vh-space: 3vh;
 
 #underline {
 	text-decoration: underline;
@@ -12,7 +11,7 @@ $vh-space: 3vh;
 
 body {
 	.category {
-		margin-bottom: $vh-space;
+		margin-bottom: 3vh;
 		font-size: 1.3rem;
 		letter-spacing: -0.03em;
 		color: var(--gray);
@@ -139,7 +138,7 @@ body {
 			line-height: 1.4em;
 		}
 		.container {
-			gap: $vh-space; // 박스 간격 넉넉하게
+			gap: 1.6em; // 박스 간격 넉넉하게
 
 			.box {
 				width: 100% !important;

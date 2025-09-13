@@ -110,7 +110,7 @@ body .container .box .thumbnail-box:hover .text-container {
     line-height: 1.4em;
   }
   body .container {
-    gap: 3vh;
+    gap: 1.6em;
   }
   body .container .box {
     width: 100% !important;

@@ -44,11 +44,25 @@ body .container .YearInfo .list_year .WorkTitle {
 }
 
 @media only screen and (max-width: 700px) {
+  body .container {
+    display: block;
+  }
   body .container .AboutInfo {
+    width: 100%;
     margin-bottom: 3.2rem;
   }
   body .container .AboutInfo .title {
     font-size: 1.75rem;
     margin-bottom: 1.1rem;
+  }
+  body .container .YearInfo .list_year {
+    display: block;
+  }
+  body .container .YearInfo .list_year .li_1 {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+  body .container .YearInfo .list_year .li_2 {
+    width: 100%;
   }
 }

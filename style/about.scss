@@ -1,10 +1,10 @@
 $default-f: 1.1vw;
 $mobile-f: 3.9vw;
+
 // line height
 $lh: 1.45em;
 $titlelh: 1.3em;
 $padding: 0 1.2vw 0 1.2vw;
-$vh-space: 3vh;
 
 body {
 	.container {
@@ -70,12 +70,30 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.container {
+			display: block;
+
 			.AboutInfo {
+				width: 100%;
 				margin-bottom: 3.2rem;
 
 				.title {
 					font-size: 1.75rem;
 					margin-bottom: 1.1rem;
+				}
+			}
+
+			.YearInfo {
+				.list_year {
+					display: block; // flex 대신 block으로 변경
+
+					.li_1 {
+						width: 100%; // 전체 폭
+						margin-bottom: 0.5em; // 아래 간격 추가
+					}
+
+					.li_2 {
+						width: 100%; // 전체 폭
+					}
 				}
 			}
 		}
