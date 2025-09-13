@@ -28,27 +28,48 @@ body {
 			}
 		}
 
-		.YearInfo {
+		.AboutBody {
 			flex: 1;
 			padding-right: 3em;
 
-			.list_year {
+			/* EN / KR 전환 버튼 스타일 */
+			.lang-switch {
+				display: inline-flex;
+				gap: 0.6em;
+				margin-bottom: 0.2em;
+			}
+
+			.lang-btn {
+				background: none;
+				border: none;
+				padding: 0;
+				font: inherit; /* 본문과 같은 폰트/크기 */
+				font-weight: 600; /* Bold */
+				cursor: pointer;
+				color: var(--gray);
+			}
+
+			/* 활성 상태 시각 표시 */
+			.lang-btn[aria-pressed="true"] {
+				color: black;
+			}
+
+			.About_list {
 				display: flex;
 				border-top: 0.75px solid black;
 				padding: 0.9em 0;
 
 				.li_1 {
-					width: 10vw;
+					width: 8vw;
 				}
 
 				.li_2 {
 					flex: 1;
 					line-height: 1.5em;
+					padding-right: 4em;
 
-					.li_2-2 {
-						border-top: 0.75px solid rgb(155, 155, 155);
-						padding-top: 0.9em;
-						margin-top: 0.9em;
+					.history {
+						color: var(--gray);
 					}
 
 					.list-style {
@@ -71,6 +92,7 @@ body {
 	body {
 		.container {
 			display: block;
+			padding: 0 0.2em;
 
 			.AboutInfo {
 				width: 100%;
@@ -82,17 +104,21 @@ body {
 				}
 			}
 
-			.YearInfo {
-				.list_year {
-					display: block; // flex 대신 block으로 변경
+			.AboutBody {
+				width: 100%; /* ⬅ 모바일에서 전체 폭 사용 */
+				padding-right: 0; /* ⬅ 우측 패딩 제거로 꽉 차게 */
+
+				.About_list {
+					display: block; /* flex 대신 block */
+					width: 100%;
 
 					.li_1 {
-						width: 100%; // 전체 폭
-						margin-bottom: 0.5em; // 아래 간격 추가
+						width: 100%;
+						margin-bottom: 0.5em;
 					}
 
 					.li_2 {
-						width: 100%; // 전체 폭
+						width: 100%;
 					}
 				}
 			}
