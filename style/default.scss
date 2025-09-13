@@ -79,7 +79,7 @@ a:visited {
 
 // 드래그 시 컬러 변경
 ::selection {
-	background-color: var(--point);
+	background-color: rgb(235, 235, 235);
 	color: rgb(0, 0, 0);
 }
 
