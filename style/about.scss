@@ -12,7 +12,7 @@ body {
 		display: flex;
 
 		.AboutInfo {
-			width: 50%;
+			width: 48%;
 			padding-right: 2.5vw;
 
 			.title {
@@ -30,7 +30,6 @@ body {
 
 		.AboutBody {
 			flex: 1;
-			padding-right: 3em;
 
 			/* EN / KR 전환 버튼 스타일 */
 			.lang-switch {
@@ -66,7 +65,7 @@ body {
 				.li_2 {
 					flex: 1;
 					line-height: 1.5em;
-					padding-right: 4em;
+					padding-right: 7em;
 
 					.history {
 						color: var(--gray);
@@ -119,6 +118,7 @@ body {
 
 					.li_2 {
 						width: 100%;
+						padding-right: 1.5em;
 					}
 				}
 			}

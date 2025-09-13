@@ -4,7 +4,7 @@ body .container {
   display: flex;
 }
 body .container .AboutInfo {
-  width: 50%;
+  width: 48%;
   padding-right: 2.5vw;
 }
 body .container .AboutInfo .title {
@@ -17,7 +17,6 @@ body .container .AboutInfo .contact a {
 }
 body .container .AboutBody {
   flex: 1;
-  padding-right: 3em;
   /* EN / KR 전환 버튼 스타일 */
   /* 활성 상태 시각 표시 */
 }
@@ -49,7 +48,7 @@ body .container .AboutBody .About_list .li_1 {
 body .container .AboutBody .About_list .li_2 {
   flex: 1;
   line-height: 1.5em;
-  padding-right: 4em;
+  padding-right: 7em;
 }
 body .container .AboutBody .About_list .li_2 .history {
   color: var(--gray);
@@ -89,5 +88,6 @@ body .container .AboutBody .About_list .WorkTitle {
   }
   body .container .AboutBody .About_list .li_2 {
     width: 100%;
+    padding-right: 1.5em;
   }
 }
