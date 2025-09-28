@@ -29,7 +29,7 @@
 
 	<body>
 		<header>
-			<a class="header_name" href="./work-all.html"> Younghyun Song </a>
+			<a class="header_name" href="./work-all.html">Younghyun Song</a>
 
 			<div class="header_menu">
 				<a id="menu" href="./work-all.html">Work</a>
@@ -43,7 +43,8 @@
 			<div class="project-info">
 				<div class="info_left">
 					<div class="title">
-						Osulloc Teafood & Bakery <br />
+						Osulloc Teafood & Bakery
+						<br />
 						Packaging Design
 					</div>
 				</div>
@@ -55,7 +56,8 @@
 							전문 브랜드입니다. 생활 속의 매력적인 차 문화를 지향하며, 차를
 							활용한 과자, 초콜릿 등의 티 푸드와 스프레드, 베이커리 라인을
 							선보이고 있습니다.
-							<br /><br />
+							<br />
+							<br />
 						</span>
 
 						Studio fnt는 기존의 오설록 티 푸드 제품군의 위계와 맥락을 재정립하고
@@ -64,10 +66,12 @@
 						<span class="more-text" style="display: none">
 							새로운 패키지는 진정성 있는 프리미엄 디저트로서 오설록 티 푸드의
 							원형을 표현하며 오설록과 제주의 연결성을 강조합니다.
-							<br /><br />
+							<br />
+							<br />
 							제주를 대표하는 4가지 자연물을 4개의 제품 카테고리를 상징하는
 							패턴으로 만들어 제품 원료의 출발점과 지향을 표현했습니다.
-							<br /><br />
+							<br />
+							<br />
 							개별 패키지 디자인에서는 티 푸드의 정면과 측면, 단면을 촬영한 뒤
 							리듬감 있게 배치하여 내용물을 직관적으로 전달하는 동시에 시각적
 							재미를 더했습니다.
@@ -89,9 +93,12 @@
 						<div class="credit_box">
 							<div class="credit_1">Team</div>
 							<div class="credit_2">
-								© studio fnt<br />
-								Art direction: Woogyung Geel <br />
-								Graphic design: Younghyun Song, Youjeong Lee, Hyungwon Cho<br />
+								© studio fnt
+								<br />
+								Art direction: Woogyung Geel
+								<br />
+								Graphic design: Younghyun Song, Youjeong Lee, Hyungwon Cho
+								<br />
 								Photo: studio fnt, Sujeong Park
 							</div>
 						</div>
@@ -238,7 +245,9 @@
 			<div id="lightbox" class="lightbox">
 				<div class="lightbox-center">
 					<span class="close">&times;</span>
+					<span class="prev">&#10094;</span>
 					<img class="lightbox-content" id="lightbox-img" />
+					<span class="next">&#10095;</span>
 				</div>
 			</div>
 		</div>
@@ -247,36 +256,114 @@
 			© Younghyun Song. 2025
 			<br />
 			<span id="underline">
-				<a href="mailto:" yhyun4156@gmail.com>mail.</a><br />
+				<a href="mailto:" yhyun4156@gmail.com>mail.</a>
+				<br />
 				<a href="https://www.instagram.com/youhyus/" target="_blank">ig.</a>
 				<br />
 			</span>
 		</footer>
 
 		<script>
-			// 팝업 갤러리
-			$(document).ready(function () {
-				// 이미지 클릭 시 라이트박스 열기
-				$(".gallery-box").on("click", function (event) {
-					event.preventDefault(); // 링크의 기본 동작 방지
-					var imgSrc = $(this).attr("href"); // 클릭된 링크의 href 속성값 가져오기
-					$("#lightbox").show(); // 라이트박스 표시
-					$("#lightbox-img").attr("src", imgSrc); // 라이트박스 이미지 소스 설정
-					$("body").addClass("lightbox-open no-scroll"); // 커서와 스크롤 비활성화
-				});
+			// 팝업 갤러리(갤러리별 네비게이션)
+			(function ($) {
+				$(function () {
+					const $lightbox = $("#lightbox");
+					const $img = $("#lightbox-img");
+					const $prev = $("#lbPrev");
+					const $next = $("#lbNext");
+					const $close = $("#lbClose");
+					const $center = $("#lightboxCenter");
 
-				// 라이트박스 내부와 외부 클릭 시 닫기
-				$("#lightbox").on("click", function (event) {
-					// 클릭된 요소가 라이트박스 콘텐츠가 아닌 경우 라이트박스 닫기
-					if (
-						$(event.target).is("#lightbox") ||
-						$(event.target).is(".lightbox-content")
-					) {
-						$(this).hide(); // 라이트박스 숨기기
-						$("body").removeClass("lightbox-open no-scroll"); // 커서와 스크롤 원래대로 복구
+					let $currentGallery = null; // 현재 열린 갤러리 (jQuery 객체)
+					let srcs = []; // 현재 갤러리의 이미지 경로 배열
+					let idx = 0; // 현재 인덱스
+
+					function openGallery($gallery, startIndex) {
+						$currentGallery = $gallery;
+						srcs = $gallery
+							.find(".gallery-box")
+							.map(function () {
+								return this.getAttribute("href");
+							})
+							.get();
+
+						idx = startIndex;
+						update();
+						$lightbox.show();
+						$("body").addClass("lightbox-open no-scroll");
 					}
+
+					function close() {
+						$lightbox.hide();
+						$("body").removeClass("lightbox-open no-scroll");
+						$currentGallery = null;
+						srcs = [];
+						idx = 0;
+					}
+
+					function update() {
+						$img.attr("src", srcs[idx]);
+					}
+
+					function prev() {
+						idx = (idx - 1 + srcs.length) % srcs.length; // wrap around
+						update();
+					}
+
+					function next() {
+						idx = (idx + 1) % srcs.length; // wrap around
+						update();
+					}
+
+					// 썸네일 클릭
+					$(".image-gallery .gallery-box").on("click", function (e) {
+						e.preventDefault();
+						const $gallery = $(this).closest(".image-gallery");
+						const i = $gallery.find(".gallery-box").index(this);
+						openGallery($gallery, i);
+					});
+
+					// 버튼
+					$prev.on("click", function (e) {
+						e.stopPropagation();
+						prev();
+					});
+					$next.on("click", function (e) {
+						e.stopPropagation();
+						next();
+					});
+					$close.on("click", function (e) {
+						e.stopPropagation();
+						close();
+					});
+
+					// 오버레이 클릭 시 닫기
+					$lightbox.on("click", function (e) {
+						if (!$.contains($center[0], e.target)) close();
+					});
+
+					// 키보드 제어
+					$(document).on("keydown", function (e) {
+						if (!$lightbox.is(":visible")) return;
+						if (e.key === "Escape") close();
+						if (e.key === "ArrowLeft") prev();
+						if (e.key === "ArrowRight") next();
+					});
+
+					// 터치 스와이프
+					let startX = null;
+					$center.on("touchstart", function (e) {
+						startX = e.originalEvent.touches[0].clientX;
+					});
+					$center.on("touchend", function (e) {
+						if (startX == null) return;
+						const dx = e.originalEvent.changedTouches[0].clientX - startX;
+						if (dx > 40) prev();
+						if (dx < -40) next();
+						startX = null;
+					});
 				});
-			});
+			})(jQuery);
 		</script>
 	</body>
 </html>

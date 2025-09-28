@@ -149,7 +149,7 @@ body {
 			.text_right {
 				flex: 1;
 				/* 줄글 조정하기 */
-				padding-right: 5vw;
+				padding-right: 7vw;
 			}
 		}
 
@@ -215,7 +215,6 @@ body {
 			height: 100%;
 			background: rgba(0, 0, 0, 0.8);
 			display: none;
-			/* 수정된 부분 */
 			z-index: 1000;
 
 			.lightbox-center {
@@ -223,11 +222,8 @@ body {
 				height: 100%;
 
 				display: flex;
-				/* 수정된 부분 */
 				justify-content: center;
-				/* 수정된 부분 */
 				align-items: center;
-				/* 수정된 부분 */
 
 				/* Lightbox image */
 				.lightbox-content {
