@@ -5,7 +5,7 @@
 }
 
 .slide-gallery {
-	margin-bottom: 3vh;
+	margin-bottom: 1.25vh;
 }
 
 .gallery-cell {
@@ -32,8 +32,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	gap: 1.5rem; /* row, column 모두 간격 유지 */
-	margin-bottom: 3vh;
 }
 
 .gallery-box {
