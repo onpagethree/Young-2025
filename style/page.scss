@@ -207,6 +207,7 @@ body {
 		}
 
 		/* Lightbox container */
+		/* Lightbox container */
 		.lightbox {
 			position: fixed;
 			top: 0;
@@ -233,6 +234,41 @@ body {
 					margin: auto;
 				}
 			}
+		}
+
+		/* 라이트박스 내 네비게이션/닫기 버튼 */
+		.lightbox .prev,
+		.lightbox .next,
+		.lightbox .close {
+			position: absolute;
+			z-index: 1100; /* 이미지보다 위 */
+			cursor: pointer;
+			user-select: none;
+			font-size: 2.5rem; /* 글자 크기 (화살표/× 기호) */
+
+			color: #fff;
+		}
+
+		.lightbox .prev {
+			left: 4rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		.lightbox .next {
+			right: 4rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		.lightbox .close {
+			right: 1rem;
+			top: 1rem;
+			font-weight: 200;
+		}
+
+		.lightbox .prev:hover,
+		.lightbox .next:hover,
+		.lightbox .close:hover {
+			opacity: 40%;
 		}
 	}
 }

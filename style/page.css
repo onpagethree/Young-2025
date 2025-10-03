@@ -24,6 +24,8 @@ body .container {
   /*세로이미지*/
   /* 유튜브 링크 */
   /* Lightbox container */
+  /* Lightbox container */
+  /* 라이트박스 내 네비게이션/닫기 버튼 */
 }
 body .container .project-info {
   margin-top: 3.75vh;
@@ -186,6 +188,36 @@ body .container .lightbox .lightbox-center .lightbox-content {
   max-height: 90%;
   display: block;
   margin: auto;
+}
+body .container .lightbox .prev,
+body .container .lightbox .next,
+body .container .lightbox .close {
+  position: absolute;
+  z-index: 1100; /* 이미지보다 위 */
+  cursor: pointer;
+  user-select: none;
+  font-size: 2.5rem; /* 글자 크기 (화살표/× 기호) */
+  color: #fff;
+}
+body .container .lightbox .prev {
+  left: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+body .container .lightbox .next {
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+body .container .lightbox .close {
+  right: 1rem;
+  top: 1rem;
+  font-weight: 200;
+}
+body .container .lightbox .prev:hover,
+body .container .lightbox .next:hover,
+body .container .lightbox .close:hover {
+  opacity: 40%;
 }
 
 @media only screen and (max-width: 700px) {
