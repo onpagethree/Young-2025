@@ -1729,15 +1729,6 @@
 				_this.animate();
 			});
 		}
-
-		/** /
-        // log animation frame rate
-        var now = new Date();
-        if ( this.then ) {
-          console.log( ~~( 1000 / (now-this.then)) + 'fps' )
-        }
-        this.then = now;
-        /**/
 	};
 
 	var transformProperty = getStyleProperty("transform");

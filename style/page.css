@@ -15,6 +15,9 @@ body.no-scroll {
   overflow: hidden;
 }
 body .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vw;
   margin-bottom: 7rem;
   /* 프로젝트 설명 */
   /*프로젝트 중간글*/
@@ -22,8 +25,9 @@ body .container {
   /*IMG IMG 이미지 설정*/
   /* 이미지가 화면을 꽉 채우게 하기 위한 스타일 */
   /*세로이미지*/
+  /*이미지 슬라이드!!*/
+  /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/
   /* 유튜브 링크 */
-  /* Lightbox container */
   /* Lightbox container */
   /* 라이트박스 내 네비게이션/닫기 버튼 */
 }
@@ -110,8 +114,7 @@ body .container .mid_text a:hover {
   opacity: 0.5;
 }
 body .container .mid_text_double {
-  margin-top: 3.75vh;
-  margin-bottom: 6vh;
+  margin: 2em auto;
   display: flex;
 }
 body .container .mid_text_double a:hover {
@@ -129,7 +132,6 @@ body .container .mid_text_double .text_right {
 body .container img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 3vh;
 }
 body .container .full-width-img {
   width: 100vw;
@@ -143,10 +145,51 @@ body .container .img-vertical {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3vh;
 }
 body .container .img-vertical > img {
   width: 50%;
+  margin: 0;
+}
+body .container .slide-gallery .gallery-box {
+  width: 60vw;
+  height: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+body .container .slide-gallery .gallery-box img {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  /* 최소 높이를 부모 요소 높이에 맞춤 */
+  object-fit: cover;
+  object-position: center;
+}
+body .container .flickity-enabled:focus {
+  outline: none;
+}
+body .container .image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.2vw;
+}
+body .container .image-gallery .gallery-box {
+  /* 모달 갤러리 썸네일 사이즈 */
+  flex: 1 1 calc(50% - 0.75rem); /* 2개씩 배치되도록 */
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .image-gallery .gallery-box > img {
+  overflow: hidden;
+  width: 100%;
+  max-height: 65vh;
+  /* 이미지 정 사이즈 */
+  object-fit: cover;
   margin: 0;
 }
 body .container .youtube {
@@ -154,7 +197,6 @@ body .container .youtube {
   padding-bottom: 56.25%;
   height: 0;
   overflow-y: hidden;
-  margin-bottom: 3vh;
 }
 body .container .youtube iframe,
 body .container .youtube object,
@@ -228,6 +270,8 @@ body .container .lightbox .close:hover {
     /* 프로젝트 중간글 더블더블 모바일 */
     /*IMG IMG 이미지 설정 모바일*/
     /*세로이미지*/
+    /*이미지 슬라이드! MOBILE ! MOBILE !*/
+    /*이미지 갤러리!!*/
   }
   body .container .project-info {
     margin-top: 3vh;
@@ -293,6 +337,27 @@ body .container .lightbox .close:hover {
   body .container .img-vertical img {
     width: 100%;
     margin: 0;
+  }
+  body .container .slide-gallery {
+    margin-left: -2.5vw;
+    margin-right: -2.5vw;
+    margin-bottom: 1vw;
+  }
+  body .container .gallery-box {
+    width: 75vw;
+    height: 50vw;
+    margin-right: 0.9375vh;
+    /* 순번 지정 */
+    counter-increment: gallery-box;
+  }
+  body .container .image-gallery {
+    margin-top: 1vh;
+  }
+  body .container .gallery-box {
+    /* 모달 갤러리 썸네일 사이즈 */
+    flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
+    max-width: calc(50% - 1vw);
+    height: auto;
   }
   body .container .youtube {
     margin-bottom: 1.25vh;
