@@ -187,9 +187,10 @@ body {
 		/*이미지 슬라이드!!*/
 
 		.slide-gallery {
-			.gallery-box {
+			.slide-gallery-box {
 				width: 60vw;
 				height: 40vw;
+				margin-right: 1.2vw;
 
 				display: flex;
 				justify-content: center;

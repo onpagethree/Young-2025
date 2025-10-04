@@ -150,9 +150,10 @@ body .container .img-vertical > img {
   width: 50%;
   margin: 0;
 }
-body .container .slide-gallery .gallery-box {
+body .container .slide-gallery .slide-gallery-box {
   width: 60vw;
   height: 40vw;
+  margin-right: 1.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
