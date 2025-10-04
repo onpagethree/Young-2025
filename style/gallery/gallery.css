@@ -39,7 +39,6 @@
 	flex: 1 1 calc(50% - 0.75rem); /* 2개씩 배치되도록 */
 	max-width: calc(50% - 0.75rem);
 	height: auto;
-	/* aspect-ratio: 3 / 2; */
 
 	overflow: hidden;
 	display: flex;
@@ -64,7 +63,7 @@
 	.slide-gallery {
 		margin-left: -2.5vw;
 		margin-right: -2.5vw;
-		margin-bottom: 2.5vw;
+		margin-bottom: 1vw;
 	}
 
 	.gallery-cell {
@@ -78,10 +77,12 @@
 	/*이미지 갤러리!!*/
 	.image-gallery {
 		margin-top: 1vh;
-		margin-bottom: 1.25vh;
 	}
 
 	.gallery-box {
-		width: 46.36vw;
+		/* 모달 갤러리 썸네일 사이즈 */
+		flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
+		max-width: calc(50% - 1vw);
+		height: auto;
 	}
 }
