@@ -226,7 +226,7 @@ body {
 				align-items: center;
 				gap: var(--gap);
 				will-change: transform;
-				transition: transform 420ms ease; /* SLIDE 효과 */
+				transition: transform 0.3s ease-in-out; /* SLIDE 효과 */
 			}
 
 			.slide-gallery-box {

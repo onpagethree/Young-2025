@@ -22,7 +22,7 @@
 
 		// 트랜지션 토글
 		function setAnimating(on) {
-			track.style.transition = on ? "transform 420ms ease" : "none";
+			track.style.transition = on ? "transform .3s ease-in-out" : "none";
 		}
 
 		// 현재 index가 중앙에 오도록 트랙 이동

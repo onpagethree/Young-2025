@@ -8,15 +8,17 @@
 
 		<link rel="STYLESHEET" href="./style/GALLERY/GALLERY.CSS" />
 		<!-- 슬라이드갤러리 -->
-		<script src="./style/gallery/00_flickity.pkgd.js" async></script>
+		<script src="./style/slide_gallery.js"></script>
+		<!-- 라이트박스갤러리 -->
+		<script src="./style/lightbox.js"></script>
 
-		<!--모달갤러리 -->
+		<!--라이트박스 -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="scripts.js"></script>
+		<script src="./style/lightbox.js"></script>
 
 		<!--스크롤 모션 -->
 		<script src="./style/scrollMotion.js" async></script>
-		<!--텍스트를 접었다 폈다 하는 기능 -->
+		<!--텍스트 접었다 폈다 -->
 		<script src="./style/caption.js"></script>
 
 		<!-- CSS -->
@@ -125,7 +127,9 @@
 			<div id="lightbox" class="lightbox">
 				<div class="lightbox-center">
 					<span class="close">&times;</span>
+					<span class="prev">〈</span>
 					<img class="lightbox-content" id="lightbox-img" />
+					<span class="next">〉</span>
 				</div>
 			</div>
 		</div>

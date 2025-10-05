@@ -187,7 +187,7 @@ body .container .slide-gallery .slide-track {
   align-items: center;
   gap: var(--gap);
   will-change: transform;
-  transition: transform 420ms ease; /* SLIDE 효과 */
+  transition: transform 0.3s ease-in-out; /* SLIDE 효과 */
 }
 body .container .slide-gallery .slide-gallery-box {
   flex: 0 0 auto;
