@@ -25,7 +25,7 @@ body .container {
   /*IMG IMG 이미지 설정*/
   /* 이미지가 화면을 꽉 채우게 하기 위한 스타일 */
   /*세로이미지*/
-  /*이미지 슬라이드!!*/
+  /*슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리*/
   /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/
   /* 유튜브 링크 */
   /* Lightbox container */
@@ -150,25 +150,60 @@ body .container .img-vertical > img {
   width: 50%;
   margin: 0;
 }
+body .container .slide-gallery {
+  /* 프로젝트 전역 규칙을 해치지 않기 위해 최소한만 지정 */
+  --gap: 1.2vw;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* 컨테이너를 넘지 않음 */
+  cursor: grab;
+  /* 좌/우 클릭 핫존(보이지 않는 반투명 없는 오버레이) */
+}
+body .container .slide-gallery:active {
+  cursor: grabbing;
+}
+body .container .slide-gallery, body .container .slide-gallery * {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+body .container .slide-gallery::before, body .container .slide-gallery::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 2; /* 이미지 위에서 클릭만 받음 */
+}
+body .container .slide-gallery::before {
+  left: 0;
+}
+body .container .slide-gallery::after {
+  right: 0;
+}
+body .container .slide-gallery .slide-track {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  will-change: transform;
+  transition: transform 420ms ease; /* SLIDE 효과 */
+}
 body .container .slide-gallery .slide-gallery-box {
+  flex: 0 0 auto;
   width: 60vw;
   height: 40vw;
-  margin-right: 1.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
-body .container .slide-gallery .gallery-box img {
+body .container .slide-gallery .slide-gallery-box img {
   width: 100%;
-  height: auto;
-  min-height: 100%;
-  /* 최소 높이를 부모 요소 높이에 맞춤 */
+  height: 100%;
   object-fit: cover;
   object-position: center;
-}
-body .container .flickity-enabled:focus {
-  outline: none;
+  display: block;
 }
 body .container .image-gallery {
   display: flex;

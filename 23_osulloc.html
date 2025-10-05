@@ -7,7 +7,7 @@
 		<title>YOUNG2024</title>
 
 		<!-- 슬라이드갤러리 -->
-		<script src="./style/gallery/00_flickity.pkgd.js" async></script>
+		<script src="./style/slide_gallery.js"></script>
 
 		<!--모달갤러리 -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -133,19 +133,23 @@
 			<img src="./works/23_osulloc/osulloc_03_chocolate_set(1).jpg" alt="" />
 
 			<!-- snack 라인 -->
-			<div
-				class="slide-gallery js-flickity"
-				data-flickity-options='{ "wrapAround": true }'>
-				<div class="slide-gallery-box">
-					<img src="./works/23_osulloc/osulloc_03_snack_slide(1).jpg" alt="" />
-				</div>
-
-				<div class="slide-gallery-box">
-					<img src="./works/23_osulloc/osulloc_03_snack_slide(2).png" alt="" />
-				</div>
-
-				<div class="slide-gallery-box">
-					<img src="./works/23_osulloc/osulloc_03_snack_slide(3).jpg" alt="" />
+			<div class="slide-gallery">
+				<div class="slide-track">
+					<div class="slide-gallery-box">
+						<img
+							src="./works/23_osulloc/osulloc_03_snack_slide(1).jpg"
+							alt="" />
+					</div>
+					<div class="slide-gallery-box">
+						<img
+							src="./works/23_osulloc/osulloc_03_snack_slide(2).png"
+							alt="" />
+					</div>
+					<div class="slide-gallery-box">
+						<img
+							src="./works/23_osulloc/osulloc_03_snack_slide(3).jpg"
+							alt="" />
+					</div>
 				</div>
 			</div>
 
@@ -263,6 +267,7 @@
 		</footer>
 
 		<script>
+			// 라이트박스
 			(function ($) {
 				$(function () {
 					const $lightbox = $("#lightbox");
