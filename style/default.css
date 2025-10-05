@@ -122,9 +122,10 @@ body .container > *.show {
   transform: translateY(0);
 }
 body footer {
-  padding-top: 1.5vh;
-  padding-bottom: 3vh;
+  padding-top: 1.2vw;
+  padding-bottom: 1.2vw;
   font-size: 0.85rem;
+  line-height: 1.45em;
   justify-content: center;
   text-align: center;
 }
@@ -139,7 +140,6 @@ body footer #underline {
 @media only screen and (max-width: 700px) {
   html {
     font-size: 3.9vw;
-    line-height: 1.45em;
   }
   html body {
     padding: 0 2vw 0 2vw;

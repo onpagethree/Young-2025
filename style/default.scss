@@ -4,8 +4,6 @@
 	--gray: rgb(200, 200, 200);
 }
 
-$default-f: 1.1vw;
-$mobile-f: 3.9vw;
 // line height
 $lh: 1.45em;
 $titlelh: 1.2em;
@@ -95,8 +93,8 @@ img {
 }
 
 html {
-	font-size: $default-f;
-	line-height: $lh;
+	font-size: 1.1vw;
+	line-height: 1.45em;
 }
 
 body {
@@ -160,10 +158,11 @@ body {
 
 	/* FOOTER 하단바 웹사이즈 */
 	footer {
-		padding-top: calc($vh-space / 2);
-		padding-bottom: $vh-space;
+		padding-top: 1.2vw;
+		padding-bottom: 1.2vw;
 
 		font-size: 0.85rem;
+		line-height: $lh;
 		justify-content: center;
 		text-align: center;
 
@@ -179,8 +178,7 @@ body {
 /* 모바일사이즈  모바일사이즈  모바일사이즈 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
 	html {
-		font-size: $mobile-f;
-		line-height: $lh;
+		font-size: 3.9vw;
 
 		body {
 			padding: $padding-mobile;

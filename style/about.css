@@ -1,6 +1,5 @@
 @charset "UTF-8";
 body .container {
-  margin-bottom: 7rem;
   display: flex;
 }
 body .container .AboutInfo {
@@ -17,6 +16,7 @@ body .container .AboutInfo .contact a {
 }
 body .container .AboutBody {
   flex: 1;
+  margin-bottom: 4em;
   /* EN / KR 전환 버튼 스타일 */
   /* 활성 상태 시각 표시 */
 }

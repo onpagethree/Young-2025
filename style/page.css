@@ -32,8 +32,7 @@ body .container {
   /* 라이트박스 내 네비게이션/닫기 버튼 */
 }
 body .container .project-info {
-  margin-top: 3.75vh;
-  margin-bottom: 6vh;
+  margin: 1.2vw 0;
   display: flex;
 }
 body .container .project-info .info_left {
@@ -48,14 +47,12 @@ body .container .project-info .info_left .title {
 body .container .project-info .info_right {
   flex: 1;
   padding-right: 5vw;
-  line-height: 1.45em;
+  line-height: lh;
   /* 연결 페이지가 있는 경우 */
   /* 크레딧 */
 }
 body .container .project-info .info_right .caption {
-  font-size: 1rem;
   padding-right: 4em;
-  margin-bottom: 1.5em;
 }
 body .container .project-info .info_right .caption .more-text {
   display: none;
@@ -72,7 +69,7 @@ body .container .project-info .info_right #toggle-button {
   font-size: 0.95em;
   text-decoration: underline;
   /* 밑줄 추가 */
-  margin-bottom: 1.5em;
+  margin: 1.5em 0 1.7em;
 }
 body .container .project-info .info_right #toggle-button:hover {
   opacity: 0.5;
@@ -85,7 +82,7 @@ body .container .project-info .info_right .info-page {
   color: gray;
   margin-bottom: 1.5em;
   font-size: 1.05rem;
-  line-height: 1.45em;
+  line-height: 1.5em;
 }
 body .container .project-info .info_right .info-page a:hover {
   opacity: 0.5;
@@ -107,8 +104,9 @@ body .container .project-info .info_right .credit_box .credit_2 {
 body .container .mid_text {
   color: black;
   text-align: center;
-  padding: 3.5vh 0 6vh 0;
-  font-size: 0.935vw;
+  padding: 1.2vw 0 1.2vw 0;
+  font-size: 0.85rem;
+  line-height: 1.45em;
 }
 body .container .mid_text a:hover {
   opacity: 0.5;
