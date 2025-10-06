@@ -2,6 +2,8 @@
 $lh: 1.45em;
 $titlelh: 1.2em;
 $padding: 0 1.2vw 0 1.2vw;
+$vh-space: 3vh;
+
 html,
 body {
 	height: 100%;
@@ -23,17 +25,24 @@ body {
 
 	header {
 		top: 0;
+		left: 1.2vw; /* 강제 padding 적용 */
+		right: 1.2vw; /* 강제 padding 적용 */
 	}
 	footer {
 		bottom: 0;
 	}
 
+	#content-wrapper {
+		position: relative;
+		height: calc(100vh - (header 높이 + footer 높이));
+		overflow: hidden;
+	}
 	/* 가운데 #featured 영역 */
 	#stage {
 		position: absolute;
 		left: 0;
 		right: 0;
-		padding: 8vh 5vw;
+		padding: 5vh 5vw;
 		box-sizing: border-box; /* padding 포함 계산 */
 
 		overflow: hidden; /* 영역 밖으로 안 나가게 */
@@ -45,7 +54,7 @@ body {
 			.box {
 				position: absolute;
 				display: block;
-				max-width: 35vw;
+				max-width: 28vw;
 				transition: transform 220ms ease, opacity 220ms ease;
 				> img {
 					display: block;

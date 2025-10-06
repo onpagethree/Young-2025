@@ -21,15 +21,22 @@ body footer {
 }
 body header {
   top: 0;
+  left: 1.2vw; /* 강제 padding 적용 */
+  right: 1.2vw; /* 강제 padding 적용 */
 }
 body footer {
   bottom: 0;
+}
+body #content-wrapper {
+  position: relative;
+  height: calc(100vh - (header 높이 + footer 높이));
+  overflow: hidden;
 }
 body #stage {
   position: absolute;
   left: 0;
   right: 0;
-  padding: 8vh 5vw;
+  padding: 5vh 5vw;
   box-sizing: border-box; /* padding 포함 계산 */
   overflow: hidden; /* 영역 밖으로 안 나가게 */
   /* 랜덤 콜라주 컨테이너 */
@@ -42,7 +49,7 @@ body #stage #featured-grid {
 body #stage #featured-grid .box {
   position: absolute;
   display: block;
-  max-width: 35vw;
+  max-width: 28vw;
   transition: transform 220ms ease, opacity 220ms ease;
 }
 body #stage #featured-grid .box > img {
