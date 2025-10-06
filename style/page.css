@@ -58,6 +58,9 @@ body .container .project-info .info_right .caption .more-text {
   display: none;
   transition: all 0.3s ease-in-out;
 }
+body .container .project-info .info_right .caption .more-text .my-contribution {
+  color: lightslategray;
+}
 body .container .project-info .info_right #toggle-button {
   background: none;
   /* 배경 제거 */

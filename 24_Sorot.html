@@ -161,31 +161,5 @@
 				<br />
 			</span>
 		</footer>
-
-		<script>
-			// 팝업 갤러리
-			$(document).ready(function () {
-				// 이미지 클릭 시 라이트박스 열기
-				$(".gallery-box").on("click", function (event) {
-					event.preventDefault(); // 링크의 기본 동작 방지
-					var imgSrc = $(this).attr("href"); // 클릭된 링크의 href 속성값 가져오기
-					$("#lightbox").show(); // 라이트박스 표시
-					$("#lightbox-img").attr("src", imgSrc); // 라이트박스 이미지 소스 설정
-					$("body").addClass("lightbox-open no-scroll"); // 커서와 스크롤 비활성화
-				});
-
-				// 라이트박스 내부와 외부 클릭 시 닫기
-				$("#lightbox").on("click", function (event) {
-					// 클릭된 요소가 라이트박스 콘텐츠가 아닌 경우 라이트박스 닫기
-					if (
-						$(event.target).is("#lightbox") ||
-						$(event.target).is(".lightbox-content")
-					) {
-						$(this).hide(); // 라이트박스 숨기기
-						$("body").removeClass("lightbox-open no-scroll"); // 커서와 스크롤 원래대로 복구
-					}
-				});
-			});
-		</script>
 	</body>
 </html>

@@ -56,6 +56,10 @@ body {
 					.more-text {
 						display: none;
 						transition: all 0.3s ease-in-out;
+
+						.my-contribution {
+							color: lightslategray;
+						}
 					}
 				}
 
