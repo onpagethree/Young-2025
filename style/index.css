@@ -1,10 +1,56 @@
 @charset "UTF-8";
-footer {
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden; /* 전체는 100vh 안에서만 */
+  position: relative;
+  /* 가운데 #featured 영역 */
+}
+body header,
+body footer {
   position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent; /* 기존 스타일 유지 가정 */
+}
+body header {
+  top: 0;
+}
+body footer {
   bottom: 0;
+}
+body #stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 8vh 5vw;
+  box-sizing: border-box; /* padding 포함 계산 */
+  overflow: hidden; /* 영역 밖으로 안 나가게 */
+  /* 랜덤 콜라주 컨테이너 */
+}
+body #stage #featured-grid {
+  position: relative;
+  width: 100vw;
+  height: 100%; /* stage 높이 채움 */
+}
+body #stage #featured-grid .box {
+  position: absolute;
+  display: block;
+  max-width: 35vw;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+body #stage #featured-grid .box > img {
+  display: block;
   width: 100%;
-  margin: 0 -2.5vw;
-  justify-content: center;
+  height: auto;
+  max-height: 70vh; /* 안전장치 */
+  object-fit: contain;
 }
 
 /* 모바일사이즈  모바일사이즈  모바일사이즈 */

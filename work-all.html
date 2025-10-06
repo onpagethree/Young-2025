@@ -28,7 +28,6 @@
 		</header>
 
 		<div class="category">
-			<a id="featured" href="#featured" style="color: coral">Featured</a>
 			<a id="all" href="#all">All</a>
 			<a href="#graphic">Graphic</a>
 			<a href="#BI">Brand Identity</a>
@@ -124,7 +123,7 @@
 			</a>
 
 			<a
-				class="box all packaging BI featured"
+				class="box all BI featured packaging"
 				href="./23_kakaoInsurance_OnboardingKit.html">
 				<div class="thumbnail-box">
 					<img
@@ -407,7 +406,6 @@
 				// 페이지 로드 시 All 선택 + 전체 표시 + 2열 모드 해제
 				allLink.classList.add("selected");
 				showAllBoxes();
-				container.classList.remove("featured-only");
 
 				links.forEach(function (link) {
 					link.addEventListener("click", function (event) {
@@ -418,13 +416,6 @@
 						link.classList.add("selected");
 
 						var category = link.getAttribute("href").substring(1);
-
-						// Featured일 때만 2열, 그 외 해제
-						if (category === "featured") {
-							container.classList.add("featured-only");
-						} else {
-							container.classList.remove("featured-only");
-						}
 
 						// 해당 링크에 맞는 상자들만 보이기
 						if (category === "all") {
@@ -445,27 +436,11 @@
 			});
 
 			document.addEventListener("DOMContentLoaded", function () {
-				var featuredLink = document.querySelector("a[href='#featured']");
 				var graphicLink = document.querySelector("a[href='#graphic']");
 				var packagingLink = document.querySelector("a[href='#packaging']");
 				var biLink = document.querySelector("a[href='#BI']");
 				var mediaLink = document.querySelector("a[href='#media']");
 				var boxesToShow = document.querySelectorAll(".box");
-
-				featuredLink.addEventListener("click", function (event) {
-					event.preventDefault(); // 기본 동작 막기
-
-					// 모든 상자 숨기기
-					for (var i = 0; i < boxesToShow.length; i++) {
-						boxesToShow[i].style.display = "none";
-					}
-
-					// 클래스가 "featured"인 상자만 보이기
-					var featuredBoxes = document.querySelectorAll(".featured");
-					for (var i = 0; i < featuredBoxes.length; i++) {
-						featuredBoxes[i].style.display = "block";
-					}
-				});
 
 				graphicLink.addEventListener("click", function (event) {
 					event.preventDefault(); // 기본 동작 막기

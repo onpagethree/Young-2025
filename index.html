@@ -1,126 +1,301 @@
 <!DOCTYPE html>
 <html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Young2025</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Young2025</title>
+		<!--스크롤 모션 -->
+		<script src="./style/scrollMotion.js" async></script>
+		<!--텍스트를 접었다 폈다 하는 기능 -->
+		<script src="./style/caption.js"></script>
 
-  <!--스크롤 모션 -->
-  <script src="./style/scrollMotion.js" async></script>
-  <!--텍스트를 접었다 폈다 하는 기능 -->
-  <script src="./style/caption.js"></script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="./style/default.css" />
+		<link rel="stylesheet" href="./style/index.css" />
+	</head>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./style/default.css" />
-  <link rel="stylesheet" href="./style/index.css" />
-</head>
+	<body>
+		<header>
+			<a class="header_name" href="./index.html">Younghyun Song</a>
 
-<body>
-  <header>
-    <a class="header_name" href="./index.html"> Younghyun Song </a>
+			<div class="header_menu">
+				<a id="menu" href="./work-all.html">Work</a>
+				<a id="menu" href="./05_about.html">About</a>
+			</div>
+		</header>
 
-    <div class="header_menu">
-      <a id="menu" href="./work-all.html">Work</a>
-      <a id="menu" href="./05_about.html">About</a>
-    </div>
-  </header>
+		<!-- 가운데 랜덤 배치 스테이지 -->
+		<main id="stage" aria-label="Featured works random area">
+			<section
+				id="featured-grid"
+				aria-label="Featured works (random collage)"></section>
+		</main>
 
-  <div class="typewriter__text-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-    contenteditable="true" style="--type-caret-blink-speed: 500ms" id="textInput">
-    <span class="typewriter__type-root" data-key="0">
-      <span class="typewriter__text-selection">
-        <span class="typewriter__text-content">
-        </span>
-      </span>
-    </span>
-    <br>
-    </span>
-  </div>
+		<footer>
+			© YounghyunSong. 2025
+			<br />
+			<span id="underline">
+				<a href="mailto:yhyun4156@gmail.com">mail.</a>
+				<br />
+				<a href="https://www.instagram.com/youhyus/" target="_blank">ig.</a>
+				<br />
+			</span>
+		</footer>
 
-  <!-- <div class="btncentre"> <button></button> -->
-  </div>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const stage = document.getElementById("stage");
+				const grid = document.getElementById("featured-grid");
+				const header = document.querySelector("header");
+				const footer = document.querySelector("footer");
 
-  <footer>
-    © YounghyunSong. 2025
-    <br>
-    <span id="underline">
-      <a href="mailto:" yhyun4156@gmail.com>mail.</a><br>
-      <a href="https://www.instagram.com/youhyus/" target="_blank">ig.</a> <br>
-    </span>
-  </footer>
+				function sizeStage() {
+					const vh = window.innerHeight;
+					const hH = header ? header.offsetHeight : 0;
+					const fH = footer ? footer.offsetHeight : 0;
+					const height = Math.max(0, vh - hH - fH);
 
+					stage.style.position = "absolute";
+					stage.style.top = hH + "px";
+					stage.style.height = height + "px"; // bottom 대신 height만 세팅
+					stage.style.left = 0;
+					stage.style.right = 0;
 
-<script>
-  const colors = [
-    "#dcc3ff", // 연한 보라
-    "#77dd77", // 연한 초록
-    "#fdfd96", // 연한 노랑
-    "#84b6f4", // 연한 파랑
-    "#fdcae1"  // 연한 핑크
-  ];
+					grid.style.height = "100%";
+				}
 
-  const textInput = document.getElementById("textInput");
-  let moveCount = 0;
-  let lastMoveTime = 0;
+				sizeStage();
+				window.addEventListener("resize", debounce(sizeStage, 100));
 
-  function splitBackground() {
-    moveCount++;
-    if (moveCount > 10) moveCount = 0; // 2^10 = 1024까지 허용
+				// === featured만 로드(이미지+링크만) ===
+				const workURL = new URL("./work-all.html", location.href).href;
+				fetch(workURL, { credentials: "same-origin" })
+					.then((res) => {
+						if (!res.ok) throw new Error("Fetch failed: " + res.status);
+						return res.text();
+					})
+					.then((html) => {
+						const doc = new DOMParser().parseFromString(html, "text/html");
+						const featured = Array.from(doc.querySelectorAll(".box.featured"));
+						featured.forEach((box) => {
+							const href = box.getAttribute("href") || "#";
+							const img = box.querySelector(".thumbnail-box img, img");
+							if (!img) return;
 
-    const total = Math.pow(2, moveCount);
-    const paneWidth = 100 / total;
+							const a = document.createElement("a");
+							a.className = "box";
+							a.href = href;
 
-    // 기존 패널 제거
-    document.querySelectorAll(".pane").forEach(pane => pane.remove());
+							const clonedImg = document.createElement("img");
+							clonedImg.src = img.getAttribute("src");
+							clonedImg.alt = img.getAttribute("alt") || "";
+							a.appendChild(clonedImg);
 
-    // 새 패널 생성
-    for (let i = 0; i < total; i++) {
-      const pane = document.createElement("div");
-      pane.classList.add("pane");
-      pane.style.position = "fixed"; // 전체 화면 채움
-      pane.style.top = "0";
-      pane.style.left = `${paneWidth * i}vw`;
-      pane.style.width = `${paneWidth}vw`;
-      pane.style.height = "100%"; // vh → %
-      pane.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      pane.style.zIndex = "-1";
-      document.body.appendChild(pane);
-    }
-  }
+							grid.appendChild(a);
+						});
 
-  function handleTrigger(e) {
-    if (textInput.contains(e.target)) return;
+						// 이미지 로딩을 기다린 뒤 레이아웃 계산
+						const imgs = Array.from(grid.querySelectorAll("img"));
+						return Promise.all(
+							imgs.map((im) =>
+								im.decode
+									? im.decode().catch(() => {})
+									: new Promise((ok) => {
+											im.onload = ok;
+											im.onerror = ok;
+									  })
+							)
+						);
+					})
+					.then(() => {
+						layoutRandomCollageWithinStage(grid, stage);
+						window.addEventListener(
+							"resize",
+							debounce(() => layoutRandomCollageWithinStage(grid, stage), 150)
+						);
+					})
+					.catch((e) => {
+						console.error("Featured 불러오기 실패:", e);
+					});
+			});
 
-    const now = Date.now();
-    if (now - lastMoveTime < 300) return; // debounce
-    lastMoveTime = now;
+			/* ===== 랜덤 콜라주 (stage 내부 한정, 비겹침 + 5% 여유, 큰 것부터 배치) ===== */
+			function layoutRandomCollageWithinStage(grid, stage) {
+				if (window.matchMedia("(max-width: 700px)").matches) return; // 모바일은 스택
 
-    splitBackground();
-  }
+				const cards = Array.from(grid.querySelectorAll(".box"));
+				if (!cards.length) return;
 
-  // 마우스 움직임 (PC)
-  document.addEventListener("mousemove", handleTrigger);
+				// 초기화
+				cards.forEach((el) => {
+					el.style.position = "absolute";
+					el.style.top = "";
+					el.style.left = "";
+					el.style.width = "";
+					el.style.opacity = "0";
+				});
 
-  // 터치 시작 (Mobile)
-  document.addEventListener("touchstart", handleTrigger);
+				// ===== 배치 영역 계산: stage 내부에서 좌우 5vw, 상하 5vh 패딩 =====
+				const vpW = window.innerWidth;
+				const vpH = window.innerHeight;
+				const padX = vpW * 0.05; // 5vw
+				const padY = vpH * 0.05; // 5vh
 
-  // 모바일에서 입력창 포커스 시 배경색 유지
-  let lastRandomColor = "";
-  if (window.innerWidth <= 700) {
-    textInput.addEventListener("focus", () => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      lastRandomColor = randomColor;
-    });
-    textInput.addEventListener("blur", () => {
-      document.body.style.backgroundColor = lastRandomColor;
-    });
-  }
-</script>
+				const usableW = Math.max(0, stage.clientWidth - padX * 2);
+				const usableH = Math.max(0, stage.clientHeight - padY * 2);
 
+				// ===== 카드 크기/파라미터 =====
+				const gap = vpW * 0.02; // 기본 여백(2vw)
+				const minW = vpW * 0.17; // 최소 17vw
+				const maxW = vpW * 0.35; // 최대 35vw (scss max-width와 일치)
+				const maxTriesPos = 160; // 위치 시도
+				const MARGIN_RATIO = 0.05; // 카드 최소 간격 5%
 
+				// 큰 카드부터 배치 계획
+				const plan = cards.map((card) => ({ card, baseW: rand(minW, maxW) }));
+				plan.sort((a, b) => b.baseW - a.baseW);
 
+				const placed = [];
 
-</body>
+				for (const { card, baseW } of plan) {
+					let placedOK = false;
 
+					for (let t = 0; t < maxTriesPos; t++) {
+						// 단계적 축소 전략
+						const phase = t < 80 ? 1 : t < 140 ? 2 : 3;
+						let w;
+						if (phase === 1) {
+							const shrinkSteps = Math.floor(t / 10);
+							const factor = Math.max(1 - shrinkSteps * 0.07, minW / baseW);
+							w = Math.max(minW, Math.min(maxW, baseW * factor));
+						} else if (phase === 2) {
+							// 더 축소 (minW*0.6 까지)
+							const extraShrink = 1 - ((t - 80) / 60) * 0.4; // 1.0 -> 0.6
+							w = Math.max(minW * 0.6, Math.min(maxW, baseW * extraShrink));
+						} else {
+							// 같은 크기로 위치만 변경 재시도
+							w = Math.max(minW, Math.min(maxW, baseW));
+						}
+
+						card.style.width = Math.round(w) + "px";
+						const h = measureOuterHeight(card) || w * 0.66;
+
+						// stage usable 영역 내부에서만 위치
+						const left = rand(padX, padX + Math.max(1, usableW - w - gap));
+						const top = rand(padY, padY + Math.max(1, usableH - h - gap));
+
+						const rect = { left, top, right: left + w, bottom: top + h };
+
+						if (!overlapsNoTouch(rect, placed, gap, MARGIN_RATIO)) {
+							card.style.left = Math.round(left) + "px";
+							card.style.top = Math.round(top) + "px";
+							card.style.opacity = "1";
+							card.style.zIndex = String(100 + Math.floor(Math.random() * 50));
+							placed.push(rect);
+							placedOK = true;
+							break;
+						}
+					}
+
+					// 배치 실패 시: 최소 크기 근처에서 중앙 기반으로 추가 시도
+					if (!placedOK) {
+						const w = Math.round(minW * 0.6);
+						card.style.width = w + "px";
+						const h = measureOuterHeight(card) || w * 0.66;
+
+						for (let k = 0; k < 40; k++) {
+							const jitterX = (Math.random() - 0.5) * usableW * 0.2;
+							const jitterY = (Math.random() - 0.5) * usableH * 0.2;
+							const cx = padX + usableW / 2 + jitterX;
+							const cy = padY + usableH / 2 + jitterY;
+
+							const left = clamp(cx - w / 2, padX, padX + usableW - w);
+							const top = clamp(cy - h / 2, padY, padY + usableH - h);
+
+							const rect = { left, top, right: left + w, bottom: top + h };
+							if (!overlapsNoTouch(rect, placed, gap, MARGIN_RATIO)) {
+								card.style.left = Math.round(left) + "px";
+								card.style.top = Math.round(top) + "px";
+								card.style.opacity = "1";
+								card.style.zIndex = "99";
+								placed.push(rect);
+								placedOK = true;
+								break;
+							}
+						}
+
+						// 그래도 안되면 패딩만 지키고 랜덤 배치(겹침 가능성 매우 낮음)
+						if (!placedOK) {
+							const left = rand(padX, padX + Math.max(1, usableW - w));
+							const top = rand(padY, padY + Math.max(1, usableH - h));
+							card.style.left = Math.round(left) + "px";
+							card.style.top = Math.round(top) + "px";
+							card.style.opacity = "1";
+						}
+					}
+				}
+			}
+
+			/* === 완전 비겹침 + 카드 크기 5% 여유 확보 === */
+			function overlapsNoTouch(rect, list, baseGap, marginRatio) {
+				const wA = rect.right - rect.left;
+				const hA = rect.bottom - rect.top;
+				const padA = marginRatio * Math.min(wA, hA);
+
+				for (const r of list) {
+					const wB = r.right - r.left;
+					const hB = r.bottom - r.top;
+					const padB = marginRatio * Math.min(wB, hB);
+
+					// 상대 사각형을 여유만큼 확장(기본 gap + 두 카드 패딩 중 큰 값 사용)
+					const extra = baseGap + Math.max(padA, padB);
+					const b = {
+						left: r.left - extra,
+						top: r.top - extra,
+						right: r.right + extra,
+						bottom: r.bottom + extra,
+					};
+
+					// 교집합이 있으면 "겹침"으로 간주(= 배치 불가)
+					const interLeft = Math.max(rect.left, b.left);
+					const interTop = Math.max(rect.top, b.top);
+					const interRight = Math.min(rect.right, b.right);
+					const interBottom = Math.min(rect.bottom, b.bottom);
+					const interW = Math.max(0, interRight - interLeft);
+					const interH = Math.max(0, interBottom - interTop);
+
+					if (interW > 0 && interH > 0) {
+						return true; // 겹침 발생 → 자리 불가
+					}
+				}
+				return false; // 겹침 없음 → 자리 ok
+			}
+
+			/* === 유틸 === */
+			function clamp(v, min, max) {
+				return Math.max(min, Math.min(max, v));
+			}
+			function measureOuterHeight(el) {
+				return el.offsetHeight || el.getBoundingClientRect().height || 0;
+			}
+			function rand(min, max) {
+				return Math.random() * (max - min) + min;
+			}
+			function shuffle(arr) {
+				for (let i = arr.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[arr[i], arr[j]] = [arr[j], arr[i]];
+				}
+				return arr;
+			}
+			function debounce(fn, wait) {
+				let t;
+				return (...args) => {
+					clearTimeout(t);
+					t = setTimeout(() => fn.apply(this, args), wait);
+				};
+			}
+		</script>
+	</body>
 </html>
