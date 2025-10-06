@@ -1,121 +1,234 @@
 <!DOCTYPE html>
 <html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="x-UA-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-SCALE=1.0" />
+		<title>YOUNG2025</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="x-UA-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-SCALE=1.0">
-  <TITLE>YOUNG2024</TITLE>
+		<!-- 슬라이드갤러리 -->
+		<script src="./style/slide_gallery.js"></script>
+		<!-- 라이트박스갤러리 -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+		<!--스크롤 모션 -->
+		<script src="./style/scrollMotion.js" async></script>
+		<!--텍스트 접었다 폈다 -->
+		<script src="./style/caption.js"></script>
 
-  <LINK REL="STYLESHEET" HREF="./style/GALLERY/GALLERY.CSS">
-  <!-- 슬라이드갤러리 -->
-  <link rel="stylesheet" href="./style/gallery/00_flickity.css">
-  <script src="./style/gallery/00_flickity.pkgd.js" async></script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="./style/default.css" />
+		<link rel="stylesheet" href="./style/page.css" />
+	</head>
 
-  <!--모달갤러리 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="scripts.js"></script>
+	<body>
+		<header>
+			<a class="header_name" href="./work-all.html">Younghyun Song</a>
 
-  <!--스크롤 모션 -->
-  <script src="./style/scrollMotion.js" async></script>
-  <!--텍스트를 접었다 폈다 하는 기능 -->
-  <script src="./style/caption.js"></script>
+			<div class="header_menu">
+				<a id="menu" href="./work-all.html">Work</a>
+				<a id="menu" href="./05_about.html">About</a>
+			</div>
+		</header>
 
+		<div class="container">
+			<div class="youtube">
+				<iframe
+					width="100%"
+					height="100%"
+					src="https://www.youtube.com/embed/hBPuKjSW4AQ?modestbranding=1&autoplay=1&mute=1&version=3&loop=1&playlist=hBPuKjSW4AQ&showinfo=0"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./style/default.css">
-  <link rel="stylesheet" href="./style/page.css">
+			<div class="project-info">
+				<div class="info_left">
+					<div class="title">
+						Hera
+						<br />
+						Cell Essence Biom+
+					</div>
+				</div>
 
+				<div class="info_right">
+					<div class="caption">
+						아모레퍼시픽 Hera 브랜드 Cell Essence Biom+ 제품 출시 바이럴을 위한
+						인스타그램 영상을 제작했습니다.
+						<br />
+						<br />
+						재활용 가능한 용기로 리뉴얼된 에센스의 리필 교체 방식을 ASMR로
+						나타냈습니다. 다이아몬드 컷팅 용기에서 반사되는 빛을 메인 컬러로
+						활용했습니다.
+					</div>
 
-</head>
+					<div class="info-credit">
+						<div class="credit_box">
+							<div class="credit_1">Field</div>
+							<div class="credit_2">Film</div>
+						</div>
 
-<body>
-  <header>
-    <a class="header_name" href="./work-all.html">
-      Younghyun Song
-    </a>
+						<div class="credit_box">
+							<div class="credit_1">Date</div>
+							<div class="credit_2">May 2020</div>
+						</div>
 
-    <div class="header_menu">
-      <a id="menu" href="./work-all.html">Work</a>
-      <a id="menu" href="./05_about.html">About</a>
-    </div>
-  </header>
+						<div class="credit_box">
+							<div class="credit_1">Team</div>
+							<div class="credit_2">
+								Personal design work & editing
+								<br />
+								Art Direction: Sehyoung Lee
+								<br />
+								Film Direction: 이준혁 스튜디오
+								<br />
+								Project Management: BM, Hera
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <div class="container">
-    <div class="youtube">
-      <iframe width="100%" height="100%"
-        src="https://www.youtube.com/embed/hBPuKjSW4AQ?modestbranding=1&autoplay=1&mute=1&version=3&loop=1&playlist=hBPuKjSW4AQ&showinfo=0"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </div>
+			<img src="./works/20_ap/20_ap_CellEssence/cellEssence_01.gif" alt="" />
+			<img src="./works/20_ap/20_ap_CellEssence/cellEssence_02.gif" alt="" />
 
-    <div class="project-info">
-      <div class="info_left">
-        <div class="title">
-          Hera<br>
-          Cell Essence Biom+
-        </div>
-      </div>
+			<div class="mid_text">
+				<span id="underline"></span>
+				영상 오류가 발생했을 경우 새로고침 하시면 재생할 수 있습니다.
+			</div>
 
-      <div class="info_right">
-        <div class="caption">
-          아모레퍼시픽 Hera 브랜드 Cell Essence Biom+ 제품 출시 바이럴을 위한 인스타그램 영상을 제작했습니다.
-          <br><br>
-          재활용 가능한 용기로 리뉴얼된 에센스의 리필 교체 방식을 ASMR로 나타냈습니다. 다이아몬드 컷팅 용기에서 반사되는 빛을 메인 컬러로 활용했습니다.
-        </div>
+			<!-- 라이트박스 HTML 구조 -->
+			<div id="lightbox" class="lightbox">
+				<div class="lightbox-center">
+					<span class="close">&times;</span>
+					<img class="lightbox-content" id="lightbox-img" />
+				</div>
+			</div>
+		</div>
 
+		<footer>
+			© Younghyun Song. 2025
+			<br />
+			<span id="underline">
+				<a href="mailto:yhyun4156@gmail.com">mail.</a>
+				<br />
+				<a href="https://www.instagram.com/youhyus/" target="_blank">ig.</a>
+				<br />
+			</span>
+		</footer>
 
-        <div class="info-credit">
-          <div class="credit_box">
-            <div class="credit_1">Field</div>
-            <div class="credit_2">Film</div>
-          </div>
+		<script>
+			// 라이트박스
+			(function ($) {
+				$(function () {
+					const $lightbox = $("#lightbox");
+					const $img = $("#lightbox-img");
+					const $prev = $(".lightbox .prev");
+					const $next = $(".lightbox .next");
+					const $close = $(".lightbox .close");
+					const $center = $(".lightbox .lightbox-center");
 
-          <div class="credit_box">
-            <div class="credit_1">Date</div>
-            <div class="credit_2">May 2020</div>
-          </div>
+					let $currentGallery = null;
+					let srcs = [];
+					let idx = 0;
 
-          <div class="credit_box">
-            <div class="credit_1">Team</div>
-            <div class="credit_2">Personal design work & editing
-              <br>Art Direction: Sehyoung Lee
-              <br>Film Direction: 이준혁 스튜디오
-              <br>Project Management: BM, Hera
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+					function openGallery($gallery, startIndex) {
+						$currentGallery = $gallery;
+						srcs = $gallery
+							.find(".gallery-box")
+							.map(function () {
+								return this.getAttribute("href");
+							})
+							.get();
 
-    <img src="./works/20_ap/20_ap_CellEssence/cellEssence_01.gif" alt="">
-    <img src="./works/20_ap/20_ap_CellEssence/cellEssence_02.gif" alt="">
+						idx = startIndex;
+						update();
+						$lightbox.show();
+						$("body").addClass("lightbox-open no-scroll");
+					}
 
-    <div class="mid_text">
-      <span id="underline"></span>
-      영상 오류가 발생했을 경우 새로고침 하시면 재생할 수 있습니다.
-    </div>
+					function close() {
+						$lightbox.hide();
+						$("body").removeClass("lightbox-open no-scroll");
+						$currentGallery = null;
+						srcs = [];
+						idx = 0;
+					}
 
-    <!-- 라이트박스 HTML 구조 -->
-    <div id="lightbox" class="lightbox">
-      <div class="lightbox-center">
-        <span class="close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-      </div>
-    </div>
+					function update() {
+						if (!srcs.length) return;
+						$img.attr("src", srcs[idx]);
+					}
 
-  </div>
+					function prev() {
+						if (!srcs.length) return;
+						idx = (idx - 1 + srcs.length) % srcs.length;
+						update();
+					}
 
-  <footer>
-    © Younghyun Song. 2025
-    <br>
-    <span id="underline">
-      <a href="mailto:" yhyun4156@gmail.com>mail.</a><br>
-      <a href="https://www.instagram.com/youhyus/" target="_blank">ig.</a> <br>
-    </span>
-  </footer>
+					function next() {
+						if (!srcs.length) return;
+						idx = (idx + 1) % srcs.length;
+						update();
+					}
 
-</body>
+					// 썸네일 클릭
+					$(".image-gallery").on("click", ".gallery-box", function (e) {
+						e.preventDefault();
+						const $gallery = $(this).closest(".image-gallery");
+						const i = $gallery.find(".gallery-box").index(this);
+						openGallery($gallery, i);
+					});
 
+					// 버튼
+					$prev.on("click", function (e) {
+						e.stopPropagation();
+						prev();
+					});
+					$next.on("click", function (e) {
+						e.stopPropagation();
+						next();
+					});
+					$close.on("click", function (e) {
+						e.stopPropagation();
+						close();
+					});
+
+					// 오버레이 빈 공간 클릭 시 닫기
+					$lightbox.on("click", function (e) {
+						// lightbox-center 바깥을 클릭한 경우에만 닫기
+						if ($(e.target).closest(".lightbox-center").length === 0) {
+							close();
+						}
+					});
+
+					// 라이트박스 내부 클릭은 전파 막기(이미지/버튼 클릭 시 오버레이로 전파되어 닫히는 문제 방지)
+					$center.on("click", function (e) {
+						e.stopPropagation();
+					});
+
+					// 키보드 제어
+					$(document).on("keydown", function (e) {
+						if (!$lightbox.is(":visible")) return;
+						if (e.key === "Escape") close();
+						if (e.key === "ArrowLeft") prev();
+						if (e.key === "ArrowRight") next();
+					});
+
+					// 터치 스와이프
+					let startX = null;
+					$center.on("touchstart", function (e) {
+						startX = e.originalEvent.touches[0].clientX;
+					});
+					$center.on("touchend", function (e) {
+						if (startX == null) return;
+						const dx = e.originalEvent.changedTouches[0].clientX - startX;
+						if (dx > 40) prev();
+						if (dx < -40) next();
+						startX = null;
+					});
+				});
+			})(jQuery);
+		</script>
+	</body>
 </html>
