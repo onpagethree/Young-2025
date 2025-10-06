@@ -180,7 +180,8 @@ body {
 		}
 
 		.img-vertical > img {
-			width: 50%;
+			max-width: 50%;
+			min-width: 30%;
 			margin: 0;
 		}
 

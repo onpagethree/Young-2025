@@ -28,6 +28,7 @@
 		</header>
 
 		<div class="category">
+			<a id="featured" href="#featured" style="color: coral">Featured</a>
 			<a id="all" href="#all">All</a>
 			<a href="#graphic">Graphic</a>
 			<a href="#BI">Brand Identity</a>
@@ -37,7 +38,7 @@
 		</div>
 
 		<div class="container">
-			<a class="box all graphic BI" href="">
+			<a class="box all graphic BI featured" href="./25_JUNO.html">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
@@ -45,16 +46,12 @@
 						alt="" />
 					<div class="text-container">
 						<div class="text-container-title">Juno Hair</div>
-						<div class="text-container-sub">
-							Identity
-							<br />
-							*To be Continued*
-						</div>
+						<div class="text-container-sub">Identity</div>
 					</div>
 				</div>
 			</a>
 
-			<a class="box all graphic BI packaging" href="">
+			<a class="box all graphic BI packaging featured" href="">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
@@ -71,7 +68,7 @@
 				</div>
 			</a>
 
-			<a class="box all graphic BI" href="./25_psbf_identity.html">
+			<a class="box all graphic BI featured" href="./25_psbf_identity.html">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
@@ -84,7 +81,7 @@
 				</div>
 			</a>
 
-			<a class="box all graphic packaging" href=" ./23_osulloc.html">
+			<a class="box all graphic packaging featured" href=" ./23_osulloc.html">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
@@ -97,7 +94,7 @@
 				</div>
 			</a>
 
-			<a class="box all graphic BI" href="./24_rbc.html">
+			<a class="box all graphic BI featured" href="./24_rbc.html">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
@@ -127,7 +124,7 @@
 			</a>
 
 			<a
-				class="box all packaging BI"
+				class="box all packaging BI featured"
 				href="./23_kakaoInsurance_OnboardingKit.html">
 				<div class="thumbnail-box">
 					<img
@@ -438,11 +435,27 @@
 			});
 
 			document.addEventListener("DOMContentLoaded", function () {
+				var featuredLink = document.querySelector("a[href='#featured']");
 				var graphicLink = document.querySelector("a[href='#graphic']");
 				var packagingLink = document.querySelector("a[href='#packaging']");
 				var biLink = document.querySelector("a[href='#BI']");
 				var mediaLink = document.querySelector("a[href='#media']");
 				var boxesToShow = document.querySelectorAll(".box");
+
+				featuredLink.addEventListener("click", function (event) {
+					event.preventDefault(); // 기본 동작 막기
+
+					// 모든 상자 숨기기
+					for (var i = 0; i < boxesToShow.length; i++) {
+						boxesToShow[i].style.display = "none";
+					}
+
+					// 클래스가 "featured"인 상자만 보이기
+					var featuredBoxes = document.querySelectorAll(".featured");
+					for (var i = 0; i < featuredBoxes.length; i++) {
+						featuredBoxes[i].style.display = "block";
+					}
+				});
 
 				graphicLink.addEventListener("click", function (event) {
 					event.preventDefault(); // 기본 동작 막기

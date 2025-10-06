@@ -148,7 +148,8 @@ body .container .img-vertical {
   align-items: center;
 }
 body .container .img-vertical > img {
-  width: 50%;
+  max-width: 50%;
+  min-width: 30%;
   margin: 0;
 }
 body .container .slide-gallery {
