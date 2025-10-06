@@ -35,7 +35,7 @@ body {
 		align-items: center; // row 세로 정렬
 
 		.box {
-			width: calc((100% - 2vw * 2) / 3);
+			width: calc((100% - 2vw * 2) / 3); // 기본 3열
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -96,6 +96,11 @@ body {
 						pointer-events: auto;
 					}
 				}
+			}
+		}
+		&.featured-only {
+			.box {
+				width: calc((100% - 2vw) / 2);
 			}
 		}
 	}

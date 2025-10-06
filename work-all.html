@@ -42,7 +42,7 @@
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
-						src="./works/25_junohair/25_junohair_thumbnail.jpg"
+						src="./works/25_JUNO/25_junohair_thumbnail.jpg"
 						alt="" />
 					<div class="text-container">
 						<div class="text-container-title">Juno Hair</div>
@@ -390,6 +390,7 @@
 				var links = document.querySelectorAll(".category a");
 				var boxesToShow = document.querySelectorAll(".box");
 				var allLink = document.getElementById("all");
+				var container = document.querySelector(".container");
 
 				function removeSelectedClass() {
 					links.forEach(function (link) {
@@ -403,9 +404,10 @@
 					});
 				}
 
-				// 페이지 로드 시 All 링크와 모든 상자를 표시
+				// 페이지 로드 시 All 선택 + 전체 표시 + 2열 모드 해제
 				allLink.classList.add("selected");
 				showAllBoxes();
+				container.classList.remove("featured-only");
 
 				links.forEach(function (link) {
 					link.addEventListener("click", function (event) {
@@ -415,8 +417,16 @@
 						removeSelectedClass();
 						link.classList.add("selected");
 
-						// 해당 링크에 맞는 상자들만 보이기
 						var category = link.getAttribute("href").substring(1);
+
+						// Featured일 때만 2열, 그 외 해제
+						if (category === "featured") {
+							container.classList.add("featured-only");
+						} else {
+							container.classList.remove("featured-only");
+						}
+
+						// 해당 링크에 맞는 상자들만 보이기
 						if (category === "all") {
 							showAllBoxes();
 						} else {

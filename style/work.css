@@ -78,6 +78,9 @@ body .container .box .thumbnail-box:hover .text-container {
   opacity: 1;
   pointer-events: auto;
 }
+body .container.featured-only .box {
+  width: calc((100% - 2vw) / 2);
+}
 
 /* 터치 환경(hover 불가)에서 정보 항상 노출 */
 @media (hover: none) and (pointer: coarse) {
