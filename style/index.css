@@ -59,6 +59,10 @@ body #stage #featured-grid .box > img {
   max-height: 70vh; /* 안전장치 */
   object-fit: contain;
 }
+body #stage #featured-grid .box > img:hover {
+  opacity: 0.5;
+  transition: all 0.2s linear;
+}
 
 /* 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
