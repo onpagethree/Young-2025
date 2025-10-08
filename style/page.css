@@ -274,15 +274,16 @@ body .container .lightbox .close {
   cursor: pointer;
   user-select: none;
   font-size: 2.5rem; /* 글자 크기 (화살표/× 기호) */
+  font-weight: 200;
   color: #fff;
 }
 body .container .lightbox .prev {
-  left: 4rem;
+  left: 3rem;
   top: 50%;
   transform: translateY(-50%);
 }
 body .container .lightbox .next {
-  right: 4rem;
+  right: 3rem;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -299,26 +300,27 @@ body .container .lightbox .close:hover {
 
 @media only screen and (max-width: 700px) {
   body .container {
-    font-size: 0.9rem;
+    font-size: 0.94rem;
+    gap: 2vw;
     /* 프로젝트 설명 모바일사이즈 */
     /*IMG IMG 중간 글 모바일*/
     /* 프로젝트 중간글 더블더블 모바일 */
     /*IMG IMG 이미지 설정 모바일*/
     /*세로이미지*/
-    /*이미지 슬라이드! MOBILE ! MOBILE !*/
-    /*이미지 갤러리!!*/
+    /*이미지 갤러리 모바일!*/
+    /* Lightbox container mobile */ /* Lightbox container mobile */
+    /* 라이트박스 내 네비게이션/닫기 버튼 */
   }
   body .container .project-info {
-    margin-top: 3vh;
-    margin-bottom: 4.5vh;
     flex-direction: column;
+    margin-bottom: 2em;
   }
   body .container .project-info .info_left {
     width: 100%;
   }
   body .container .project-info .info_left .title {
     font-size: 1.6rem;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.7em;
     width: 90%;
   }
   body .container .project-info .info_right {
@@ -326,7 +328,6 @@ body .container .lightbox .close:hover {
     width: 100%;
   }
   body .container .project-info .info_right .caption {
-    margin-bottom: 3vh;
     padding-right: 0;
     width: 92%;
   }
@@ -336,65 +337,57 @@ body .container .lightbox .close:hover {
   }
   body .container .project-info .info_right .info-page {
     margin-bottom: 2.25vh;
-    font-size: 0.94rem;
+    font-size: 0.98rem;
   }
   body .container .project-info .info_right .info-credit {
     /* 프로젝트 크레딧 모바일*/
   }
   body .container .project-info .info_right .info-credit .credit_box {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
   }
   body .container .project-info .info_right .info-credit .credit_1 {
     width: 22%;
   }
   body .container .mid_text {
-    font-size: 0.9rem;
-    padding: 3.5vw 2.5vw 6vw 2.5vw;
+    padding: 1.5em;
   }
   body .container .mid_text_double {
-    margin-top: 2.25vh;
-    margin-bottom: 2.25vh;
     flex-direction: column;
+    margin: 1em 0 1.5em;
   }
   body .container .mid_text_double .text_left {
     width: 100%;
     padding-right: 5vw;
   }
   body .container .mid_text_double .text_right {
-    margin-top: 3vh;
-  }
-  body .container img {
-    margin-bottom: 1.25vh;
-  }
-  body .container .img-vertical {
-    margin-bottom: 1.25vh;
+    margin-top: 1em;
   }
   body .container .img-vertical img {
     width: 100%;
     margin: 0;
   }
-  body .container .slide-gallery {
-    margin-left: -2.5vw;
-    margin-right: -2.5vw;
-    margin-bottom: 1vw;
-  }
-  body .container .gallery-box {
-    width: 75vw;
-    height: 50vw;
-    margin-right: 0.9375vh;
-    /* 순번 지정 */
-    counter-increment: gallery-box;
-  }
   body .container .image-gallery {
-    margin-top: 1vh;
+    gap: 2vw;
   }
-  body .container .gallery-box {
+  body .container .image-gallery .gallery-box {
     /* 모달 갤러리 썸네일 사이즈 */
     flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
-    max-width: calc(50% - 1vw);
-    height: auto;
   }
-  body .container .youtube {
-    margin-bottom: 1.25vh;
+  body .container .lightbox {
+    background: rgba(0, 0, 0, 0.87);
+  }
+  body .container .lightbox .prev,
+  body .container .lightbox .next,
+  body .container .lightbox .close {
+    font-size: 4rem; /* 글자 크기 (화살표/× 기호) */
+  }
+  body .container .lightbox .prev {
+    left: 0.07em;
+  }
+  body .container .lightbox .next {
+    right: 0.07em;
+  }
+  body .container .lightbox .close {
+    right: 2vw;
   }
 }

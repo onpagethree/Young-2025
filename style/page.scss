@@ -331,17 +331,18 @@ body {
 			cursor: pointer;
 			user-select: none;
 			font-size: 2.5rem; /* 글자 크기 (화살표/× 기호) */
+			font-weight: 200;
 
 			color: #fff;
 		}
 
 		.lightbox .prev {
-			left: 4rem;
+			left: 3rem;
 			top: 50%;
 			transform: translateY(-50%);
 		}
 		.lightbox .next {
-			right: 4rem;
+			right: 3rem;
 			top: 50%;
 			transform: translateY(-50%);
 		}
@@ -364,21 +365,20 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.container {
-			font-size: 0.9rem;
+			font-size: 0.94rem;
+			gap: 2vw;
 
 			/* 프로젝트 설명 모바일사이즈 */
 			.project-info {
-				margin-top: $vh-space;
-				margin-bottom: calc($vh-space * 1.5);
-
 				flex-direction: column;
+				margin-bottom: 2em;
 
 				.info_left {
 					width: 100%;
 
 					.title {
 						font-size: 1.6rem;
-						margin-bottom: 0.5em;
+						margin-bottom: 0.7em;
 						width: 90%;
 					}
 				}
@@ -388,7 +388,6 @@ body {
 					width: 100%;
 
 					.caption {
-						margin-bottom: calc($vh-space * 1);
 						padding-right: 0;
 						width: 92%;
 					}
@@ -400,13 +399,13 @@ body {
 
 					.info-page {
 						margin-bottom: calc($vh-space * 0.75);
-						font-size: 0.94rem;
+						font-size: 0.98rem;
 					}
 
 					.info-credit {
 						/* 프로젝트 크레딧 모바일*/
 						.credit_box {
-							font-size: 0.95rem;
+							font-size: 0.98rem;
 						}
 
 						.credit_1 {
@@ -418,17 +417,13 @@ body {
 
 			/*IMG IMG 중간 글 모바일*/
 			.mid_text {
-				font-size: 0.9rem;
-
-				padding: 3.5vw 2.5vw 6vw 2.5vw;
+				padding: 1.5em;
 			}
 
 			/* 프로젝트 중간글 더블더블 모바일 */
 			.mid_text_double {
-				margin-top: calc($vh-space * 0.75);
-				margin-bottom: calc($vh-space * 0.75);
-
 				flex-direction: column;
+				margin: 1em 0 1.5em;
 
 				.text_left {
 					width: 100%;
@@ -436,54 +431,48 @@ body {
 				}
 
 				.text_right {
-					margin-top: calc($vh-space * 1);
+					margin-top: 1em;
 				}
 			}
 
 			/*IMG IMG 이미지 설정 모바일*/
-			img {
-				margin-bottom: 1.25vh;
-			}
 
 			/*세로이미지*/
 			.img-vertical {
-				margin-bottom: 1.25vh;
-
 				img {
 					width: 100%;
 					margin: 0;
 				}
 			}
 
-			/*이미지 슬라이드! MOBILE ! MOBILE !*/
-			.slide-gallery {
-				margin-left: -2.5vw;
-				margin-right: -2.5vw;
-				margin-bottom: 1vw;
-			}
-
-			.gallery-box {
-				width: 75vw;
-				height: 50vw;
-				margin-right: calc(1.25vh * 0.75);
-				/* 순번 지정 */
-				counter-increment: gallery-box;
-			}
-
-			/*이미지 갤러리!!*/
+			/*이미지 갤러리 모바일!*/
 			.image-gallery {
-				margin-top: 1vh;
+				gap: 2vw;
+				.gallery-box {
+					/* 모달 갤러리 썸네일 사이즈 */
+					flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
+				}
 			}
 
-			.gallery-box {
-				/* 모달 갤러리 썸네일 사이즈 */
-				flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
-				max-width: calc(50% - 1vw);
-				height: auto;
+			/* Lightbox container mobile */ /* Lightbox container mobile */
+			.lightbox {
+				background: rgba(0, 0, 0, 0.87);
+			}
+			/* 라이트박스 내 네비게이션/닫기 버튼 */
+			.lightbox .prev,
+			.lightbox .next,
+			.lightbox .close {
+				font-size: 4rem; /* 글자 크기 (화살표/× 기호) */
 			}
 
-			.youtube {
-				margin-bottom: 1.25vh;
+			.lightbox .prev {
+				left: 0.07em;
+			}
+			.lightbox .next {
+				right: 0.07em;
+			}
+			.lightbox .close {
+				right: 2vw;
 			}
 		}
 	}
