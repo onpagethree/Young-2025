@@ -126,8 +126,6 @@
 
 			/* ===== 랜덤 콜라주 (stage 내부 한정, 비겹침 + 5% 여유, 큰 것부터 배치) ===== */
 			function layoutRandomCollageWithinStage(grid, stage) {
-				if (window.matchMedia("(max-width: 700px)").matches) return; // 모바일은 스택
-
 				const cards = Array.from(grid.querySelectorAll(".box"));
 				if (!cards.length) return;
 
@@ -238,6 +236,31 @@
 							card.style.opacity = "1";
 						}
 					}
+				}
+
+				// 모바일 환경 모바일 환경
+				if (window.matchMedia("(max-width: 700px)").matches) {
+					// 모바일: .box 중 하나만 랜덤 표시
+					const cards = Array.from(grid.querySelectorAll(".box"));
+					if (cards.length > 0) {
+						const randomIndex = Math.floor(Math.random() * cards.length);
+						cards.forEach((card, idx) => {
+							if (idx === randomIndex) {
+								card.style.opacity = "0";
+								card.style.display = "none";
+								card.style.transition = "opacity 1s ease";
+								card.style.width = "80vw"; // ✅ 너비 꽉 차게
+								card.style.margin = "0 auto"; // ✅ 가운데 정렬
+
+								setTimeout(() => {
+									card.style.opacity = "1";
+								}, 400);
+							} else {
+								card.style.display = "none";
+							}
+						});
+					}
+					return;
 				}
 			}
 

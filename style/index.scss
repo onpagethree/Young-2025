@@ -74,10 +74,17 @@ body {
 
 /* 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
-	.btncentre {
-		button {
-			width: 70vw;
-			height: 70vw;
+	#stage {
+		#featured-grid {
+			.box {
+				max-width: 80vw;
+				img {
+					width: 100%;
+					height: auto;
+					object-fit: cover;
+					display: block;
+				}
+			}
 		}
 	}
 }
