@@ -129,6 +129,9 @@ body footer {
   justify-content: center;
   text-align: center;
 }
+body footer a {
+  margin-right: 0.25em;
+}
 body footer #underline {
   display: flex;
   justify-content: center;
