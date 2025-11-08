@@ -80,9 +80,10 @@ body .container .project-info .info_right #awardPage {
 }
 body .container .project-info .info_right .info-page {
   color: gray;
+  margin-top: -0.5em;
   margin-bottom: 1.5em;
-  font-size: 1.05rem;
-  line-height: 1.5em;
+  font-size: 0.95em;
+  line-height: 1.55em;
 }
 body .container .project-info .info_right .info-page a:hover {
   opacity: 0.5;
@@ -92,7 +93,7 @@ body .container .project-info .info_right .credit_box {
   border-top: 1px solid black;
   margin-top: 0.4em;
   padding-top: 0.4em;
-  font-size: 1.05rem;
+  font-size: 0.95em;
   line-height: 1.45em;
 }
 body .container .project-info .info_right .credit_box .credit_1 {

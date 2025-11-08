@@ -85,9 +85,10 @@ body {
 				/* 연결 페이지가 있는 경우 */
 				.info-page {
 					color: gray;
+					margin-top: -0.5em;
 					margin-bottom: 1.5em;
-					font-size: 1.05rem;
-					line-height: 1.5em;
+					font-size: 0.95em;
+					line-height: 1.55em;
 
 					a:hover {
 						opacity: 0.5;
@@ -102,7 +103,7 @@ body {
 					margin-top: 0.4em;
 					padding-top: 0.4em;
 
-					font-size: 1.05rem;
+					font-size: 0.95em;
 					line-height: $lh;
 
 					.credit_1 {
