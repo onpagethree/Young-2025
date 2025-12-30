@@ -148,11 +148,7 @@ body footer #underline {
     /* FOOTER 하단바 모바일사이즈 */
   }
   html body header {
-    margin: 2vh 0 4rem 0;
-    /* work-all 카드 내 credit 스타일 */
-    /* work-all 카드 내 credit 스타일 */
-    /* work-all 카드 내 credit 스타일 */
-    /* work-all 카드 내 credit 스타일 */
+    margin: 2vh 0 4rem 0; /* work-all 카드 내 credit 스타일 */
     /*HEADER 헤더 모바일사이즈*/
   }
   html body header body .container .box .text-container {
