@@ -195,7 +195,7 @@
 				</div>
 			</a>
 
-			<a
+			<!-- <a
 				class="box all graphic"
 				href="./22_public_web.html"
 				data-src="./22_public_web.html">
@@ -207,7 +207,7 @@
 					<div class="title"></div>
 					<div class="info-credit"></div>
 				</div>
-			</a>
+			</a> -->
 
 			<a
 				class="box all graphic"
@@ -364,325 +364,17 @@
 		</footer>
 
 		<script>
-			// 라이트박스
-			(function ($) {
-				$(function () {
-					const $lightbox = $("#lightbox");
-					const $img = $("#lightbox-img");
-					const $prev = $(".lightbox .prev");
-					const $next = $(".lightbox .next");
-					const $close = $(".lightbox .close");
-					const $center = $(".lightbox .lightbox-center");
-
-					let $currentGallery = null;
-					let srcs = [];
-					let idx = 0;
-
-					function openGallery($gallery, startIndex) {
-						$currentGallery = $gallery;
-						srcs = $gallery
-							.find(".gallery-box")
-							.map(function () {
-								return this.getAttribute("href");
-							})
-							.get();
-
-						idx = startIndex;
-						update();
-						$lightbox.show();
-						$("body").addClass("lightbox-open no-scroll");
-					}
-
-					function close() {
-						$lightbox.hide();
-						$("body").removeClass("lightbox-open no-scroll");
-						$currentGallery = null;
-						srcs = [];
-						idx = 0;
-					}
-
-					function update() {
-						if (!srcs.length) return;
-						$img.attr("src", srcs[idx]);
-					}
-
-					function prev() {
-						if (!srcs.length) return;
-						idx = (idx - 1 + srcs.length) % srcs.length;
-						update();
-					}
-
-					function next() {
-						if (!srcs.length) return;
-						idx = (idx + 1) % srcs.length;
-						update();
-					}
-
-					// 썸네일 클릭
-					$(".image-gallery").on("click", ".gallery-box", function (e) {
-						e.preventDefault();
-						const $gallery = $(this).closest(".image-gallery");
-						const i = $gallery.find(".gallery-box").index(this);
-						openGallery($gallery, i);
-					});
-
-					// 버튼
-					$prev.on("click", function (e) {
-						e.stopPropagation();
-						prev();
-					});
-					$next.on("click", function (e) {
-						e.stopPropagation();
-						next();
-					});
-					$close.on("click", function (e) {
-						e.stopPropagation();
-						close();
-					});
-
-					// 오버레이 빈 공간 클릭 시 닫기
-					$lightbox.on("click", function (e) {
-						// lightbox-center 바깥을 클릭한 경우에만 닫기
-						if ($(e.target).closest(".lightbox-center").length === 0) {
-							close();
-						}
-					});
-
-					// 라이트박스 내부 클릭은 전파 막기(이미지/버튼 클릭 시 오버레이로 전파되어 닫히는 문제 방지)
-					$center.on("click", function (e) {
-						e.stopPropagation();
-					});
-
-					// 키보드 제어
-					$(document).on("keydown", function (e) {
-						if (!$lightbox.is(":visible")) return;
-						if (e.key === "Escape") close();
-						if (e.key === "ArrowLeft") prev();
-						if (e.key === "ArrowRight") next();
-					});
-
-					// 터치 스와이프
-					let startX = null;
-					$center.on("touchstart", function (e) {
-						startX = e.originalEvent.touches[0].clientX;
-					});
-					$center.on("touchend", function (e) {
-						if (startX == null) return;
-						const dx = e.originalEvent.changedTouches[0].clientX - startX;
-						if (dx > 40) prev();
-						if (dx < -40) next();
-						startX = null;
-					});
-				});
-			})(jQuery);
-
-			// 카테고리화
-			// 카테고리화
-			document.addEventListener("DOMContentLoaded", function () {
-				var links = document.querySelectorAll(".category a");
-				var boxesToShow = document.querySelectorAll(".box");
-				var allLink = document.getElementById("all");
-				var container = document.querySelector(".container");
-
-				function removeSelectedClass() {
-					links.forEach(function (link) {
-						link.classList.remove("selected");
-					});
-				}
-
-				function showAllBoxes() {
-					boxesToShow.forEach(function (box) {
-						box.style.display = "block";
-					});
-				}
-
-				// 페이지 로드 시 All 선택 + 전체 표시 + 2열 모드 해제
-				allLink.classList.add("selected");
-				showAllBoxes();
-
-				links.forEach(function (link) {
-					link.addEventListener("click", function (event) {
-						event.preventDefault(); // 기본 동작 막기
-
-						// 선택된 클래스 추가 및 다른 링크에서 제거
-						removeSelectedClass();
-						link.classList.add("selected");
-
-						var category = link.getAttribute("href").substring(1);
-
-						// 해당 링크에 맞는 상자들만 보이기
-						if (category === "all") {
-							showAllBoxes();
-						} else {
-							// 모든 상자 숨기기
-							boxesToShow.forEach(function (box) {
-								box.style.display = "none";
-							});
-
-							var categoryBoxes = document.querySelectorAll("." + category);
-							categoryBoxes.forEach(function (box) {
-								box.style.display = "block";
-							});
-						}
-					});
-				});
+			document.addEventListener("DOMContentLoaded", () => {
+				hydrateProjectCardsByThumbId();
+				applyColorForDesktop?.();
+				initCategoryFilter(); // 기존 카테고리 로직을 하나로 합친 버전
 			});
 
-			document.addEventListener("DOMContentLoaded", function () {
-				var graphicLink = document.querySelector("a[href='#graphic']");
-				var packagingLink = document.querySelector("a[href='#packaging']");
-				var biLink = document.querySelector("a[href='#BI']");
-				var mediaLink = document.querySelector("a[href='#media']");
-				var boxesToShow = document.querySelectorAll(".box");
-
-				graphicLink.addEventListener("click", function (event) {
-					event.preventDefault(); // 기본 동작 막기
-
-					// 모든 상자 숨기기
-					for (var i = 0; i < boxesToShow.length; i++) {
-						boxesToShow[i].style.display = "none";
-					}
-
-					// 클래스가 "graphic"인 상자만 보이기
-					var graphicBoxes = document.querySelectorAll(".graphic");
-					for (var i = 0; i < graphicBoxes.length; i++) {
-						graphicBoxes[i].style.display = "block";
-					}
-				});
-
-				packagingLink.addEventListener("click", function (event) {
-					event.preventDefault(); // 기본 동작 막기
-
-					// 모든 상자 숨기기
-					for (var i = 0; i < boxesToShow.length; i++) {
-						boxesToShow[i].style.display = "none";
-					}
-
-					// 클래스가 "packaging"인 상자만 보이기
-					var packagingBoxes = document.querySelectorAll(".packaging");
-					for (var i = 0; i < packagingBoxes.length; i++) {
-						packagingBoxes[i].style.display = "block";
-					}
-				});
-
-				biLink.addEventListener("click", function (event) {
-					event.preventDefault(); // 기본 동작 막기
-
-					// 모든 상자 숨기기
-					for (var i = 0; i < boxesToShow.length; i++) {
-						boxesToShow[i].style.display = "none";
-					}
-
-					// 클래스가 "BI"인 상자만 보이기
-					var biBoxes = document.querySelectorAll(".BI");
-					for (var i = 0; i < biBoxes.length; i++) {
-						biBoxes[i].style.display = "block";
-					}
-				});
-
-				mediaLink.addEventListener("click", function (event) {
-					event.preventDefault(); // 기본 동작 막기
-
-					// 모든 상자 숨기기
-					for (var i = 0; i < boxesToShow.length; i++) {
-						boxesToShow[i].style.display = "none";
-					}
-
-					// 클래스가 "media"인 상자만 보이기
-					var mediaBoxes = document.querySelectorAll(".media");
-					for (var i = 0; i < mediaBoxes.length; i++) {
-						mediaBoxes[i].style.display = "block";
-					}
-				});
-			});
-
-			// DOM 로드 시 실행
-			window.addEventListener("DOMContentLoaded", applyColorForDesktop);
-
-			// box 가져오기
-			async function hydrateCardsFromProjectPages() {
-				const cards = document.querySelectorAll(".box[data-src]");
-
-				for (const card of cards) {
-					const src = card.getAttribute("data-src");
-					if (!src) continue;
-
-					try {
-						const res = await fetch(src, { cache: "no-store" });
-						if (!res.ok) continue;
-
-						const html = await res.text();
-						const doc = new DOMParser().parseFromString(html, "text/html");
-
-						// 1) title / credit
-						const titleEl = doc.querySelector(".project-info .title");
-						const creditEl = doc.querySelector(".project-info .info-credit");
-
-						const targetTitle = card.querySelector(".text-container .title");
-						const targetCredit = card.querySelector(
-							".text-container .info-credit"
-						);
-
-						if (titleEl && targetTitle)
-							targetTitle.innerHTML = titleEl.innerHTML.trim();
-						if (creditEl && targetCredit)
-							targetCredit.innerHTML = creditEl.innerHTML.trim();
-
-						// 2) 이미지 1~3: 상세페이지의 "첫번째 본문 이미지" + 첫 갤러리 2장 조합(안정적)
-						const firstHero = doc.querySelector(".container > img");
-						const galleryImgs = Array.from(
-							doc.querySelectorAll(".image-gallery img")
-						).slice(0, 2);
-
-						const picked = [];
-						if (firstHero) picked.push(firstHero);
-						picked.push(...galleryImgs);
-
-						const thumbRow = card.querySelector(".thumb-row");
-						if (!thumbRow) continue;
-
-						thumbRow.innerHTML = "";
-
-						picked.slice(0, 3).forEach((img) => {
-							const thumb = document.createElement("img");
-							thumb.src = img.getAttribute("src");
-							thumb.alt = "";
-							thumb.loading = "lazy";
-							thumbRow.appendChild(thumb);
-						});
-
-						// 3) 최후 fallback: 이미지가 하나도 못 잡히면 상세페이지의 첫 img 전체에서 3개
-						if (!thumbRow.children.length) {
-							const imgs = Array.from(doc.querySelectorAll("img"))
-								.filter((i) => i.getAttribute("src"))
-								.slice(0, 3);
-
-							imgs.forEach((img) => {
-								const thumb = document.createElement("img");
-								thumb.src = img.getAttribute("src");
-								thumb.alt = "";
-								thumb.loading = "lazy";
-								thumbRow.appendChild(thumb);
-							});
-						}
-					} catch (e) {
-						console.error("hydrate failed:", src, e);
-					}
-				}
-			}
-
-			document.addEventListener(
-				"DOMContentLoaded",
-				hydrateCardsFromProjectPages
-			);
-		</script>
-
-		<script>
-			(async function hydrateProjectCards() {
+			async function hydrateProjectCardsByThumbId() {
 				const boxes = Array.from(document.querySelectorAll(".container a.box"));
 
 				async function fetchDoc(url) {
-					const res = await fetch(url);
+					const res = await fetch(url, { cache: "no-store" });
 					if (!res.ok) throw new Error(res.status + " " + res.statusText);
 					const text = await res.text();
 					const doc = new DOMParser().parseFromString(text, "text/html");
@@ -697,79 +389,92 @@
 					try {
 						const { doc, base } = await fetchDoc(projectUrl);
 
-						// 이미지 소스 수집: <img src> 우선, gallery a[href] 보조
-						const imgSrcs = Array.from(doc.querySelectorAll("img"))
-							.map((i) => i.getAttribute("src"))
-							.filter(Boolean);
-						const gallerySrcs = Array.from(
-							doc.querySelectorAll("a.gallery-box")
-						)
-							.map((a) => a.getAttribute("href"))
-							.filter(Boolean);
-						const picked = imgSrcs.concat(gallerySrcs).slice(0, 3);
+						// 1) title / credit
+						const titleNode = doc.querySelector(".project-info .title");
+						const creditNode = doc.querySelector(".project-info .info-credit");
 
-						// thumbnail-box에 이미지 삽입 (기존 내용 대체)
+						const titleTarget = box.querySelector(".text-container .title");
+						const creditTarget = box.querySelector(
+							".text-container .info-credit"
+						);
+
+						if (titleNode && titleTarget)
+							titleTarget.innerHTML = titleNode.innerHTML.trim();
+						if (creditNode && creditTarget)
+							creditTarget.innerHTML = creditNode.innerHTML.trim();
+
+						// 2) thumbs: id="thumb"만 (여러 개여도 [id="thumb"]로 안전하게)
+						const thumbSrcs = Array.from(doc.querySelectorAll('[id="thumb"]'))
+							.map((el) => el.getAttribute("src"))
+							.filter(Boolean)
+							.slice(0, 3);
+
 						const thumbBox = box.querySelector(".thumbnail-box");
-						if (thumbBox) {
-							// 항상 .thumb-row를 찾거나 없으면 생성
-							let thumbRow = thumbBox.querySelector(".thumb-row");
-							if (!thumbRow) {
-								thumbRow = document.createElement("div");
-								thumbRow.className = "thumb-row";
-								thumbBox.appendChild(thumbRow);
-							}
-							thumbRow.innerHTML = ""; // 초기화
+						if (!thumbBox) continue;
 
-							if (picked.length === 0) {
-								const placeholder = document.createElement("div");
-								placeholder.className = "thumb-row";
-								thumbBox.appendChild(placeholder);
-							} else {
-								picked.forEach((src, idx) => {
-									const img = document.createElement("img");
-									img.className = "thumb-image";
-									img.src = new URL(src, base).href;
-									img.alt = "";
-									thumbRow.appendChild(img);
-								});
-							}
+						let thumbRow = thumbBox.querySelector(".thumb-row");
+						if (!thumbRow) {
+							thumbRow = document.createElement("div");
+							thumbRow.className = "thumb-row";
+							thumbBox.appendChild(thumbRow);
 						}
 
-						// title 추출 (프로젝트 페이지 구조에 맞춰 선택자 사용)
-						const titleNode =
-							doc.querySelector(".project-info .title") ||
-							doc.querySelector(".title");
-						const textContainer = box.querySelector(".text-container");
-						if (textContainer && titleNode) {
-							// 기존 title 요소 찾거나 생성
-							let titleTarget =
-								textContainer.querySelector(".text-container-title") ||
-								textContainer.querySelector(".title");
-							if (!titleTarget) {
-								titleTarget = document.createElement("div");
-								titleTarget.className = "text-container-title";
-								textContainer.prepend(titleTarget);
-							}
-							titleTarget.innerHTML = titleNode.innerHTML;
-						}
+						thumbRow.innerHTML = "";
 
-						// info-credit 복사
-						const infoNode = doc.querySelector(".info-credit");
-						if (textContainer && infoNode) {
-							let infoTarget = textContainer.querySelector(".info-credit");
-							if (!infoTarget) {
-								infoTarget = document.createElement("div");
-								infoTarget.className = "info-credit";
-								textContainer.appendChild(infoTarget);
-							}
-							infoTarget.innerHTML = infoNode.innerHTML;
-						}
+						thumbSrcs.forEach((src) => {
+							const img = document.createElement("img");
+							img.className = "thumb-image";
+							img.src = new URL(src, base).href; // 상대경로 보정
+							img.alt = "";
+							img.loading = "lazy";
+							thumbRow.appendChild(img);
+						});
 					} catch (err) {
-						// 실패하면 콘솔에 경고만 남김
-						console.warn("Failed to hydrate project card:", projectUrl, err);
+						console.warn("hydrate failed:", projectUrl, err);
 					}
 				}
-			})();
+			}
+
+			// 카테고리 필터: 중복된 addEventListener 2세트를 하나로 정리
+			function initCategoryFilter() {
+				const links = Array.from(
+					document.querySelectorAll(".category a[href^='#']")
+				);
+				const boxes = Array.from(document.querySelectorAll(".box"));
+				const allLink = document.getElementById("all");
+
+				function setSelected(active) {
+					links.forEach((a) => a.classList.toggle("selected", a === active));
+				}
+
+				function show(category) {
+					if (category === "all") {
+						boxes.forEach((b) => (b.style.display = "block"));
+						return;
+					}
+					boxes.forEach(
+						(b) =>
+							(b.style.display = b.classList.contains(category)
+								? "block"
+								: "none")
+					);
+				}
+
+				// 초기
+				if (allLink) {
+					setSelected(allLink);
+					show("all");
+				}
+
+				links.forEach((link) => {
+					link.addEventListener("click", (e) => {
+						e.preventDefault();
+						const category = link.getAttribute("href").slice(1);
+						setSelected(link);
+						show(category);
+					});
+				});
+			}
 		</script>
 	</body>
 </html>
