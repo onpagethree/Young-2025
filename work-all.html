@@ -37,15 +37,57 @@
 		</div>
 
 		<div class="container">
+			<a
+				class="box all graphic BI featured"
+				href="./25_JUNO.html"
+				data-src="./25_JUNO.html">
+				<div class="thumbnail-box">
+					<div class="thumb-row"></div>
+				</div>
+
+				<div class="text-container">
+					<div class="title"></div>
+					<div class="info-credit"></div>
+				</div>
+			</a>
+
 			<a class="box all graphic BI featured" href="./25_JUNO.html">
 				<div class="thumbnail-box">
 					<img
 						class="thumbnail"
 						src="./works/25_JUNO/25_junohair_thumbnail.jpg"
 						alt="" />
-					<div class="text-container">
-						<div class="text-container-title">Juno Hair</div>
-						<div class="text-container-sub">Identity</div>
+				</div>
+				<div class="text-container">
+					<div class="title">
+						Juno Hair
+						<br />
+						Visual Identity Renewal
+					</div>
+
+					<div class="info-credit">
+						<div class="credit_box">
+							<div class="credit_1">Field</div>
+							<div class="credit_2">Identity, Graphic</div>
+						</div>
+
+						<div class="credit_box">
+							<div class="credit_1">Date</div>
+							<div class="credit_2">2025. 1. — 2025. 8.</div>
+						</div>
+
+						<div class="credit_box">
+							<div class="credit_1">Team</div>
+							<div class="credit_2">
+								© studio fnt
+								<br />
+								Art direction: Jaemin Lee
+								<br />
+								Graphic design: Younghyun Song, Seoyoung Jang
+								<br />
+								Photo: Sujeong Park and Jaemin Lee, courtesy of studio fnt
+							</div>
+						</div>
 					</div>
 				</div>
 			</a>
@@ -102,22 +144,6 @@
 					<div class="text-container">
 						<div class="text-container-title">Radical Brewing Club 2024</div>
 						<div class="text-container-sub">Identity</div>
-					</div>
-				</div>
-			</a>
-
-			<a
-				class="box all graphic BI"
-				style="max-height: 60vh"
-				href="./24_rbc.html">
-				<div class="">
-					<img
-						class="thumbnail"
-						src="./works/24_RBC/24_rbc_thumbnail.png"
-						alt="" />
-					<div class="text-container">
-						<div class="text-container-title"></div>
-						<div class="text-container-sub"></div>
 					</div>
 				</div>
 			</a>
@@ -496,9 +522,7 @@
 					});
 				});
 			})(jQuery);
-		</script>
 
-		<script>
 			// 카테고리화
 			// 카테고리화
 			document.addEventListener("DOMContentLoaded", function () {
@@ -619,69 +643,85 @@
 				});
 			});
 
-			// 이미지를 로드해 가운데 픽셀 색상 추출
-			function extractColorFromImage(image, callback) {
-				const canvas = document.createElement("canvas");
-				const context = canvas.getContext("2d");
-				const img = new Image();
-				img.crossOrigin = "Anonymous"; // CORS 지원
-				img.src = image.src;
-
-				img.onload = function () {
-					canvas.width = img.width;
-					canvas.height = img.height;
-					context.drawImage(img, 0, 0);
-
-					// 가운데 부분의 좌표 계산
-					const centerX = Math.floor(img.width / 3.015);
-					const centerY = Math.floor(img.height / 3);
-
-					// 가운데 픽셀 색상 추출
-					const data = context.getImageData(centerX, centerY, 1, 1).data;
-					const r = data[0];
-					const g = data[1];
-					const b = data[2];
-					const a = data[3] / 255;
-
-					// 밝기 계산
-					const brightness = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-
-					// 너무 어두우면 흰색 사용, 아니면 추출한 색상
-					const color =
-						brightness < 50
-							? "rgba(255, 255, 255)"
-							: `rgba(${r}, ${g}, ${b}, ${a})`;
-
-					callback(color, brightness);
-				};
-			}
-
-			// 데스크톱(혹은 공통)에서만 배경색 변경
-			function applyColorForDesktop() {
-				document.querySelectorAll(".box").forEach((box) => {
-					const img = box.querySelector(".thumbnail-box img");
-					if (img) {
-						extractColorFromImage(img, (color, brightness) => {
-							const textContainer = box.querySelector(".text-container");
-							if (textContainer) {
-								// 배경색을 추출 색상으로
-								textContainer.style.backgroundColor = color;
-								// 기본 텍스트 색은 검정
-								textContainer.style.color = "black";
-
-								// 너무 어두운 색(밝기 < 70)이면, 아예 배경을 흰색으로 바꾼다
-								if (brightness < 70) {
-									textContainer.style.backgroundColor = "white";
-									textContainer.style.color = "black";
-								}
-							}
-						});
-					}
-				});
-			}
-
 			// DOM 로드 시 실행
 			window.addEventListener("DOMContentLoaded", applyColorForDesktop);
+
+			// box 가져오기
+			async function hydrateCardsFromProjectPages() {
+				const cards = document.querySelectorAll(".box[data-src]");
+
+				for (const card of cards) {
+					const src = card.getAttribute("data-src");
+					if (!src) continue;
+
+					try {
+						const res = await fetch(src, { cache: "no-store" });
+						if (!res.ok) continue;
+
+						const html = await res.text();
+						const doc = new DOMParser().parseFromString(html, "text/html");
+
+						// 1) title / credit
+						const titleEl = doc.querySelector(".project-info .title");
+						const creditEl = doc.querySelector(".project-info .info-credit");
+
+						const targetTitle = card.querySelector(".text-container .title");
+						const targetCredit = card.querySelector(
+							".text-container .info-credit"
+						);
+
+						if (titleEl && targetTitle)
+							targetTitle.innerHTML = titleEl.innerHTML.trim();
+						if (creditEl && targetCredit)
+							targetCredit.innerHTML = creditEl.innerHTML.trim();
+
+						// 2) 이미지 1~3: 상세페이지의 "첫번째 본문 이미지" + 첫 갤러리 2장 조합(안정적)
+						const firstHero = doc.querySelector(".container > img");
+						const galleryImgs = Array.from(
+							doc.querySelectorAll(".image-gallery img")
+						).slice(0, 2);
+
+						const picked = [];
+						if (firstHero) picked.push(firstHero);
+						picked.push(...galleryImgs);
+
+						const thumbRow = card.querySelector(".thumb-row");
+						if (!thumbRow) continue;
+
+						thumbRow.innerHTML = "";
+
+						picked.slice(0, 3).forEach((img) => {
+							const thumb = document.createElement("img");
+							thumb.src = img.getAttribute("src");
+							thumb.alt = "";
+							thumb.loading = "lazy";
+							thumbRow.appendChild(thumb);
+						});
+
+						// 3) 최후 fallback: 이미지가 하나도 못 잡히면 상세페이지의 첫 img 전체에서 3개
+						if (!thumbRow.children.length) {
+							const imgs = Array.from(doc.querySelectorAll("img"))
+								.filter((i) => i.getAttribute("src"))
+								.slice(0, 3);
+
+							imgs.forEach((img) => {
+								const thumb = document.createElement("img");
+								thumb.src = img.getAttribute("src");
+								thumb.alt = "";
+								thumb.loading = "lazy";
+								thumbRow.appendChild(thumb);
+							});
+						}
+					} catch (e) {
+						console.error("hydrate failed:", src, e);
+					}
+				}
+			}
+
+			document.addEventListener(
+				"DOMContentLoaded",
+				hydrateCardsFromProjectPages
+			);
 		</script>
 	</body>
 </html>

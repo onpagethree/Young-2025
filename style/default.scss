@@ -101,7 +101,7 @@ body {
 
 	// HEADER 헤더
 	header {
-		margin: 2vh 0 10vh 0;
+		margin: 2vh 0 3vh 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
@@ -109,10 +109,10 @@ body {
 
 		//  HEADER 헤더 제목
 		.header_name {
-			font-size: 2rem;
+			font-size: 1.3rem;
 			letter-spacing: -0.03em;
 
-			position: fixed;
+			// position: fixed;
 			z-index: 1000;
 			mix-blend-mode: overlay;
 			/* Multiply 효과 적용 */
@@ -123,7 +123,7 @@ body {
 		}
 
 		.header_menu {
-			font-size: 2rem;
+			font-size: 1.3rem;
 			letter-spacing: -0.03em;
 
 			position: absolute;
@@ -186,7 +186,263 @@ body {
 			padding: $padding-mobile;
 
 			header {
-				margin: 2vh 0 4rem 0;
+				margin: 2vh 0 4rem 0; // ...existing code...
+
+				/* work-all 카드 내 credit 스타일 */
+				body {
+					.container {
+						.box {
+							.text-container {
+								position: relative;
+								padding: 14px;
+								box-sizing: border-box;
+
+								.credit-toggle {
+									display: inline-block;
+									margin-top: 10px;
+									padding: 6px 10px;
+									font-size: 12px;
+									background: rgba(0, 0, 0, 0.06);
+									border: 1px solid rgba(0, 0, 0, 0.08);
+									color: #000;
+									cursor: pointer;
+									border-radius: 4px;
+								}
+
+								.credit-content {
+									position: absolute;
+									left: 0;
+									bottom: calc(100% + 10px);
+									width: 260px;
+									background: rgba(255, 255, 255, 0.98);
+									color: #111;
+									padding: 10px;
+									box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+									border-radius: 6px;
+									font-size: 12px;
+									line-height: 1.45;
+									z-index: 10;
+								}
+
+								.credit_box {
+									margin-bottom: 8px;
+								}
+								.credit_1 {
+									font-weight: 700;
+									font-size: 11px;
+									color: #666;
+								}
+								.credit_2 {
+									font-size: 12px;
+									color: #222;
+								}
+
+								@media (max-width: 640px) {
+									.credit-content {
+										position: static;
+										width: 100%;
+										box-shadow: none;
+										margin-top: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// ...existing code...				// ...existing code...
+
+				/* work-all 카드 내 credit 스타일 */
+				body {
+					.container {
+						.box {
+							.text-container {
+								position: relative;
+								padding: 14px;
+								box-sizing: border-box;
+
+								.credit-toggle {
+									display: inline-block;
+									margin-top: 10px;
+									padding: 6px 10px;
+									font-size: 12px;
+									background: rgba(0, 0, 0, 0.06);
+									border: 1px solid rgba(0, 0, 0, 0.08);
+									color: #000;
+									cursor: pointer;
+									border-radius: 4px;
+								}
+
+								.credit-content {
+									position: absolute;
+									left: 0;
+									bottom: calc(100% + 10px);
+									width: 260px;
+									background: rgba(255, 255, 255, 0.98);
+									color: #111;
+									padding: 10px;
+									box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+									border-radius: 6px;
+									font-size: 12px;
+									line-height: 1.45;
+									z-index: 10;
+								}
+
+								.credit_box {
+									margin-bottom: 8px;
+								}
+								.credit_1 {
+									font-weight: 700;
+									font-size: 11px;
+									color: #666;
+								}
+								.credit_2 {
+									font-size: 12px;
+									color: #222;
+								}
+
+								@media (max-width: 640px) {
+									.credit-content {
+										position: static;
+										width: 100%;
+										box-shadow: none;
+										margin-top: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// ...existing code...				// ...existing code...
+
+				/* work-all 카드 내 credit 스타일 */
+				body {
+					.container {
+						.box {
+							.text-container {
+								position: relative;
+								padding: 14px;
+								box-sizing: border-box;
+
+								.credit-toggle {
+									display: inline-block;
+									margin-top: 10px;
+									padding: 6px 10px;
+									font-size: 12px;
+									background: rgba(0, 0, 0, 0.06);
+									border: 1px solid rgba(0, 0, 0, 0.08);
+									color: #000;
+									cursor: pointer;
+									border-radius: 4px;
+								}
+
+								.credit-content {
+									position: absolute;
+									left: 0;
+									bottom: calc(100% + 10px);
+									width: 260px;
+									background: rgba(255, 255, 255, 0.98);
+									color: #111;
+									padding: 10px;
+									box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+									border-radius: 6px;
+									font-size: 12px;
+									line-height: 1.45;
+									z-index: 10;
+								}
+
+								.credit_box {
+									margin-bottom: 8px;
+								}
+								.credit_1 {
+									font-weight: 700;
+									font-size: 11px;
+									color: #666;
+								}
+								.credit_2 {
+									font-size: 12px;
+									color: #222;
+								}
+
+								@media (max-width: 640px) {
+									.credit-content {
+										position: static;
+										width: 100%;
+										box-shadow: none;
+										margin-top: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// ...existing code...				// ...existing code...
+
+				/* work-all 카드 내 credit 스타일 */
+				body {
+					.container {
+						.box {
+							.text-container {
+								position: relative;
+								padding: 14px;
+								box-sizing: border-box;
+
+								.credit-toggle {
+									display: inline-block;
+									margin-top: 10px;
+									padding: 6px 10px;
+									font-size: 12px;
+									background: rgba(0, 0, 0, 0.06);
+									border: 1px solid rgba(0, 0, 0, 0.08);
+									color: #000;
+									cursor: pointer;
+									border-radius: 4px;
+								}
+
+								.credit-content {
+									position: absolute;
+									left: 0;
+									bottom: calc(100% + 10px);
+									width: 260px;
+									background: rgba(255, 255, 255, 0.98);
+									color: #111;
+									padding: 10px;
+									box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+									border-radius: 6px;
+									font-size: 12px;
+									line-height: 1.45;
+									z-index: 10;
+								}
+
+								.credit_box {
+									margin-bottom: 8px;
+								}
+								.credit_1 {
+									font-weight: 700;
+									font-size: 11px;
+									color: #666;
+								}
+								.credit_2 {
+									font-size: 12px;
+									color: #222;
+								}
+
+								@media (max-width: 640px) {
+									.credit-content {
+										position: static;
+										width: 100%;
+										box-shadow: none;
+										margin-top: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				// ...existing code...
 
 				.header_name {
 					font-size: 1.5rem;
