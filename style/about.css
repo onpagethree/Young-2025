@@ -7,7 +7,7 @@ body .container .AboutInfo {
   padding-right: 2.5vw;
 }
 body .container .AboutInfo .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.3em;
   margin-bottom: 0.5em;
 }
@@ -17,6 +17,7 @@ body .container .AboutInfo .contact a {
 body .container .AboutBody {
   flex: 1;
   margin-bottom: 4em;
+  font-size: 0.85rem;
   /* EN / KR 전환 버튼 스타일 */
   /* 활성 상태 시각 표시 */
 }
