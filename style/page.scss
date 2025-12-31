@@ -38,9 +38,14 @@ body {
 				padding-right: 5vw;
 
 				.title {
-					font-size: 3rem;
+					font-size: 2.5rem;
 					letter-spacing: -0.01em;
 					line-height: $titlelh;
+				}
+
+				#awardPage {
+					width: 10em;
+					margin-top: 4em;
 				}
 			}
 
@@ -52,10 +57,25 @@ body {
 
 				.caption {
 					padding-right: 4em;
+					margin-bottom: 2em;
 
 					.more-text {
 						display: none;
 						transition: all 0.3s ease-in-out;
+					}
+				}
+
+				/* 연결 페이지*/
+				.related-project {
+					// color: var(--gray);
+					color: black;
+					font-size: 0.75em;
+
+					display: flex;
+					flex-direction: row;
+					gap: 0.5em;
+					a:hover {
+						opacity: 0.5;
 					}
 				}
 
@@ -70,48 +90,27 @@ body {
 					font-size: 0.95em;
 					text-decoration: underline;
 					/* 밑줄 추가 */
-					margin: 1.5em 0 1.7em;
+					margin: 1em 0 0;
 
 					&:hover {
 						opacity: 0.5;
 					}
 				}
 
-				#awardPage {
-					width: 15em;
-					margin: 1.25em 0 2.7em;
-				}
-
-				/* 연결 페이지가 있는 경우 */
-				.info-page {
-					color: gray;
-					margin-top: -0.5em;
-					margin-bottom: 1.5em;
-					font-size: 0.95em;
-					line-height: 1.55em;
-
-					a:hover {
-						opacity: 0.5;
-					}
-				}
-
-				/* 크레딧 */
-				.credit_box {
+				.info-credit {
 					display: flex;
+					flex-direction: row;
+					width: 100%;
 
-					border-top: 1px solid black;
-					margin-top: 0.4em;
-					padding-top: 0.4em;
+					margin-top: 1em;
+					.credit_box {
+						font-size: 0.75em;
+						line-height: $lh;
+						margin-bottom: 0.6em;
 
-					font-size: 0.95em;
-					line-height: $lh;
-
-					.credit_1 {
-						width: 30%;
-					}
-
-					.credit_2 {
-						flex: 1;
+						&:first-child {
+							width: 45%;
+						}
 					}
 				}
 			}
@@ -253,25 +252,26 @@ body {
 			justify-content: space-between;
 			gap: 1.2vw;
 
+			/* 각 썸네일 박스: 일정 비율로 크기 고정(브라우저 높이에 따라 max 제한) */
 			.gallery-box {
-				/* 모달 갤러리 썸네일 사이즈 */
-				flex: 1 1 calc(50% - 0.75rem); /* 2개씩 배치되도록 */
-				height: auto;
-
+				flex: 1 1 calc(50% - 0.75rem);
+				aspect-ratio: 16 / 9; /* 박스 비율 고정 (필요시 4/3 등으로 변경) */
+				max-height: 65vh; /* 화면을 넘지 않도록 제한 */
 				overflow: hidden;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				margin: 0;
+				padding: 0;
 			}
 
+			/* 이미지가 항상 박스를 꽉 채우도록 강제 */
 			.gallery-box > img {
-				overflow: hidden;
-
-				width: 100%;
-				max-height: 65vh;
-
-				/* 이미지 정 사이즈 */
+				width: 100% !important;
+				height: 100% !important;
 				object-fit: cover;
+				object-position: center;
+				display: block;
 				margin: 0;
 			}
 		}
@@ -394,11 +394,11 @@ body {
 					}
 
 					#awardPage {
-						width: 12em;
-						margin: 2.5em 0 2.7em;
+						width: 7em;
+						margin: 2em 0 0;
 					}
 
-					.info-page {
+					.related-project {
 						margin-bottom: calc($vh-space * 0.75);
 						font-size: 0.98rem;
 					}
