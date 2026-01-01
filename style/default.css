@@ -90,7 +90,7 @@ body header {
 }
 body header .header_name {
   font-size: 1.3rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   z-index: 1000;
   mix-blend-mode: overlay;
   /* Multiply 효과 적용 */
@@ -100,7 +100,7 @@ body header .header_name:hover {
 }
 body header .header_menu {
   font-size: 1.3rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   position: absolute;
   right: 0.25rem;
 }

@@ -40,7 +40,7 @@ body .container .project-info .info_left {
   padding-right: 5vw;
 }
 body .container .project-info .info_left .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   letter-spacing: -0.01em;
   line-height: 1.2em;
 }
@@ -64,7 +64,7 @@ body .container .project-info .info_right .caption .more-text {
 }
 body .container .project-info .info_right .related-project {
   color: black;
-  font-size: 0.75em;
+  font-size: 0.9em;
   display: flex;
   flex-direction: row;
   gap: 0.5em;
@@ -95,7 +95,7 @@ body .container .project-info .info_right .info-credit {
   margin-top: 1em;
 }
 body .container .project-info .info_right .info-credit .credit_box {
-  font-size: 0.75em;
+  font-size: 0.9em;
   line-height: 1.45em;
   margin-bottom: 0.6em;
 }
