@@ -3,9 +3,10 @@ body .container {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  line-height: 1.4em;
-  /* EN / KR */
-  /* About Layout */
+  line-height: 1.45em;
+  margin-bottom: 3em;
+  /* language switch */
+  /* layout */
 }
 body .container .lang-switch {
   display: inline-flex;
@@ -25,13 +26,12 @@ body .container .lang-switch .lang-btn[aria-pressed=true] {
   color: black;
 }
 body .container .AboutFlex {
-  position: relative;
   display: flex;
+  position: relative;
   width: 100%;
-  /* 공통 */
-  /* About-1 / About-2 공통 */
+  line-height: 1.4em;
+  /* shared block */
   /* About-1 */
-  /* About-2 */
   /* About-3 */
 }
 body .container .AboutFlex .AboutCategory {
@@ -40,96 +40,56 @@ body .container .AboutFlex .AboutCategory {
 body .container .AboutFlex .history {
   color: var(--gray);
 }
-body .container .AboutFlex .About-1,
-body .container .AboutFlex .About-2 {
+body .container .AboutFlex .about-block {
   display: flex;
   flex-direction: column;
-  gap: 3em;
+  gap: 0.7em;
+  /* list (About-1 / About-2 공통) */
 }
-body .container .AboutFlex .About-1 .about-block,
-body .container .AboutFlex .About-2 .about-block {
+body .container .AboutFlex .about-block .item {
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
+  gap: 0.05em;
 }
-body .container .AboutFlex .About-1 .item,
-body .container .AboutFlex .About-2 .item {
-  display: flex;
-  flex-direction: column;
-}
-body .container .AboutFlex .About-1 .item > .lang-ko,
-body .container .AboutFlex .About-1 .item > .lang-en,
-body .container .AboutFlex .About-2 .item > .lang-ko,
-body .container .AboutFlex .About-2 .item > .lang-en {
+body .container .AboutFlex .about-block .item .lang-ko,
+body .container .AboutFlex .about-block .item .lang-en {
   display: block;
 }
-body .container .AboutFlex .About-1 {
-  width: 32%;
-  padding-right: 8%;
-}
-body .container .AboutFlex .About-1 #Reddot {
-  width: 2.2em;
-  height: auto;
-  display: inline-block;
-  vertical-align: top;
-  margin: 0.1em 0 0.3em 0;
-}
-body .container .AboutFlex .About-2 {
-  width: 40%;
-  padding-right: 10%;
-}
-body .container .AboutFlex .About-2 .AboutWork {
-  /* item list */
-  /* 하위 호환: 기존 ul.project-list */
-  /* 하위 호환: 기존 li.company */
-}
-body .container .AboutFlex .About-2 .AboutWork .company-block {
+body .container .AboutFlex .about-block .about-list {
+  margin: 0.4em 0 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6em;
-  margin: 0 0 2.2em;
+  gap: 0.7em;
 }
-body .container .AboutFlex .About-2 .AboutWork .company-title {
-  display: flex;
-  flex-direction: column;
-}
-body .container .AboutFlex .About-2 .AboutWork .company-name {
-  display: block;
-}
-body .container .AboutFlex .About-2 .AboutWork .work-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-body .container .AboutFlex .About-2 .AboutWork .work-items > .item {
+body .container .AboutFlex .about-block .about-list li {
   position: relative;
   padding-left: 0.9em;
 }
-body .container .AboutFlex .About-2 .AboutWork .work-items > .item::before {
+body .container .AboutFlex .about-block .about-list li::before {
   content: "∙";
   position: absolute;
   left: 0;
   top: 0;
 }
-body .container .AboutFlex .About-2 .AboutWork .project-list {
-  margin: 0.6em 0 0 0;
-  padding: 0;
-  list-style: none;
+body .container .AboutFlex .About-1 {
+  width: 32%;
+  padding-right: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }
-body .container .AboutFlex .About-2 .AboutWork .project-list > li {
-  position: relative;
-  padding-left: 0.9em;
-  margin: 0 0 0.6em;
+body .container .AboutFlex .About-1 #Reddot {
+  width: 2.2em;
+  margin: 0.1em 0 0.3em;
 }
-body .container .AboutFlex .About-2 .AboutWork .project-list > li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-body .container .AboutFlex .About-2 .AboutWork > .company {
-  margin: 0 0 2.2em;
-  list-style: none;
+body .container .AboutFlex .About-2 {
+  width: 45%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }
 body .container .AboutFlex .About-3 {
   flex: 1;
@@ -139,23 +99,21 @@ body .container .AboutFlex .About-3 .contact {
   top: 0;
   right: 0;
   width: 16vw;
-  background: rgba(255, 255, 255, 0.97);
   padding: 0.5em 0.8em;
+  background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  z-index: 10;
   line-height: 1.4em;
+  z-index: 10;
 }
 body .container .AboutFlex .About-3 .contact a:hover {
   color: var(--gray);
 }
 
-@media only screen and (max-width: 700px) {
+/* mobile */
+@media (max-width: 700px) {
   body .container {
     padding: 0 0.2em;
-  }
-  body .container .lang-switch {
-    margin-bottom: 1.2em;
   }
   body .container .AboutFlex {
     display: block;
@@ -171,32 +129,15 @@ body .container .AboutFlex .About-3 .contact a:hover {
   }
   body .container .AboutFlex .About-1 #Reddot {
     width: 2.1em;
-    margin: 0 0 0.3em 0;
   }
-  body .container .AboutFlex .About-2 .AboutWork .company-block,
-  body .container .AboutFlex .About-2 .AboutWork > .company {
-    margin-bottom: 2em;
-  }
-  body .container .AboutFlex .About-2 .AboutWork .work-items > .item {
+  body .container .AboutFlex .about-list li {
     padding-left: 1em;
-  }
-  body .container .AboutFlex .About-2 .AboutWork .work-items > .item::before {
-    left: 0;
-  }
-  body .container .AboutFlex .About-2 .AboutWork .project-list > li {
-    padding-left: 1em;
-    margin-bottom: 0.8em;
-  }
-  body .container .AboutFlex .About-2 .AboutWork .project-list > li::before {
-    left: 0;
   }
   body .container .AboutFlex .About-3 {
-    width: 100%;
     margin-top: 2em;
   }
   body .container .AboutFlex .About-3 .contact {
     position: static;
     width: 100%;
-    margin-top: 0;
   }
 }

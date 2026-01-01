@@ -15,25 +15,25 @@
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-Light.ttf);
   font-weight: 300;
-  size-adjust: 94%;
+  size-adjust: 93.5%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-Medium.ttf);
   font-weight: 500;
-  size-adjust: 94%;
+  size-adjust: 93.5%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-SemiBold.ttf);
   font-weight: 600;
-  size-adjust: 94%;
+  size-adjust: 93.5%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-ExtraBold.ttf);
   font-weight: 800;
-  size-adjust: 94%;
+  size-adjust: 93.5%;
 }
 /* 영문 폰트 "barlow" */
 * {

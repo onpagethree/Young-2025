@@ -1,16 +1,16 @@
-// line height
 $lh: 1.45em;
 $titlelh: 1.3em;
-$padding: 0 1.2vw 0 1.2vw;
 
 body {
 	.container {
 		display: flex;
 		flex-direction: column;
 		font-size: 1rem;
-		line-height: 1.4em;
+		line-height: $lh;
 
-		/* EN / KR */
+		margin-bottom: 3em;
+
+		/* language switch */
 		.lang-switch {
 			display: inline-flex;
 			gap: 0.6em;
@@ -24,20 +24,21 @@ body {
 				font-weight: 600;
 				cursor: pointer;
 				color: var(--gray);
-			}
 
-			.lang-btn[aria-pressed="true"] {
-				color: black;
+				&[aria-pressed="true"] {
+					color: black;
+				}
 			}
 		}
 
-		/* About Layout */
+		/* layout */
 		.AboutFlex {
-			position: relative;
 			display: flex;
+			position: relative;
 			width: 100%;
 
-			/* 공통 */
+			line-height: 1.4em;
+
 			.AboutCategory {
 				font-weight: 600;
 			}
@@ -46,26 +47,43 @@ body {
 				color: var(--gray);
 			}
 
-			/* About-1 / About-2 공통 */
-			.About-1,
-			.About-2 {
+			/* shared block */
+			.about-block {
 				display: flex;
 				flex-direction: column;
-				gap: 3em;
-
-				.about-block {
-					display: flex;
-					flex-direction: column;
-					gap: 0.6em;
-				}
+				gap: 0.7em;
 
 				.item {
 					display: flex;
 					flex-direction: column;
+					// 연도 위의 공간
+					gap: 0.05em;
 
-					> .lang-ko,
-					> .lang-en {
+					.lang-ko,
+					.lang-en {
 						display: block;
+					}
+				}
+
+				/* list (About-1 / About-2 공통) */
+				.about-list {
+					margin: 0.4em 0 0;
+					padding: 0;
+					list-style: none;
+					display: flex;
+					flex-direction: column;
+					gap: 0.7em;
+
+					li {
+						position: relative;
+						padding-left: 0.9em;
+
+						&::before {
+							content: "∙";
+							position: absolute;
+							left: 0;
+							top: 0;
+						}
 					}
 				}
 			}
@@ -74,83 +92,22 @@ body {
 			.About-1 {
 				width: 32%;
 				padding-right: 8%;
+				display: flex;
+				flex-direction: column;
+				gap: 3em;
 
 				#Reddot {
 					width: 2.2em;
-					height: auto;
-					display: inline-block;
-					vertical-align: top;
-					margin: 0.1em 0 0.3em 0;
+					margin: 0.1em 0 0.3em;
 				}
 			}
 
-			/* About-2 */
 			.About-2 {
-				width: 40%;
+				width: 45%;
 				padding-right: 10%;
-
-				.AboutWork {
-					.company-block {
-						display: flex;
-						flex-direction: column;
-						gap: 0.6em;
-						margin: 0 0 2.2em;
-					}
-
-					.company-title {
-						display: flex;
-						flex-direction: column;
-					}
-
-					.company-name {
-						display: block;
-					}
-
-					/* item list */
-					.work-items {
-						display: flex;
-						flex-direction: column;
-						gap: 0.5em;
-
-						> .item {
-							position: relative;
-							padding-left: 0.9em;
-
-							&::before {
-								content: "∙";
-								position: absolute;
-								left: 0;
-								top: 0;
-							}
-						}
-					}
-
-					/* 하위 호환: 기존 ul.project-list */
-					.project-list {
-						margin: 0.6em 0 0 0;
-						padding: 0;
-						list-style: none;
-
-						> li {
-							position: relative;
-							padding-left: 0.9em;
-							margin: 0 0 0.6em;
-
-							&::before {
-								content: "•";
-								position: absolute;
-								left: 0;
-								top: 0;
-							}
-						}
-					}
-
-					/* 하위 호환: 기존 li.company */
-					> .company {
-						margin: 0 0 2.2em;
-						list-style: none;
-					}
-				}
+				display: flex;
+				flex-direction: column;
+				gap: 3em;
 			}
 
 			/* About-3 */
@@ -162,14 +119,12 @@ body {
 					top: 0;
 					right: 0;
 					width: 16vw;
-
-					background: rgba(255, 255, 255, 0.97);
 					padding: 0.5em 0.8em;
+					background: rgba(255, 255, 255, 0.97);
 					box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 					border-radius: 8px;
-					z-index: 10;
-
 					line-height: 1.4em;
+					z-index: 10;
 
 					a:hover {
 						color: var(--gray);
@@ -180,14 +135,11 @@ body {
 	}
 }
 
-@media only screen and (max-width: 700px) {
+/* mobile */
+@media (max-width: 700px) {
 	body {
 		.container {
 			padding: 0 0.2em;
-
-			.lang-switch {
-				margin-bottom: 1.2em;
-			}
 
 			.AboutFlex {
 				display: block;
@@ -204,48 +156,19 @@ body {
 
 					#Reddot {
 						width: 2.1em;
-						margin: 0 0 0.3em 0;
 					}
 				}
 
-				.About-2 {
-					.AboutWork {
-						.company-block,
-						> .company {
-							margin-bottom: 2em;
-						}
-
-						.work-items {
-							> .item {
-								padding-left: 1em;
-
-								&::before {
-									left: 0;
-								}
-							}
-						}
-
-						.project-list {
-							> li {
-								padding-left: 1em;
-								margin-bottom: 0.8em;
-
-								&::before {
-									left: 0;
-								}
-							}
-						}
-					}
+				.about-list li {
+					padding-left: 1em;
 				}
 
 				.About-3 {
-					width: 100%;
 					margin-top: 2em;
 
 					.contact {
 						position: static;
 						width: 100%;
-						margin-top: 0;
 					}
 				}
 			}
