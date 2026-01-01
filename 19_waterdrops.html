@@ -96,7 +96,8 @@
 			© Younghyun Song. 2025
 			<br />
 			<span id="underline">
-				<a href="mailto:yhyun4156@gmail.com">mail</a>
+				<a href="#" class="copy-mail" data-mail="yhyun4156@gmail.com">mail</a>
+
 				<a
 					href="https://www.linkedin.com/in/younghyun-song-793112165/"
 					target="_blank">
@@ -217,6 +218,48 @@
 					});
 				});
 			})(jQuery);
+			// Mail Copied
+			const mailLinks = document.querySelectorAll(".copy-mail");
+
+			mailLinks.forEach((link) => {
+				link.addEventListener("click", (e) => {
+					e.preventDefault();
+					const mail = link.dataset.mail;
+
+					// toast 요소 생성/사용
+					let toast = document.getElementById("toast-footer");
+					if (!toast) {
+						toast = document.createElement("div");
+						toast.id = "toast-footer";
+						toast.textContent = "Copied to clipboard";
+						toast.style.position = "absolute";
+						toast.style.padding = "0.4em 1.2em";
+						toast.style.background = "rgba(235, 235, 235, 0.8)";
+						toast.style.color = "#000";
+						toast.style.borderRadius = "8px";
+						toast.style.fontSize = "0.9em";
+						toast.style.opacity = "0";
+						toast.style.transition = "opacity .8s ease";
+						document.body.appendChild(toast);
+					}
+
+					// 상위 div 기준 toast 위치 계산
+					let parentDiv = link.closest("footer"); // footer 기준
+					if (!parentDiv) parentDiv = link.closest(".contact"); // footer 없으면 contact 기준
+
+					const rect = parentDiv.getBoundingClientRect();
+					toast.style.left = rect.left + rect.width / 2 + "px";
+					toast.style.top = rect.top - 75 + window.scrollY + "px"; // 위로 띄움
+					toast.style.transform = "translateX(-50%)";
+
+					navigator.clipboard.writeText(mail).then(() => {
+						toast.style.opacity = "1";
+						setTimeout(() => {
+							toast.style.opacity = "0";
+						}, 1000);
+					});
+				});
+			});
 		</script>
 	</body>
 </html>

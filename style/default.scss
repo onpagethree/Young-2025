@@ -150,7 +150,7 @@ body {
 
 	/* FOOTER 하단바 웹사이즈 */
 	footer {
-		padding-top: 1.2vw;
+		margin-top: 5rem;
 		padding-bottom: 1.2vw;
 
 		font-size: 0.85rem;
@@ -161,6 +161,7 @@ body {
 		a {
 			margin-right: 0.25em;
 		}
+
 		#underline {
 			display: flex;
 			justify-content: center;
