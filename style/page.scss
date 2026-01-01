@@ -365,7 +365,6 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.container {
-			font-size: 0.94rem;
 			gap: 2vw;
 
 			/* 프로젝트 설명 모바일사이즈 */
@@ -399,17 +398,17 @@ body {
 
 					.related-project {
 						margin-bottom: calc($vh-space * 0.75);
-						font-size: 0.98rem;
+						font-size: 0.9rem;
 					}
 
 					.info-credit {
 						/* 프로젝트 크레딧 모바일*/
 						.credit_box {
-							font-size: 0.98rem;
+							font-size: 0.9rem;
 						}
 
 						.credit_1 {
-							width: 22%;
+							width: 20%;
 						}
 					}
 				}

@@ -174,7 +174,7 @@ body {
 /* 모바일사이즈  모바일사이즈  모바일사이즈 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
 	html {
-		font-size: 4vw;
+		font-size: 3.5vw;
 
 		body {
 			padding: $padding-mobile;
@@ -183,13 +183,13 @@ body {
 				margin: 1vh 0 2em 0;
 
 				.header_name {
-					font-size: 1.5rem;
+					font-size: 1.6rem;
 					position: relative;
 				}
 
 				/*HEADER 헤더 모바일사이즈*/
 				.header_menu {
-					font-size: 1.5rem;
+					font-size: 1.6rem;
 				}
 
 				#menu {

@@ -157,7 +157,7 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
 }
 @media (max-width: 700px) {
   body .category {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 1vh;
   }
   body .container {
@@ -197,12 +197,12 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
     height: fit-content;
   }
   body .container .box .text-container .title {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     line-height: 1.2em;
     font-weight: 500;
   }
   body .container .box .text-container .info-credit {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     line-height: 1.3em;
     letter-spacing: 0.01em;
     display: flex;

@@ -135,7 +135,7 @@ body footer #underline {
 /* 모바일사이즈  모바일사이즈  모바일사이즈 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
   html {
-    font-size: 4vw;
+    font-size: 3.5vw;
   }
   html body {
     padding: 0 2vw 0 2vw;
@@ -146,11 +146,11 @@ body footer #underline {
     /*HEADER 헤더 모바일사이즈*/
   }
   html body header .header_name {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     position: relative;
   }
   html body header .header_menu {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   html body header #menu {
     margin-left: 0.7em;

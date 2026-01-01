@@ -158,22 +158,34 @@ body {
 		.container {
 			padding: 0 0.2em;
 
+			font-size: 1rem;
+
 			.AboutFlex {
-				display: block;
+				flex-direction: column;
+				gap: 1.5em;
 
 				.About-1,
 				.About-2 {
 					width: 100%;
 					padding-right: 0;
-					gap: 2.2em;
+					gap: 2em;
+				}
+
+				.about-block {
+					gap: 0.4em;
+
+					.item {
+						gap: 0;
+					}
 				}
 
 				.About-1 {
-					margin-bottom: 2.2em;
+					order: 2;
+				}
 
-					#Reddot {
-						width: 2.1em;
-					}
+				.About-2 {
+					order: 1; // 최상단
+					margin-bottom: 0.7em;
 				}
 
 				.about-list li {
@@ -181,7 +193,9 @@ body {
 				}
 
 				.About-3 {
+					order: 3;
 					margin-top: 2em;
+					display: none;
 
 					.contact {
 						position: static;

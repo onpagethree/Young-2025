@@ -304,7 +304,6 @@ body .container .lightbox .close:hover {
 
 @media only screen and (max-width: 700px) {
   body .container {
-    font-size: 0.94rem;
     gap: 2vw;
     /* 프로젝트 설명 모바일사이즈 */
     /*IMG IMG 중간 글 모바일*/
@@ -341,16 +340,16 @@ body .container .lightbox .close:hover {
   }
   body .container .project-info .info_right .related-project {
     margin-bottom: 2.25vh;
-    font-size: 0.98rem;
+    font-size: 0.9rem;
   }
   body .container .project-info .info_right .info-credit {
     /* 프로젝트 크레딧 모바일*/
   }
   body .container .project-info .info_right .info-credit .credit_box {
-    font-size: 0.98rem;
+    font-size: 0.9rem;
   }
   body .container .project-info .info_right .info-credit .credit_1 {
-    width: 22%;
+    width: 20%;
   }
   body .container .mid_text {
     padding: 1.5em;

@@ -126,27 +126,38 @@ body .container .AboutFlex .About-3 .contact .toast.is-active {
 @media (max-width: 700px) {
   body .container {
     padding: 0 0.2em;
+    font-size: 1rem;
   }
   body .container .AboutFlex {
-    display: block;
+    flex-direction: column;
+    gap: 1.5em;
   }
   body .container .AboutFlex .About-1,
   body .container .AboutFlex .About-2 {
     width: 100%;
     padding-right: 0;
-    gap: 2.2em;
+    gap: 2em;
+  }
+  body .container .AboutFlex .about-block {
+    gap: 0.4em;
+  }
+  body .container .AboutFlex .about-block .item {
+    gap: 0;
   }
   body .container .AboutFlex .About-1 {
-    margin-bottom: 2.2em;
+    order: 2;
   }
-  body .container .AboutFlex .About-1 #Reddot {
-    width: 2.1em;
+  body .container .AboutFlex .About-2 {
+    order: 1;
+    margin-bottom: 0.7em;
   }
   body .container .AboutFlex .about-list li {
     padding-left: 1em;
   }
   body .container .AboutFlex .About-3 {
+    order: 3;
     margin-top: 2em;
+    display: none;
   }
   body .container .AboutFlex .About-3 .contact {
     position: static;
