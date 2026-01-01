@@ -104,6 +104,9 @@ body .container .AboutFlex .About-3 .contact {
   line-height: 1.4em;
   z-index: 10;
 }
+body .container .AboutFlex .About-3 .contact a {
+  z-index: 100;
+}
 body .container .AboutFlex .About-3 .contact a:hover {
   color: var(--gray);
 }
@@ -113,7 +116,7 @@ body .container .AboutFlex .About-3 .contact .toast {
   transform: translateX(-50%);
   width: 60%;
   opacity: 0;
-  z-index: 100;
+  z-index: 50;
 }
 body .container .AboutFlex .About-3 .contact .toast.is-active {
   opacity: 1;
