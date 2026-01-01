@@ -6,79 +6,174 @@ $padding: 0 1.2vw 0 1.2vw;
 body {
 	.container {
 		display: flex;
+		flex-direction: column;
+		font-size: 1rem;
+		line-height: 1.4em;
 
-		.AboutInfo {
-			width: 48%;
-			padding-right: 2.5vw;
-
-			.title {
-				font-size: 2.5rem;
-				line-height: $titlelh;
-				margin-bottom: 0.5em;
-			}
-
-			.contact {
-				a {
-					color: var(--gray);
-				}
-			}
-		}
-
-		.AboutBody {
-			flex: 1;
-			margin-bottom: 4em;
-			font-size: 0.85rem;
-
-			/* EN / KR 전환 버튼 스타일 */
-			.lang-switch {
-				display: inline-flex;
-				gap: 0.6em;
-				margin-bottom: 0.2em;
-			}
+		/* EN / KR */
+		.lang-switch {
+			display: inline-flex;
+			gap: 0.6em;
+			margin-bottom: 1.35em;
 
 			.lang-btn {
 				background: none;
 				border: none;
 				padding: 0;
-				font: inherit; /* 본문과 같은 폰트/크기 */
-				font-weight: 600; /* Bold */
+				font: inherit;
+				font-weight: 600;
 				cursor: pointer;
 				color: var(--gray);
 			}
 
-			/* 활성 상태 시각 표시 */
 			.lang-btn[aria-pressed="true"] {
 				color: black;
 			}
+		}
 
-			.About_list {
+		/* About Layout */
+		.AboutFlex {
+			position: relative;
+			display: flex;
+			width: 100%;
+
+			/* 공통 */
+			.AboutCategory {
+				font-weight: 600;
+			}
+
+			.history {
+				color: var(--gray);
+			}
+
+			/* About-1 / About-2 공통 */
+			.About-1,
+			.About-2 {
 				display: flex;
-				border-top: 0.75px solid black;
-				padding: 0.9em 0;
+				flex-direction: column;
+				gap: 3em;
 
-				.li_1 {
-					width: 8vw;
+				.about-block {
+					display: flex;
+					flex-direction: column;
+					gap: 0.6em;
 				}
 
-				.li_2 {
-					flex: 1;
-					line-height: 1.5em;
-					padding-right: 7em;
+				.item {
+					display: flex;
+					flex-direction: column;
 
-					.history {
-						color: var(--gray);
+					> .lang-ko,
+					> .lang-en {
+						display: block;
+					}
+				}
+			}
+
+			/* About-1 */
+			.About-1 {
+				width: 32%;
+				padding-right: 8%;
+
+				#Reddot {
+					width: 2.2em;
+					height: auto;
+					display: inline-block;
+					vertical-align: top;
+					margin: 0.1em 0 0.3em 0;
+				}
+			}
+
+			/* About-2 */
+			.About-2 {
+				width: 40%;
+				padding-right: 10%;
+
+				.AboutWork {
+					.company-block {
+						display: flex;
+						flex-direction: column;
+						gap: 0.6em;
+						margin: 0 0 2.2em;
 					}
 
-					.list-style {
-						li {
-							list-style-type: "-   ";
-							left: 2.2em;
+					.company-title {
+						display: flex;
+						flex-direction: column;
+					}
+
+					.company-name {
+						display: block;
+					}
+
+					/* item list */
+					.work-items {
+						display: flex;
+						flex-direction: column;
+						gap: 0.5em;
+
+						> .item {
+							position: relative;
+							padding-left: 0.9em;
+
+							&::before {
+								content: "∙";
+								position: absolute;
+								left: 0;
+								top: 0;
+							}
 						}
 					}
-				}
 
-				.WorkTitle {
-					font-family: "HALRepostItalic";
+					/* 하위 호환: 기존 ul.project-list */
+					.project-list {
+						margin: 0.6em 0 0 0;
+						padding: 0;
+						list-style: none;
+
+						> li {
+							position: relative;
+							padding-left: 0.9em;
+							margin: 0 0 0.6em;
+
+							&::before {
+								content: "•";
+								position: absolute;
+								left: 0;
+								top: 0;
+							}
+						}
+					}
+
+					/* 하위 호환: 기존 li.company */
+					> .company {
+						margin: 0 0 2.2em;
+						list-style: none;
+					}
+				}
+			}
+
+			/* About-3 */
+			.About-3 {
+				flex: 1;
+
+				.contact {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 16vw;
+
+					background: rgba(255, 255, 255, 0.97);
+					padding: 0.5em 0.8em;
+					box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+					border-radius: 8px;
+					z-index: 10;
+
+					line-height: 1.4em;
+
+					a:hover {
+						color: var(--gray);
+					}
 				}
 			}
 		}
@@ -88,35 +183,69 @@ body {
 @media only screen and (max-width: 700px) {
 	body {
 		.container {
-			display: block;
 			padding: 0 0.2em;
 
-			.AboutInfo {
-				width: 100%;
-				margin-bottom: 3.2rem;
-
-				.title {
-					font-size: 1.75rem;
-					margin-bottom: 1.1rem;
-				}
+			.lang-switch {
+				margin-bottom: 1.2em;
 			}
 
-			.AboutBody {
-				width: 100%; /* ⬅ 모바일에서 전체 폭 사용 */
-				padding-right: 0; /* ⬅ 우측 패딩 제거로 꽉 차게 */
+			.AboutFlex {
+				display: block;
 
-				.About_list {
-					display: block; /* flex 대신 block */
+				.About-1,
+				.About-2 {
 					width: 100%;
+					padding-right: 0;
+					gap: 2.2em;
+				}
 
-					.li_1 {
-						width: 100%;
-						margin-bottom: 0.5em;
+				.About-1 {
+					margin-bottom: 2.2em;
+
+					#Reddot {
+						width: 2.1em;
+						margin: 0 0 0.3em 0;
 					}
+				}
 
-					.li_2 {
+				.About-2 {
+					.AboutWork {
+						.company-block,
+						> .company {
+							margin-bottom: 2em;
+						}
+
+						.work-items {
+							> .item {
+								padding-left: 1em;
+
+								&::before {
+									left: 0;
+								}
+							}
+						}
+
+						.project-list {
+							> li {
+								padding-left: 1em;
+								margin-bottom: 0.8em;
+
+								&::before {
+									left: 0;
+								}
+							}
+						}
+					}
+				}
+
+				.About-3 {
+					width: 100%;
+					margin-top: 2em;
+
+					.contact {
+						position: static;
 						width: 100%;
-						padding-right: 1.5em;
+						margin-top: 0;
 					}
 				}
 			}
