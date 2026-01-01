@@ -8,12 +8,10 @@ $padding: 0 1.2vw;
 
 body {
 	.category {
-		margin-bottom: 1.5vh;
-		font-size: 1rem;
-		letter-spacing: -0.03em;
 		line-height: 1.4em;
 		color: var(--gray);
 
+		margin-bottom: 1.5vh;
 		.selected {
 			color: #000;
 		}
@@ -34,7 +32,7 @@ body {
 
 		display: flex;
 		flex-direction: column;
-		gap: 6vw;
+		gap: 3vw;
 	}
 
 	.box {
@@ -115,19 +113,24 @@ body {
 			border-radius: 8px;
 			z-index: 10;
 
+			display: flex;
+			flex-direction: column;
+			gap: 0.8em;
+
 			.title {
 				font-size: 1rem;
 				line-height: 1.2em;
-				margin-bottom: 0.4em;
+				font-weight: 500;
 			}
 
 			.info-credit {
 				font-size: 0.75rem;
 				line-height: 1.3em;
+				letter-spacing: 0.01em;
 
 				display: flex;
 				flex-direction: column;
-				gap: 0.4em;
+				gap: 1.2em;
 			}
 
 			#award {
@@ -145,7 +148,7 @@ body {
 	// Box-flex: 썸네일 체인 가로 배열용
 	.box-flex {
 		display: flex;
-		gap: 1vw;
+		gap: 0.5vw;
 		width: 100%;
 
 		> .box {
@@ -198,7 +201,6 @@ body {
 		.category {
 			margin-left: 0.05em;
 			font-size: 1.3rem;
-			letter-spacing: -0.02em;
 		}
 
 		.container {

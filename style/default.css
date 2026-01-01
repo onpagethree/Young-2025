@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap");
-@import url("https://use.typekit.net/iqk7gyb.css");
+@import url("https://use.typekit.net/uya2url.css");
 :root {
   --lightgray: rgb(245, 245, 245);
   --gray: rgb(200, 200, 200);
@@ -13,27 +13,21 @@
 /* 한글 폰트 */
 @font-face {
   font-family: "gothica1";
-  src: url(../source_default/Gothica1/GothicA1-Light.ttf);
-  font-weight: 300;
-  size-adjust: 93.5%;
+  src: url(../source_default/Gothica1/GothicA1-Regular.ttf);
+  font-weight: 400;
+  size-adjust: 92%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-Medium.ttf);
   font-weight: 500;
-  size-adjust: 93.5%;
-}
-@font-face {
-  font-family: "gothica1";
-  src: url(../source_default/Gothica1/GothicA1-SemiBold.ttf);
-  font-weight: 600;
-  size-adjust: 93.5%;
+  size-adjust: 92%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-ExtraBold.ttf);
-  font-weight: 800;
-  size-adjust: 93.5%;
+  font-weight: 700;
+  size-adjust: 92%;
 }
 /* 영문 폰트 "barlow" */
 * {
@@ -43,8 +37,8 @@
   list-style: none;
   text-decoration: none;
   position: relative;
-  font-family: "barlow", "gothica1", sans-serif;
-  font-weight: 500;
+  font-family: "franklin-gothic-std", "gothica1", sans-serif;
+  font-weight: 400;
   word-break: keep-all;
   touch-action: pan-y; /* 세로만 스와이프 */
 }
@@ -90,7 +84,7 @@ body header {
 }
 body header .header_name {
   font-size: 1.3rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   z-index: 1000;
   mix-blend-mode: overlay;
   /* Multiply 효과 적용 */
@@ -100,7 +94,6 @@ body header .header_name:hover {
 }
 body header .header_menu {
   font-size: 1.3rem;
-  letter-spacing: -0.01em;
   position: absolute;
   right: 0.25rem;
 }

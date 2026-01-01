@@ -41,7 +41,6 @@ body .container .project-info .info_left {
 }
 body .container .project-info .info_left .title {
   font-size: 3rem;
-  letter-spacing: -0.01em;
   line-height: 1.2em;
 }
 body .container .project-info .info_left #awardPage {

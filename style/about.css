@@ -33,6 +33,9 @@ body .container .AboutFlex {
   /* About-1 */
   /* About-3 */
 }
+body .container .AboutFlex .AboutCategory {
+  font-weight: 500;
+}
 body .container .AboutFlex .history {
   color: var(--gray);
 }
@@ -86,6 +89,10 @@ body .container .AboutFlex .About-2 {
   display: flex;
   flex-direction: column;
   gap: 3em;
+}
+body .container .AboutFlex .About-2 #Now span,
+body .container .AboutFlex .About-2 #Now div {
+  font-weight: 600;
 }
 body .container .AboutFlex .About-3 {
   flex: 1;
