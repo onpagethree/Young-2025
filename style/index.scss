@@ -33,164 +33,164 @@ body {
 		display: flex;
 		flex-direction: column;
 		gap: 3vw;
-	}
 
-	.box {
-		position: relative;
-		display: block;
-		width: 100vw;
-		height: 62vh;
-		margin: 0;
-
-		text-decoration: none;
-		color: inherit;
-
-		.thumbnail-box {
+		.box {
 			position: relative;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
+			display: block;
+			width: 100vw;
+			height: 62vh;
+			margin: 0;
 
-			> img {
-				width: 100%;
-				height: auto;
-				max-height: 60vh;
-				display: block;
-				object-fit: contain;
-			}
+			text-decoration: none;
+			color: inherit;
 
-			.thumb-row {
-				display: flex;
-				align-items: center;
+			.thumbnail-box {
+				position: relative;
 				width: 100%;
 				height: 100%;
+				overflow: hidden;
 
-				overflow-x: auto;
-				overflow-y: hidden;
-				-webkit-overflow-scrolling: touch;
-
-				&::-webkit-scrollbar {
-					display: none;
-				}
-				scrollbar-width: none;
-
-				.thumb-image {
-					height: 100%;
+				> img {
+					width: 100%;
+					height: auto;
+					max-height: 60vh;
 					display: block;
-					object-fit: cover;
+					object-fit: contain;
+				}
 
-					flex: 0 0 calc(100% / 2.3);
-					width: calc(100% / 2.3) !important;
+				.thumb-row {
+					display: flex;
+					align-items: center;
+					width: 100%;
+					height: 100%;
 
-					// 기본 box에서는 1장일 때 여백/contain
-					&:only-child {
-						flex: 0 0 auto;
-						width: auto !important;
-						max-width: 72vw;
-						max-height: 100%;
-						margin: 0 auto;
-						object-fit: contain;
+					overflow-x: auto;
+					overflow-y: hidden;
+					-webkit-overflow-scrolling: touch;
+
+					&::-webkit-scrollbar {
+						display: none;
+					}
+					scrollbar-width: none;
+
+					.thumb-image {
+						height: 100%;
+						display: block;
+						object-fit: cover;
+
+						flex: 0 0 calc(100% / 2.3);
+						width: calc(100% / 2.3) !important;
+
+						// 기본 box에서는 1장일 때 여백/contain
+						&:only-child {
+							flex: 0 0 auto;
+							width: auto !important;
+							max-width: 72vw;
+							max-height: 100%;
+							margin: 0 auto;
+							object-fit: contain;
+						}
+					}
+
+					.thumb-image:nth-child(1):nth-last-child(2),
+					.thumb-image:nth-child(2):nth-last-child(1) {
+						flex: 0 0 50%;
+						width: 50% !important;
+						object-fit: cover;
 					}
 				}
-
-				.thumb-image:nth-child(1):nth-last-child(2),
-				.thumb-image:nth-child(2):nth-last-child(1) {
-					flex: 0 0 50%;
-					width: 50% !important;
-					object-fit: cover;
-				}
-			}
-		}
-
-		.text-container {
-			position: absolute;
-			right: 1.2vw;
-			top: 1.2vw;
-			width: 16vw;
-			background: rgba(255, 255, 255, 0.97);
-			padding: 0.5em 0.7em;
-			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-			border-radius: 8px;
-			z-index: 10;
-
-			display: flex;
-			flex-direction: column;
-			gap: 0.8em;
-
-			.title {
-				font-size: 1rem;
-				line-height: 1.2em;
-				font-weight: 500;
 			}
 
-			.info-credit {
-				font-size: 0.75rem;
-				line-height: 1.3em;
-				letter-spacing: 0.01em;
+			.text-container {
+				position: absolute;
+				right: 1.2vw;
+				top: 1.2vw;
+				width: 16vw;
+				background: rgba(255, 255, 255, 0.97);
+				padding: 0.5em 0.7em;
+				box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+				border-radius: 8px;
+				z-index: 10;
 
 				display: flex;
 				flex-direction: column;
-				gap: 1.2em;
-			}
+				gap: 0.8em;
 
-			#award {
-				position: absolute;
-				top: 0.8em;
-				right: 0.8em;
-				width: 13%;
-				height: auto;
-				z-index: 2;
-				pointer-events: none;
+				.title {
+					font-size: 1rem;
+					line-height: 1.2em;
+					font-weight: 500;
+				}
+
+				.info-credit {
+					font-size: 0.75rem;
+					line-height: 1.3em;
+					letter-spacing: 0.01em;
+
+					display: flex;
+					flex-direction: column;
+					gap: 1.2em;
+				}
+
+				#award {
+					position: absolute;
+					top: 0.8em;
+					right: 0.8em;
+					width: 13%;
+					height: auto;
+					z-index: 2;
+					pointer-events: none;
+				}
 			}
 		}
-	}
 
-	// Box-flex: 썸네일 체인 가로 배열용
-	.box-flex {
-		display: flex;
-		gap: 0.5vw;
-		width: 100%;
-
-		> .box {
-			flex: 1;
-			min-width: 0;
-			width: auto;
-			height: 62vh;
-		}
-
-		> .box .thumb-row {
-			height: 100%;
+		// Box-flex: 썸네일 체인 가로 배열용
+		.box-flex {
 			display: flex;
-			overflow: hidden; // 스크롤 제거
-		}
-
-		// 이미지: 항상 박스를 채움
-		> .box .thumb-row .thumb-image {
-			flex: 1 1 0;
-			width: 100% !important;
-			height: 100%;
-			object-fit: cover;
-		}
-
-		.thumbnail-box {
+			gap: 0.5vw;
 			width: 100%;
-			height: 100%;
 
-			.thumb-row {
-				// box-flex는 스크롤/여백 규칙 무시하고 꽉 채움
-				overflow: hidden;
+			> .box {
+				flex: 1;
+				min-width: 0;
+				width: auto;
+				height: 62vh;
+			}
 
-				.thumb-image {
-					// 기본 3등분 유지 + cover로 꽉 채우기
-					object-fit: cover;
+			> .box .thumb-row {
+				height: 100%;
+				display: flex;
+				overflow: hidden; // 스크롤 제거
+			}
 
-					// 1장이어도 여백 없이 꽉
-					&:only-child {
-						flex: 0 0 100%;
-						width: 100% !important;
-						max-width: none;
-						margin: 0;
+			// 이미지: 항상 박스를 채움
+			> .box .thumb-row .thumb-image {
+				flex: 1 1 0;
+				width: 100% !important;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.thumbnail-box {
+				width: 100%;
+				height: 100%;
+
+				.thumb-row {
+					// box-flex는 스크롤/여백 규칙 무시하고 꽉 채움
+					overflow: hidden;
+
+					.thumb-image {
+						// 기본 3등분 유지 + cover로 꽉 채우기
 						object-fit: cover;
+
+						// 1장이어도 여백 없이 꽉
+						&:only-child {
+							flex: 0 0 100%;
+							width: 100% !important;
+							max-width: none;
+							margin: 0;
+							object-fit: cover;
+						}
 					}
 				}
 			}
@@ -199,99 +199,103 @@ body {
 
 	@media (max-width: 700px) {
 		.category {
-			margin-left: 0.05em;
-			font-size: 1.3rem;
+			font-size: 1rem;
+			margin-bottom: 1vh;
 		}
 
 		.container {
-			gap: 1.6em;
-		}
+			margin: 0 -2vw;
+			gap: 0.6em;
 
-		.box {
-			width: 100vw;
-			max-width: 100%;
-			height: auto;
+			height: 100vh;
 
-			.thumb-row {
-				align-items: stretch;
+			.box {
+				width: 100vw;
+				max-width: 100%;
+				height: 70vh;
 
-				.thumb-image {
-					flex: 0 0 80vw;
-					width: 80vw !important;
-					height: 62vh;
+				.thumbnail-box {
+					.thumb-row {
+						align-items: stretch;
+
+						.thumb-image {
+							flex: 0 0 80vw;
+							width: 80vw !important;
+							height: 70vh;
+						}
+
+						.thumb-image:only-child {
+							width: auto !important;
+							max-width: 88vw;
+							height: 70vh;
+							margin: 0 auto;
+							object-fit: contain;
+						}
+					}
 				}
 
-				.thumb-image:only-child {
-					width: auto !important;
-					max-width: 88vw;
-					height: 62vh;
-					margin: 0 auto;
-					object-fit: contain;
+				.text-container {
+					position: absolute;
+					right: 2vw;
+					bottom: 2vw; // 우하단 고정
+
+					width: 45vw;
+					padding: 0.5em 0.7em;
+					background: rgba(255, 255, 255, 0.95);
+
+					z-index: 10;
+
+					gap: 0.5em;
+
+					height: fit-content; // 컨텐츠 높이에 맞춤
+
+					.title {
+						font-size: 0.9rem;
+						line-height: 1.2em;
+						font-weight: 500;
+					}
+
+					.info-credit {
+						font-size: 0.7rem;
+						line-height: 1.3em;
+						letter-spacing: 0.01em;
+
+						display: flex;
+						flex-direction: column;
+						gap: 1.2em;
+					}
+
+					#award {
+						width: 2.5em;
+						top: 6em;
+					}
 				}
 			}
 
-			.text-container {
-				position: static;
-				padding: 0.9em 0 0;
-				pointer-events: auto;
+			.box-flex {
+				flex-direction: column;
 
-				.text-container-title {
-					font-size: 1.6rem;
-					width: 80%;
-					margin-bottom: 0.15em;
-				}
+				width: 100vw;
+				max-width: 100%;
+				height: 70vh; // 부모 높이 고정
+				min-height: 70vh; // flex 환경에서도 강제 적용
 
-				.text-container-sub {
-					font-size: 1.15rem;
-					line-height: 1.4em;
-				}
-
-				.credit-content {
-					position: static;
+				.thumb-row {
+					display: flex;
+					flex-direction: column; // 세로로 쌓기
 					width: 100%;
-					box-shadow: none;
-					margin-top: 10px;
-				}
+					height: 100%;
+					overflow: hidden;
 
-				#award {
-					display: none;
-				}
-			}
-
-			.thumbnail-box #award {
-				display: block !important;
-				position: absolute !important;
-				top: 0.5em !important;
-				left: 0.5em !important;
-				width: 16% !important;
-				height: auto !important;
-				z-index: 2 !important;
-				pointer-events: none !important;
-				margin: 0 !important;
-			}
-
-			.info-credit {
-				position: static;
-				width: 100%;
-				background: transparent;
-				box-shadow: none;
-				margin-top: 8px;
-			}
-		}
-
-		// 모바일에서도 box-flex만 예외로 "꽉 채움" 유지
-		.box-flex {
-			.thumb-row {
-				overflow: hidden;
-
-				.thumb-image,
-				.thumb-image:only-child {
-					flex: 0 0 100%;
-					width: 100% !important;
-					max-width: none;
-					margin: 0;
-					height: 50vh;
-					object-fit: cover;
+					.thumb-image,
+					.thumb-image:only-child {
+						flex: 1 1 100%; // 세로 꽉
+						width: 100% !important; // 가로 꽉
+						height: 100%; // 세로 꽉
+						// max-width: none;
+						// margin: 0;
+						object-fit: cover; // 이미지 비율 유지하며 꽉 채움
+					}
 				}
 			}
 		}
