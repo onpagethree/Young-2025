@@ -163,7 +163,6 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   body .container {
     margin: 0 -2vw;
     gap: 0.6em;
-    height: 100vh;
   }
   body .container .box {
     width: 100vw;
@@ -176,12 +175,10 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   body .container .box .thumbnail-box .thumb-row .thumb-image {
     flex: 0 0 80vw;
     width: 80vw !important;
-    height: 70vh;
   }
   body .container .box .thumbnail-box .thumb-row .thumb-image:only-child {
     width: auto !important;
     max-width: 88vw;
-    height: 70vh;
     margin: 0 auto;
     object-fit: contain;
   }
@@ -192,17 +189,17 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
     width: 45vw;
     padding: 0.5em 0.7em;
     background: rgba(255, 255, 255, 0.95);
-    z-index: 10;
+    z-index: 50;
     gap: 0.5em;
     height: fit-content;
   }
   body .container .box .text-container .title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.2em;
     font-weight: 500;
   }
   body .container .box .text-container .info-credit {
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.3em;
     letter-spacing: 0.01em;
     display: flex;
