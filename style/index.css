@@ -89,7 +89,7 @@ body .container .box .text-container {
   padding: 0.5em 0.7em;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 0.8em;
@@ -239,6 +239,5 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   body .text-container {
     opacity: 1 !important;
     pointer-events: auto !important;
-    background: none !important;
   }
 }

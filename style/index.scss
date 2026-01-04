@@ -110,7 +110,7 @@ body {
 				padding: 0.5em 0.7em;
 				box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 				border-radius: 8px;
-				z-index: 10;
+				z-index: 100;
 
 				display: flex;
 				flex-direction: column;
@@ -305,7 +305,6 @@ body {
 		.text-container {
 			opacity: 1 !important;
 			pointer-events: auto !important;
-			background: none !important;
 		}
 	}
 }
