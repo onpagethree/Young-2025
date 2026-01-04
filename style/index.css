@@ -185,12 +185,11 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   body .container .box .text-container {
     position: absolute;
     right: 2vw;
-    bottom: 2vw;
-    top: auto;
+    top: 2vw;
     width: 45vw;
     padding: 0.5em 0.7em;
     background: rgba(255, 255, 255, 0.95);
-    z-index: 50;
+    z-index: 10;
     gap: 0.5em;
     height: fit-content;
   }
@@ -209,7 +208,7 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   }
   body .container .box .text-container #award {
     width: 2.5em;
-    top: 6em;
+    top: 3em;
   }
   body .container .box-flex {
     flex-direction: column;

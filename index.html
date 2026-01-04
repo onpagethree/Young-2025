@@ -316,11 +316,12 @@
 			document.addEventListener("DOMContentLoaded", () => {
 				hydrateProjectCardsByThumbId();
 				applyColorForDesktop?.();
-				initCategoryFilter(); // 기존 카테고리 로직을 하나로 합친 버전
+				initCategoryFilter();
 			});
 
 			async function hydrateProjectCardsByThumbId() {
 				const boxes = Array.from(document.querySelectorAll(".container a.box"));
+				const isMobile = window.matchMedia("(max-width: 700px)").matches;
 
 				async function fetchDoc(url) {
 					const res = await fetch(url, { cache: "no-store" });
@@ -338,7 +339,7 @@
 					try {
 						const { doc, base } = await fetchDoc(projectUrl);
 
-						// 1) title / credit
+						// title / credit
 						const titleNode = doc.querySelector(".project-info .title");
 						const creditNode = doc.querySelector(".project-info .info-credit");
 
@@ -347,12 +348,20 @@
 							".text-container .info-credit"
 						);
 
-						if (titleNode && titleTarget)
+						if (titleNode && titleTarget) {
 							titleTarget.innerHTML = titleNode.innerHTML.trim();
-						if (creditNode && creditTarget)
-							creditTarget.innerHTML = creditNode.innerHTML.trim();
+						}
 
-						// 2) thumbs: id="thumb"만 (여러 개여도 [id="thumb"]로 안전하게)
+						if (creditNode && creditTarget) {
+							if (isMobile) {
+								const firstBox = creditNode.querySelector(".credit_box");
+								creditTarget.innerHTML = firstBox ? firstBox.outerHTML : "";
+							} else {
+								creditTarget.innerHTML = creditNode.innerHTML.trim();
+							}
+						}
+
+						// thumbs
 						const thumbSrcs = Array.from(doc.querySelectorAll('[id="thumb"]'))
 							.map((el) => el.getAttribute("src"))
 							.filter(Boolean);
@@ -372,7 +381,7 @@
 						thumbSrcs.forEach((src) => {
 							const img = document.createElement("img");
 							img.className = "thumb-image";
-							img.src = new URL(src, base).href; // 상대경로 보정
+							img.src = new URL(src, base).href;
 							img.alt = "";
 							img.loading = "lazy";
 							thumbRow.appendChild(img);
@@ -383,8 +392,7 @@
 				}
 			}
 
-			// 카테고리 필터: 중복된 addEventListener 2세트를 하나로 정리
-			// 카테고리 필터: .category a 클릭 시 .box 요소를 필터링
+			// 카테고리 필터
 			document.addEventListener("DOMContentLoaded", () => {
 				const categoryLinks = Array.from(
 					document.querySelectorAll(".category a[href^='#']")
@@ -420,7 +428,6 @@
 					updateBoxFlexParents();
 				}
 
-				// 초기 상태: URL hash 반영
 				const hash = (location.hash || "#all").slice(1);
 				const initialLink =
 					categoryLinks.find(
@@ -442,6 +449,7 @@
 					});
 				});
 			});
+
 			// Mail Copied
 			const mailLinks = document.querySelectorAll(".copy-mail");
 
@@ -450,7 +458,6 @@
 					e.preventDefault();
 					const mail = link.dataset.mail;
 
-					// toast 요소 생성/사용
 					let toast = document.getElementById("toast-footer");
 					if (!toast) {
 						toast = document.createElement("div");
@@ -467,13 +474,10 @@
 						document.body.appendChild(toast);
 					}
 
-					// 상위 div 기준 toast 위치 계산
-					let parentDiv = link.closest("footer"); // footer 기준
-					if (!parentDiv) parentDiv = link.closest(".contact"); // footer 없으면 contact 기준
-
+					const parentDiv = link.closest("footer");
 					const rect = parentDiv.getBoundingClientRect();
 					toast.style.left = rect.left + rect.width / 2 + "px";
-					toast.style.top = rect.top - 75 + window.scrollY + "px"; // 위로 띄움
+					toast.style.top = rect.top - 75 + window.scrollY + "px";
 					toast.style.transform = "translateX(-50%)";
 
 					navigator.clipboard.writeText(mail).then(() => {
