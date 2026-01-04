@@ -186,6 +186,7 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
     position: absolute;
     right: 2vw;
     bottom: 2vw;
+    top: auto;
     width: 45vw;
     padding: 0.5em 0.7em;
     background: rgba(255, 255, 255, 0.95);

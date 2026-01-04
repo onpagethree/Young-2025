@@ -235,7 +235,8 @@ body {
 				.text-container {
 					position: absolute;
 					right: 2vw;
-					bottom: 2vw; // 우하단 고정
+					bottom: 2vw;
+					top: auto; // 필수
 
 					width: 45vw;
 					padding: 0.5em 0.7em;
