@@ -157,8 +157,8 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
 }
 @media (max-width: 700px) {
   body .category {
-    font-size: 1.1rem;
-    margin-bottom: 1vh;
+    font-size: 1.2rem;
+    margin-bottom: 1.2vh;
   }
   body .container {
     margin: 0 -2vw;
@@ -167,7 +167,7 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   body .container .box {
     width: 100vw;
     max-width: 100%;
-    height: 70vh;
+    height: 65vh;
   }
   body .container .box .thumbnail-box .thumb-row {
     align-items: stretch;
@@ -212,20 +212,25 @@ body .container .box-flex .thumbnail-box .thumb-row .thumb-image:only-child {
   }
   body .container .box-flex {
     flex-direction: column;
-    width: 100vw;
-    max-width: 100%;
-    height: 70vh;
-    min-height: 70vh;
+    width: 100% !important;
+    height: 65vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  body .container .box-flex .thumb-row {
+  body .container .box-flex .box {
+    height: 65vh;
+    width: 100vw;
+  }
+  body .container .box-flex .box .thumb-row {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
-  body .container .box-flex .thumb-row .thumb-image,
-  body .container .box-flex .thumb-row .thumb-image:only-child {
+  body .container .box-flex .box .thumb-row .thumb-image,
+  body .container .box-flex .box .thumb-row .thumb-image:only-child {
     flex: 1 1 100%;
     width: 100% !important;
     height: 100%;
