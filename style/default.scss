@@ -18,26 +18,24 @@ $padding-mobile: 0 2vw 0 2vw;
 @font-face {
 	font-family: "gothica1";
 	src: url(../source_default/Gothica1/GothicA1-Regular.ttf);
-	font-weight: 400;
+	font-weight: 300;
 	size-adjust: calc(92%);
 }
 
 @font-face {
 	font-family: "gothica1";
 	src: url(../source_default/Gothica1/GothicA1-Medium.ttf);
-	font-weight: 500;
+	font-weight: 400;
 	size-adjust: calc(92%);
 }
 
 @font-face {
 	font-family: "gothica1";
 	src: url(../source_default/Gothica1/GothicA1-ExtraBold.ttf);
-	font-weight: 700;
+	font-weight: 600;
 	size-adjust: calc(92%);
 }
 
-/* 영문 폰트 "barlow" */
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://use.typekit.net/uya2url.css");
 
 // 기본 설정
@@ -52,7 +50,7 @@ $padding-mobile: 0 2vw 0 2vw;
 
 	position: relative;
 
-	font-family: "franklin-gothic-std", "gothica1", sans-serif;
+	font-family: "neue-haas-unica", "gothica1", sans-serif;
 	font-weight: 400;
 	word-break: keep-all;
 
@@ -95,7 +93,8 @@ body {
 
 	// HEADER 헤더
 	header {
-		margin: 2vh 0 3vh 0;
+		margin: 2vh 0vw 5vh 0;
+		padding-left: 0.1vw;
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
@@ -103,8 +102,8 @@ body {
 
 		//  HEADER 헤더 제목
 		.header_name {
-			font-size: 1.3rem;
-			letter-spacing: 0.02em;
+			font-size: 1.7rem;
+			letter-spacing: -0.01em;
 
 			// position: fixed;
 			z-index: 1000;
@@ -117,8 +116,8 @@ body {
 		}
 
 		.header_menu {
-			font-size: 1.3rem;
-
+			font-size: 1.7rem;
+			letter-spacing: -0.01em;
 			position: absolute;
 			right: 0.25rem;
 		}
@@ -139,7 +138,9 @@ body {
 		& > * {
 			opacity: 0;
 			transform: translateY(50px);
-			transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+			transition:
+				opacity 0.7s ease-out,
+				transform 0.7s ease-out;
 
 			&.show {
 				opacity: 1;

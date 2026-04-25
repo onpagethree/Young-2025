@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://use.typekit.net/uya2url.css");
 :root {
   --lightgray: rgb(245, 245, 245);
@@ -14,22 +13,21 @@
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-Regular.ttf);
-  font-weight: 400;
+  font-weight: 300;
   size-adjust: 92%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-Medium.ttf);
-  font-weight: 500;
+  font-weight: 400;
   size-adjust: 92%;
 }
 @font-face {
   font-family: "gothica1";
   src: url(../source_default/Gothica1/GothicA1-ExtraBold.ttf);
-  font-weight: 700;
+  font-weight: 600;
   size-adjust: 92%;
 }
-/* 영문 폰트 "barlow" */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -37,7 +35,7 @@
   list-style: none;
   text-decoration: none;
   position: relative;
-  font-family: "franklin-gothic-std", "gothica1", sans-serif;
+  font-family: "neue-haas-unica", "gothica1", sans-serif;
   font-weight: 400;
   word-break: keep-all;
   touch-action: pan-y; /* 세로만 스와이프 */
@@ -73,18 +71,18 @@ html {
 
 body {
   padding: 0 1.2vw 0 1.2vw;
-  /* FOOTER 하단바 웹사이즈 */
 }
 body header {
-  margin: 2vh 0 3vh 0;
+  margin: 2vh 0vw 5vh 0;
+  padding-left: 0.1vw;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   z-index: 100;
 }
 body header .header_name {
-  font-size: 1.3rem;
-  letter-spacing: 0.02em;
+  font-size: 1.7rem;
+  letter-spacing: -0.01em;
   z-index: 1000;
   mix-blend-mode: overlay;
   /* Multiply 효과 적용 */
@@ -93,7 +91,8 @@ body header .header_name:hover {
   color: var(--blue);
 }
 body header .header_menu {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
+  letter-spacing: -0.01em;
   position: absolute;
   right: 0.25rem;
 }
@@ -113,6 +112,9 @@ body .container > * {
 body .container > *.show {
   opacity: 1;
   transform: translateY(0);
+}
+body {
+  /* FOOTER 하단바 웹사이즈 */
 }
 body footer {
   margin-top: 5rem;
@@ -139,21 +141,25 @@ body footer #underline {
   }
   html body {
     padding: 0 2vw 0 2vw;
-    /* FOOTER 하단바 모바일사이즈 */
   }
   html body header {
     margin: 1vh 0 2em 0;
-    /*HEADER 헤더 모바일사이즈*/
   }
   html body header .header_name {
     font-size: 1.6rem;
     position: relative;
+  }
+  html body header {
+    /*HEADER 헤더 모바일사이즈*/
   }
   html body header .header_menu {
     font-size: 1.6rem;
   }
   html body header #menu {
     margin-left: 0.7em;
+  }
+  html body {
+    /* FOOTER 하단바 모바일사이즈 */
   }
   html body footer {
     padding-bottom: 2vw;

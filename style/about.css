@@ -3,14 +3,15 @@ body .container {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  line-height: 1.45em;
+  line-height: 1.5em;
+  padding-left: 1%;
   /* language switch */
-  /* layout */
 }
 body .container .lang-switch {
   display: inline-flex;
   gap: 0.6em;
   margin-bottom: 1.35em;
+  font-size: 1.4rem;
 }
 body .container .lang-switch .lang-btn {
   background: none;
@@ -23,31 +24,36 @@ body .container .lang-switch .lang-btn {
 body .container .lang-switch .lang-btn[aria-pressed=true] {
   color: black;
 }
+body .container {
+  /* layout */
+}
 body .container .AboutFlex {
   display: flex;
   position: relative;
   width: 100%;
   line-height: 1.4em;
-  /* shared block */
-  /* About-1 */
-  /* About-3 */
 }
 body .container .AboutFlex .AboutCategory {
-  font-weight: 500;
+  font-size: 1.4rem;
 }
 body .container .AboutFlex .history {
   color: var(--gray);
 }
+body .container .AboutFlex {
+  /* shared block */
+}
 body .container .AboutFlex .about-block {
   display: flex;
   flex-direction: column;
-  gap: 0.7em;
-  /* list (About-1 / About-2 공통) */
+  gap: 1em;
 }
 body .container .AboutFlex .about-block .item {
   display: flex;
   flex-direction: column;
   gap: 0.05em;
+}
+body .container .AboutFlex .about-block {
+  /* list (About-1 / About-2 공통) */
 }
 body .container .AboutFlex .about-block .about-list {
   margin: 0.4em 0 0;
@@ -66,6 +72,9 @@ body .container .AboutFlex .about-block .about-list li::before {
   position: absolute;
   left: 0;
   top: 0;
+}
+body .container .AboutFlex {
+  /* About-1 */
 }
 body .container .AboutFlex .About-1 {
   width: 32%;
@@ -87,7 +96,10 @@ body .container .AboutFlex .About-2 {
 }
 body .container .AboutFlex .About-2 #Now span,
 body .container .AboutFlex .About-2 #Now div {
-  font-weight: 600;
+  color: rgb(208, 128, 255);
+}
+body .container .AboutFlex {
+  /* About-3 */
 }
 body .container .AboutFlex .About-3 {
   flex: 1;

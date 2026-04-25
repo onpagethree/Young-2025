@@ -20,16 +20,6 @@ body .container {
   gap: 1.2vw;
   margin-bottom: 7rem;
   /* 프로젝트 설명 */
-  /*프로젝트 중간글*/
-  /* 프로젝트 중간글 더블더블 */
-  /*IMG IMG 이미지 설정*/
-  /* 이미지가 화면을 꽉 채우게 하기 위한 스타일 */
-  /*세로이미지*/
-  /*슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리*/
-  /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/
-  /* 유튜브 링크 */
-  /* Lightbox container */
-  /* 라이트박스 내 네비게이션/닫기 버튼 */
 }
 body .container .project-info {
   margin: 1.2vw 0;
@@ -51,7 +41,6 @@ body .container .project-info .info_right {
   flex: 1;
   padding-right: 5vw;
   line-height: lh;
-  /* 연결 페이지*/
 }
 body .container .project-info .info_right .caption {
   padding-right: 4em;
@@ -60,6 +49,9 @@ body .container .project-info .info_right .caption {
 body .container .project-info .info_right .caption .more-text {
   display: none;
   transition: all 0.3s ease-in-out;
+}
+body .container .project-info .info_right {
+  /* 연결 페이지*/
 }
 body .container .project-info .info_right .related-project {
   color: black;
@@ -101,6 +93,9 @@ body .container .project-info .info_right .info-credit .credit_box {
 body .container .project-info .info_right .info-credit .credit_box:first-child {
   width: 45%;
 }
+body .container {
+  /*프로젝트 중간글*/
+}
 body .container .mid_text {
   color: black;
   text-align: center;
@@ -110,6 +105,9 @@ body .container .mid_text {
 }
 body .container .mid_text a:hover {
   opacity: 0.5;
+}
+body .container {
+  /* 프로젝트 중간글 더블더블 */
 }
 body .container .mid_text_double {
   margin: 2em auto;
@@ -127,9 +125,15 @@ body .container .mid_text_double .text_right {
   /* 줄글 조정하기 */
   padding-right: 7vw;
 }
+body .container {
+  /*IMG IMG 이미지 설정*/
+}
 body .container img {
   max-width: 100%;
   height: auto;
+}
+body .container {
+  /* 이미지가 화면을 꽉 채우게 하기 위한 스타일 */
 }
 body .container .full-width-img {
   width: 100vw;
@@ -138,6 +142,9 @@ body .container .full-width-img {
   /* 뷰포트 전체 너비로 설정 */
   margin-left: -2.5vw;
   margin-right: -2.5vw;
+}
+body .container {
+  /*세로이미지*/
 }
 body .container .img-vertical {
   display: flex;
@@ -149,6 +156,9 @@ body .container .img-vertical > img {
   min-width: 30%;
   margin: 0;
 }
+body .container {
+  /*슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리 슬라이드 갤러리*/
+}
 body .container .slide-gallery {
   /* 프로젝트 전역 규칙을 해치지 않기 위해 최소한만 지정 */
   --gap: 1.2vw;
@@ -157,7 +167,6 @@ body .container .slide-gallery {
   max-width: 100%;
   overflow: hidden; /* 컨테이너를 넘지 않음 */
   cursor: grab;
-  /* 좌/우 클릭 핫존(보이지 않는 반투명 없는 오버레이) */
 }
 body .container .slide-gallery:active {
   cursor: grabbing;
@@ -166,6 +175,9 @@ body .container .slide-gallery, body .container .slide-gallery * {
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+}
+body .container .slide-gallery {
+  /* 좌/우 클릭 핫존(보이지 않는 반투명 없는 오버레이) */
 }
 body .container .slide-gallery::before, body .container .slide-gallery::after {
   content: "";
@@ -204,13 +216,15 @@ body .container .slide-gallery .slide-gallery-box img {
   object-position: center;
   display: block;
 }
+body .container {
+  /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/ /*이미지 갤러리!!*/
+}
 body .container .image-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1.2vw;
   /* 각 썸네일 박스: 일정 비율로 크기 고정(브라우저 높이에 따라 max 제한) */
-  /* 이미지가 항상 박스를 꽉 채우도록 강제 */
 }
 body .container .image-gallery .gallery-box {
   flex: 1 1 calc(50% - 0.75rem);
@@ -223,6 +237,9 @@ body .container .image-gallery .gallery-box {
   margin: 0;
   padding: 0;
 }
+body .container .image-gallery {
+  /* 이미지가 항상 박스를 꽉 채우도록 강제 */
+}
 body .container .image-gallery .gallery-box > img {
   width: 100% !important;
   height: 100% !important;
@@ -230,6 +247,9 @@ body .container .image-gallery .gallery-box > img {
   object-position: center;
   display: block;
   margin: 0;
+}
+body .container {
+  /* 유튜브 링크 */
 }
 body .container .youtube {
   position: relative;
@@ -245,6 +265,9 @@ body .container .youtube embed {
   left: 0;
   word-wrap: 100%;
   height: 100%;
+}
+body .container {
+  /* Lightbox container */
 }
 body .container .lightbox {
   position: fixed;
@@ -269,6 +292,9 @@ body .container .lightbox .lightbox-center .lightbox-content {
   max-height: 90%;
   display: block;
   margin: auto;
+}
+body .container {
+  /* 라이트박스 내 네비게이션/닫기 버튼 */
 }
 body .container .lightbox .prev,
 body .container .lightbox .next,
@@ -306,13 +332,6 @@ body .container .lightbox .close:hover {
   body .container {
     gap: 2vw;
     /* 프로젝트 설명 모바일사이즈 */
-    /*IMG IMG 중간 글 모바일*/
-    /* 프로젝트 중간글 더블더블 모바일 */
-    /*IMG IMG 이미지 설정 모바일*/
-    /*세로이미지*/
-    /*이미지 갤러리 모바일!*/
-    /* Lightbox container mobile */ /* Lightbox container mobile */
-    /* 라이트박스 내 네비게이션/닫기 버튼 */
   }
   body .container .project-info {
     flex-direction: column;
@@ -351,8 +370,14 @@ body .container .lightbox .close:hover {
   body .container .project-info .info_right .info-credit .credit_1 {
     width: 20%;
   }
+  body .container {
+    /*IMG IMG 중간 글 모바일*/
+  }
   body .container .mid_text {
     padding: 1.5em;
+  }
+  body .container {
+    /* 프로젝트 중간글 더블더블 모바일 */
   }
   body .container .mid_text_double {
     flex-direction: column;
@@ -365,9 +390,16 @@ body .container .lightbox .close:hover {
   body .container .mid_text_double .text_right {
     margin-top: 1em;
   }
+  body .container {
+    /*IMG IMG 이미지 설정 모바일*/
+    /*세로이미지*/
+  }
   body .container .img-vertical img {
     width: 100%;
     margin: 0;
+  }
+  body .container {
+    /*이미지 갤러리 모바일!*/
   }
   body .container .image-gallery {
     gap: 2vw;
@@ -376,8 +408,14 @@ body .container .lightbox .close:hover {
     /* 모달 갤러리 썸네일 사이즈 */
     flex: 1 1 calc(50% - 1vw); /* 2개씩 배치되도록 */
   }
+  body .container {
+    /* Lightbox container mobile */ /* Lightbox container mobile */
+  }
   body .container .lightbox {
     background: rgba(0, 0, 0, 0.87);
+  }
+  body .container {
+    /* 라이트박스 내 네비게이션/닫기 버튼 */
   }
   body .container .lightbox .prev,
   body .container .lightbox .next,

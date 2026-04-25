@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8" />
@@ -312,11 +312,12 @@
 		</footer>
 
 		<script>
-			// 이미지 및 글 가져오기
-			document.addEventListener("DOMContentLoaded", () => {
-				hydrateProjectCardsByThumbId();
-				applyColorForDesktop?.();
+			document.addEventListener("DOMContentLoaded", async () => {
+				await hydrateProjectCardsByThumbId();
+				initThumbnailCursorArrow();
+				window.applyColorForDesktop?.();
 				initCategoryFilter();
+				initMailCopy();
 			});
 
 			async function hydrateProjectCardsByThumbId() {
@@ -326,9 +327,11 @@
 				async function fetchDoc(url) {
 					const res = await fetch(url, { cache: "no-store" });
 					if (!res.ok) throw new Error(res.status + " " + res.statusText);
+
 					const text = await res.text();
 					const doc = new DOMParser().parseFromString(text, "text/html");
 					const base = new URL(url, window.location.href);
+
 					return { doc, base };
 				}
 
@@ -339,13 +342,12 @@
 					try {
 						const { doc, base } = await fetchDoc(projectUrl);
 
-						// title / credit
 						const titleNode = doc.querySelector(".project-info .title");
 						const creditNode = doc.querySelector(".project-info .info-credit");
 
 						const titleTarget = box.querySelector(".text-container .title");
 						const creditTarget = box.querySelector(
-							".text-container .info-credit"
+							".text-container .info-credit",
 						);
 
 						if (titleNode && titleTarget) {
@@ -361,7 +363,6 @@
 							}
 						}
 
-						// thumbs
 						const thumbSrcs = Array.from(doc.querySelectorAll('[id="thumb"]'))
 							.map((el) => el.getAttribute("src"))
 							.filter(Boolean);
@@ -370,6 +371,7 @@
 						if (!thumbBox) continue;
 
 						let thumbRow = thumbBox.querySelector(".thumb-row");
+
 						if (!thumbRow) {
 							thumbRow = document.createElement("div");
 							thumbRow.className = "thumb-row";
@@ -392,17 +394,190 @@
 				}
 			}
 
-			// 카테고리 필터
-			document.addEventListener("DOMContentLoaded", () => {
+			function initThumbnailCursorArrow() {
+				const boxes = document.querySelectorAll(".container a.box");
+
+				boxes.forEach((box) => {
+					const thumbBox = box.querySelector(".thumbnail-box");
+					const thumbRow = box.querySelector(".thumb-row");
+					const images = box.querySelectorAll(".thumb-image");
+
+					if (!thumbBox || !thumbRow || images.length <= 1) return;
+					if (thumbBox.querySelector(".thumb-cursor-arrow")) return;
+
+					box.setAttribute("draggable", "false");
+					images.forEach((img) => img.setAttribute("draggable", "false"));
+
+					const cursorArrow = document.createElement("div");
+					cursorArrow.className = "thumb-cursor-arrow";
+
+					const arrowLine = document.createElement("span");
+					cursorArrow.appendChild(arrowLine);
+					thumbBox.appendChild(cursorArrow);
+
+					let currentDirection = 1;
+					let autoSlideTimer = null;
+					let lastMouseEvent = null;
+
+					let isDragging = false;
+					let hasDragged = false;
+					let startX = 0;
+					let startScrollLeft = 0;
+
+					function getState() {
+						const maxScroll = thumbRow.scrollWidth - thumbRow.clientWidth;
+						const current = thumbRow.scrollLeft;
+
+						return {
+							canPrev: current > 2,
+							canNext: current < maxScroll - 2,
+						};
+					}
+
+					function stopAutoSlide() {
+						if (!autoSlideTimer) return;
+						clearInterval(autoSlideTimer);
+						autoSlideTimer = null;
+					}
+
+					function startAutoSlide() {
+						if (autoSlideTimer || isDragging) return;
+
+						autoSlideTimer = setInterval(() => {
+							const { canPrev, canNext } = getState();
+
+							if (currentDirection === 1 && canNext) {
+								thumbRow.scrollBy({
+									left: thumbBox.clientWidth,
+									behavior: "smooth",
+								});
+							} else if (currentDirection === -1 && canPrev) {
+								thumbRow.scrollBy({
+									left: -thumbBox.clientWidth,
+									behavior: "smooth",
+								});
+							} else {
+								stopAutoSlide();
+							}
+						}, 250);
+					}
+
+					function updateCursor(e) {
+						lastMouseEvent = e;
+
+						const rect = thumbBox.getBoundingClientRect();
+						const x = e.clientX - rect.left;
+						const y = e.clientY - rect.top;
+
+						const leftZone = rect.width * 0.25;
+						const rightZone = rect.width * 0.75;
+						const { canPrev, canNext } = getState();
+
+						if (x <= leftZone && canPrev) {
+							currentDirection = -1;
+							startAutoSlide();
+						} else if (x >= rightZone && canNext) {
+							currentDirection = 1;
+							startAutoSlide();
+						} else {
+							stopAutoSlide();
+
+							if (canNext) currentDirection = 1;
+							else if (canPrev) currentDirection = -1;
+						}
+
+						if (!canPrev && !canNext) {
+							cursorArrow.style.opacity = "0";
+							return;
+						}
+
+						cursorArrow.classList.toggle("is-left", currentDirection === -1);
+						cursorArrow.classList.toggle("is-right", currentDirection === 1);
+						cursorArrow.style.left = x + "px";
+						cursorArrow.style.top = y + "px";
+						cursorArrow.style.opacity = "1";
+					}
+
+					function hideCursor() {
+						cursorArrow.style.opacity = "0";
+						stopAutoSlide();
+					}
+
+					thumbBox.addEventListener("mousemove", updateCursor);
+					thumbBox.addEventListener("mouseenter", updateCursor);
+					thumbBox.addEventListener("mouseleave", hideCursor);
+
+					thumbBox.addEventListener("pointerdown", (e) => {
+						isDragging = true;
+						hasDragged = false;
+						startX = e.clientX;
+						startScrollLeft = thumbRow.scrollLeft;
+
+						stopAutoSlide();
+						thumbBox.setPointerCapture(e.pointerId);
+					});
+
+					thumbBox.addEventListener("pointermove", (e) => {
+						if (!isDragging) return;
+
+						const diff = e.clientX - startX;
+
+						if (Math.abs(diff) > 5) {
+							hasDragged = true;
+							e.preventDefault();
+						}
+
+						thumbRow.scrollLeft = startScrollLeft - diff;
+					});
+
+					thumbBox.addEventListener("pointerup", (e) => {
+						isDragging = false;
+
+						if (thumbBox.hasPointerCapture(e.pointerId)) {
+							thumbBox.releasePointerCapture(e.pointerId);
+						}
+					});
+
+					thumbBox.addEventListener("pointercancel", () => {
+						isDragging = false;
+						hasDragged = false;
+					});
+
+					box.addEventListener("click", (e) => {
+						if (hasDragged) {
+							e.preventDefault();
+							e.stopPropagation();
+
+							setTimeout(() => {
+								hasDragged = false;
+							}, 50);
+						}
+					});
+
+					box.addEventListener("dragstart", (e) => {
+						e.preventDefault();
+					});
+
+					thumbRow.addEventListener("scroll", () => {
+						if (lastMouseEvent) updateCursor(lastMouseEvent);
+					});
+
+					window.addEventListener("resize", () => {
+						if (lastMouseEvent) updateCursor(lastMouseEvent);
+					});
+				});
+			}
+
+			function initCategoryFilter() {
 				const categoryLinks = Array.from(
-					document.querySelectorAll(".category a[href^='#']")
+					document.querySelectorAll(".category a[href^='#']"),
 				);
 				const boxes = Array.from(document.querySelectorAll(".container a.box"));
 				const flexParents = Array.from(document.querySelectorAll(".box-flex"));
 
 				function setSelected(active) {
 					categoryLinks.forEach((a) =>
-						a.classList.toggle("selected", a === active)
+						a.classList.toggle("selected", a === active),
 					);
 				}
 
@@ -410,8 +585,9 @@
 					flexParents.forEach((parent) => {
 						const childBoxes = Array.from(parent.querySelectorAll("a.box"));
 						const anyVisible = childBoxes.some(
-							(b) => getComputedStyle(b).display !== "none"
+							(b) => getComputedStyle(b).display !== "none",
 						);
+
 						parent.style.display = anyVisible ? "" : "none";
 					});
 				}
@@ -422,16 +598,19 @@
 						updateBoxFlexParents();
 						return;
 					}
+
 					boxes.forEach((b) => {
 						b.style.display = b.classList.contains(category) ? "" : "none";
 					});
+
 					updateBoxFlexParents();
 				}
 
 				const hash = (location.hash || "#all").slice(1);
+
 				const initialLink =
 					categoryLinks.find(
-						(a) => (a.getAttribute("href") || "").slice(1) === hash
+						(a) => (a.getAttribute("href") || "").slice(1) === hash,
 					) || categoryLinks.find((a) => a.getAttribute("href") === "#all");
 
 				if (initialLink) {
@@ -442,52 +621,60 @@
 				categoryLinks.forEach((link) => {
 					link.addEventListener("click", (e) => {
 						e.preventDefault();
+
 						const category = (link.getAttribute("href") || "#all").slice(1);
+
 						setSelected(link);
 						show(category);
 						history.replaceState(null, "", `#${category}`);
 					});
 				});
-			});
+			}
 
-			// Mail Copied
-			const mailLinks = document.querySelectorAll(".copy-mail");
+			function initMailCopy() {
+				const mailLinks = document.querySelectorAll(".copy-mail");
 
-			mailLinks.forEach((link) => {
-				link.addEventListener("click", (e) => {
-					e.preventDefault();
-					const mail = link.dataset.mail;
+				mailLinks.forEach((link) => {
+					link.addEventListener("click", (e) => {
+						e.preventDefault();
 
-					let toast = document.getElementById("toast-footer");
-					if (!toast) {
-						toast = document.createElement("div");
-						toast.id = "toast-footer";
-						toast.textContent = "Copied to clipboard";
-						toast.style.position = "absolute";
-						toast.style.padding = "0.4em 1.2em";
-						toast.style.background = "rgba(235, 235, 235, 0.8)";
-						toast.style.color = "#000";
-						toast.style.borderRadius = "8px";
-						toast.style.fontSize = "0.9em";
-						toast.style.opacity = "0";
-						toast.style.transition = "opacity .8s ease";
-						document.body.appendChild(toast);
-					}
+						const mail = link.dataset.mail;
 
-					const parentDiv = link.closest("footer");
-					const rect = parentDiv.getBoundingClientRect();
-					toast.style.left = rect.left + rect.width / 2 + "px";
-					toast.style.top = rect.top - 75 + window.scrollY + "px";
-					toast.style.transform = "translateX(-50%)";
+						let toast = document.getElementById("toast-footer");
 
-					navigator.clipboard.writeText(mail).then(() => {
-						toast.style.opacity = "1";
-						setTimeout(() => {
+						if (!toast) {
+							toast = document.createElement("div");
+							toast.id = "toast-footer";
+							toast.textContent = "Copied to clipboard";
+							toast.style.position = "absolute";
+							toast.style.padding = "0.4em 1.2em";
+							toast.style.background = "rgba(235, 235, 235, 0.8)";
+							toast.style.color = "#000";
+							toast.style.borderRadius = "8px";
+							toast.style.fontSize = "0.9em";
 							toast.style.opacity = "0";
-						}, 1000);
+							toast.style.transition = "opacity .8s ease";
+
+							document.body.appendChild(toast);
+						}
+
+						const parentDiv = link.closest("footer");
+						const rect = parentDiv.getBoundingClientRect();
+
+						toast.style.left = rect.left + rect.width / 2 + "px";
+						toast.style.top = rect.top - 75 + window.scrollY + "px";
+						toast.style.transform = "translateX(-50%)";
+
+						navigator.clipboard.writeText(mail).then(() => {
+							toast.style.opacity = "1";
+
+							setTimeout(() => {
+								toast.style.opacity = "0";
+							}, 1000);
+						});
 					});
 				});
-			});
+			}
 		</script>
 	</body>
 </html>

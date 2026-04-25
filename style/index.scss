@@ -10,14 +10,15 @@ body {
 	.category {
 		line-height: 1.4em;
 		color: var(--gray);
+		margin-bottom: 2vh;
 
-		margin-bottom: 1.5vh;
 		.selected {
 			color: #000;
 		}
 
 		> a {
 			margin-right: 0.7em;
+			font-size: 1.4rem;
 
 			&:hover {
 				opacity: 0.5;
@@ -27,9 +28,7 @@ body {
 	}
 
 	.container {
-		margin: 0 -1.2vw;
-		margin-bottom: 4em;
-
+		margin: 0 -1.2vw 4em;
 		display: flex;
 		flex-direction: column;
 		gap: 3vw;
@@ -40,15 +39,21 @@ body {
 			width: 100vw;
 			height: 62vh;
 			margin: 0;
-
 			text-decoration: none;
 			color: inherit;
+			-webkit-user-drag: none;
+			user-drag: none;
 
 			.thumbnail-box {
 				position: relative;
 				width: 100%;
 				height: 100%;
 				overflow: hidden;
+				touch-action: pan-y;
+
+				&:active {
+					cursor: grabbing;
+				}
 
 				> img {
 					width: 100%;
@@ -56,6 +61,8 @@ body {
 					max-height: 60vh;
 					display: block;
 					object-fit: contain;
+					pointer-events: none;
+					user-select: none;
 				}
 
 				.thumb-row {
@@ -63,25 +70,30 @@ body {
 					align-items: center;
 					width: 100%;
 					height: 100%;
-
 					overflow-x: auto;
 					overflow-y: hidden;
+					scroll-behavior: smooth;
+					scroll-snap-type: x mandatory;
 					-webkit-overflow-scrolling: touch;
+					scrollbar-width: none;
+					user-select: none;
+					cursor: grab;
 
 					&::-webkit-scrollbar {
 						display: none;
 					}
-					scrollbar-width: none;
 
 					.thumb-image {
 						height: 100%;
 						display: block;
 						object-fit: cover;
-
 						flex: 0 0 calc(100% / 2.3);
 						width: calc(100% / 2.3) !important;
+						scroll-snap-align: start;
+						pointer-events: none;
+						user-select: none;
+						-webkit-user-drag: none;
 
-						// 기본 box에서는 1장일 때 여백/contain
 						&:only-child {
 							flex: 0 0 auto;
 							width: auto !important;
@@ -105,28 +117,28 @@ body {
 				position: absolute;
 				right: 1.2vw;
 				top: 1.2vw;
-				width: 16vw;
-				background: rgba(255, 255, 255, 0.97);
-				padding: 0.5em 0.7em;
+				width: 18vw;
+				background: rgba(255, 255, 255, 0.96);
+				padding: 0.8em 1em 0.9em;
 				box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 				border-radius: 8px;
 				z-index: 100;
-
 				display: flex;
 				flex-direction: column;
 				gap: 0.8em;
 
 				.title {
-					font-size: 1rem;
+					font-size: 1.2rem;
 					line-height: 1.2em;
 					font-weight: 500;
+					letter-spacing: -0.01em;
 				}
 
 				.info-credit {
-					font-size: 0.75rem;
-					line-height: 1.3em;
-					letter-spacing: 0.01em;
-
+					font-size: 0.9rem;
+					font-weight: 300;
+					line-height: 1.35em;
+					letter-spacing: 0.007em;
 					display: flex;
 					flex-direction: column;
 					gap: 1.2em;
@@ -144,7 +156,6 @@ body {
 			}
 		}
 
-		// Box-flex: 썸네일 체인 가로 배열용
 		.box-flex {
 			display: flex;
 			gap: 0.5vw;
@@ -160,10 +171,9 @@ body {
 			> .box .thumb-row {
 				height: 100%;
 				display: flex;
-				overflow: hidden; // 스크롤 제거
+				overflow: hidden;
 			}
 
-			// 이미지: 항상 박스를 채움
 			> .box .thumb-row .thumb-image {
 				flex: 1 1 0;
 				width: 100% !important;
@@ -176,14 +186,11 @@ body {
 				height: 100%;
 
 				.thumb-row {
-					// box-flex는 스크롤/여백 규칙 무시하고 꽉 채움
 					overflow: hidden;
 
 					.thumb-image {
-						// 기본 3등분 유지 + cover로 꽉 채우기
 						object-fit: cover;
 
-						// 1장이어도 여백 없이 꽉
 						&:only-child {
 							flex: 0 0 100%;
 							width: 100% !important;
@@ -195,6 +202,57 @@ body {
 				}
 			}
 		}
+	}
+
+	.thumb-cursor-arrow {
+		--arrow-width: 100px;
+		--arrow-height: 50px;
+		--arrow-head: 52px;
+		--arrow-stroke: 2px;
+		--arrow-color: #fff;
+
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 20;
+		width: var(--arrow-width);
+		height: var(--arrow-height);
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, -50%);
+		transition: opacity 0.3s ease;
+	}
+
+	.thumb-cursor-arrow::before,
+	.thumb-cursor-arrow::after,
+	.thumb-cursor-arrow span {
+		content: "";
+		position: absolute;
+		top: 50%;
+		right: 0;
+		height: var(--arrow-stroke);
+		background: var(--arrow-color);
+		transform-origin: right center;
+	}
+
+	.thumb-cursor-arrow::before {
+		left: 0;
+		width: var(--arrow-width);
+		transform: translateY(-50%);
+	}
+
+	.thumb-cursor-arrow::after {
+		width: var(--arrow-head);
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	.thumb-cursor-arrow span {
+		width: var(--arrow-head);
+		transform: translateY(-50%) rotate(-45deg);
+	}
+
+	.thumb-cursor-arrow.is-left {
+		transform: translate(-50%, -50%) scaleX(-1);
 	}
 
 	@media (max-width: 700px) {
@@ -224,7 +282,6 @@ body {
 						.thumb-image:only-child {
 							width: auto !important;
 							max-width: 88vw;
-
 							margin: 0 auto;
 							object-fit: contain;
 						}
@@ -234,30 +291,23 @@ body {
 				.text-container {
 					position: absolute;
 					right: 2vw;
-					// bottom: 2vw;
-					top: 2vw; // 필수
-
+					top: 2vw;
 					width: 45vw;
 					padding: 0.5em 0.7em;
 					background: rgba(255, 255, 255, 0.95);
-
 					z-index: 10;
-
 					gap: 0.5em;
-
-					height: fit-content; // 컨텐츠 높이에 맞춤
+					height: fit-content;
 
 					.title {
 						font-size: 1.2rem;
 						line-height: 1.2em;
-						font-weight: 500;
 					}
 
 					.info-credit {
 						font-size: 1rem;
 						line-height: 1.3em;
 						letter-spacing: 0.01em;
-
 						display: flex;
 						flex-direction: column;
 						gap: 1.2em;
@@ -272,7 +322,6 @@ body {
 
 			.box-flex {
 				flex-direction: column;
-
 				width: 100% !important;
 				height: 65vh;
 				margin: 0;
@@ -285,19 +334,17 @@ body {
 
 					.thumb-row {
 						display: flex;
-						flex-direction: column; // 세로로 쌓기
+						flex-direction: column;
 						width: 100%;
 						height: 100%;
 						overflow: hidden;
 
 						.thumb-image,
 						.thumb-image:only-child {
-							flex: 1 1 100%; // 세로 꽉
-							width: 100% !important; // 가로 꽉
-							height: 100%; // 세로 꽉
-							// max-width: none;
-							// margin: 0;
-							object-fit: cover; // 이미지 비율 유지하며 꽉 채움
+							flex: 1 1 100%;
+							width: 100% !important;
+							height: 100%;
+							object-fit: cover;
 						}
 					}
 				}
