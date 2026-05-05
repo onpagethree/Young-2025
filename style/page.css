@@ -92,6 +92,7 @@ body .container .project-info .info_right .info-credit .credit_box {
 }
 body .container .project-info .info_right .info-credit .credit_box:first-child {
   width: 45%;
+  padding-right: 2em;
 }
 body .container {
   /*프로젝트 중간글*/

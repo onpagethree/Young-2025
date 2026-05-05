@@ -110,13 +110,13 @@ body .container .box .text-container {
   gap: 0.8em;
 }
 body .container .box .text-container .title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.2em;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 body .container .box .text-container .info-credit {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 300;
   line-height: 1.35em;
   letter-spacing: 0.007em;
