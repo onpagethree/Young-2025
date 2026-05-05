@@ -406,10 +406,12 @@ body {
 						/* 프로젝트 크레딧 모바일*/
 						.credit_box {
 							font-size: 0.9rem;
-						}
+							line-height: 1.5em;
 
-						.credit_1 {
-							width: 20%;
+							&:first-child {
+								width: 45%;
+								padding-right: 1em;
+							}
 						}
 					}
 				}

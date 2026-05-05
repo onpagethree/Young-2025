@@ -367,9 +367,11 @@ body .container .lightbox .close:hover {
   }
   body .container .project-info .info_right .info-credit .credit_box {
     font-size: 0.9rem;
+    line-height: 1.5em;
   }
-  body .container .project-info .info_right .info-credit .credit_1 {
-    width: 20%;
+  body .container .project-info .info_right .info-credit .credit_box:first-child {
+    width: 45%;
+    padding-right: 1em;
   }
   body .container {
     /*IMG IMG 중간 글 모바일*/
