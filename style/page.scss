@@ -366,6 +366,7 @@ body {
 	body {
 		.container {
 			gap: 2vw;
+			line-height: $lh;
 
 			/* 프로젝트 설명 모바일사이즈 */
 			.project-info {
@@ -376,7 +377,7 @@ body {
 					width: 100%;
 
 					.title {
-						font-size: 1.6rem;
+						font-size: 2rem;
 						margin-bottom: 0.7em;
 						width: 90%;
 					}

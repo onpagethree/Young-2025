@@ -2,7 +2,7 @@
 body .container {
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5em;
   padding-left: 1%;
   /* language switch */
@@ -11,7 +11,7 @@ body .container .lang-switch {
   display: inline-flex;
   gap: 0.6em;
   margin-bottom: 1.35em;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 body .container .lang-switch .lang-btn {
   background: none;
@@ -34,7 +34,7 @@ body .container .AboutFlex {
   line-height: 1.4em;
 }
 body .container .AboutFlex .AboutCategory {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 body .container .AboutFlex .history {
   color: var(--gray);
@@ -51,6 +51,9 @@ body .container .AboutFlex .about-block .item {
   display: flex;
   flex-direction: column;
   gap: 0.05em;
+}
+body .container .AboutFlex .about-block .item .item-title {
+  font-weight: 600;
 }
 body .container .AboutFlex .about-block {
   /* list (About-1 / About-2 공통) */

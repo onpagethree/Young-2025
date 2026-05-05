@@ -331,6 +331,7 @@ body .container .lightbox .close:hover {
 @media only screen and (max-width: 700px) {
   body .container {
     gap: 2vw;
+    line-height: 1.45em;
     /* 프로젝트 설명 모바일사이즈 */
   }
   body .container .project-info {
@@ -341,7 +342,7 @@ body .container .lightbox .close:hover {
     width: 100%;
   }
   body .container .project-info .info_left .title {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 0.7em;
     width: 90%;
   }

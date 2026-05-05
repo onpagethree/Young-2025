@@ -8,7 +8,7 @@
 $lh: 1.45em;
 $titlelh: 1.2em;
 $padding: 0 1.2vw 0 1.2vw;
-$padding-mobile: 0 2vw 0 2vw;
+$padding-mobile: 0 3vw 0 3vw;
 
 #underline {
 	text-decoration: underline;
@@ -175,13 +175,13 @@ body {
 /* 모바일사이즈  모바일사이즈  모바일사이즈 모바일사이즈  모바일사이즈  모바일사이즈 */
 @media only screen and (max-width: 700px) {
 	html {
-		font-size: 3.5vw;
+		font-size: 4.2vw;
 
 		body {
 			padding: $padding-mobile;
 
 			header {
-				margin: 1vh 0 2em 0;
+				margin: 2vh 0 2em 0;
 
 				.header_name {
 					font-size: 1.6rem;

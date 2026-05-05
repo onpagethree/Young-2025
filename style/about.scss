@@ -5,7 +5,7 @@ body {
 	.container {
 		display: flex;
 		flex-direction: column;
-		font-size: 1rem;
+		font-size: 1.2rem;
 		line-height: $lh;
 
 		padding-left: 1%;
@@ -15,7 +15,7 @@ body {
 			display: inline-flex;
 			gap: 0.6em;
 			margin-bottom: 1.35em;
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 
 			.lang-btn {
 				background: none;
@@ -41,7 +41,7 @@ body {
 			line-height: 1.4em;
 
 			.AboutCategory {
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 			}
 
 			.history {
@@ -59,6 +59,10 @@ body {
 					flex-direction: column;
 					// 연도 위의 공간
 					gap: 0.05em;
+
+					.item-title {
+						font-weight: 600;
+					}
 				}
 
 				/* list (About-1 / About-2 공통) */
