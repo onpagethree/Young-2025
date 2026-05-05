@@ -2,7 +2,7 @@
 body .container {
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5em;
   padding-left: 1%;
   /* language switch */
@@ -129,7 +129,6 @@ body .container .AboutFlex .About-3 .contact .toast {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
   opacity: 0;
   z-index: 50;
 }
